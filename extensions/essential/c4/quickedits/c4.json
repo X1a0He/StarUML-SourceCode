@@ -1,0 +1,44 @@
+{
+  "components": [
+    {
+      "id": "c4.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "c4.set-description",
+      "type": "textarea",
+      "hint": "description",
+      "property": "description",
+      "command": "engine:set-property"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "c4.element",
+      "targets": [
+        "C4PersonView",
+        "C4SoftwareSystemView",
+        "C4ContainerView",
+        "C4ComponentView",
+        "C4ElementView"
+      ],
+      "area": { "x1": "left", "y1": "nameLabel.top", "x2": "right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "c4.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" }
+      ]
+    },
+    {
+      "id": "c4.relationship",
+      "targets": [ "C4RelationshipView", "C4RelationshipView.descriptionLabel", "C4RelationshipView.technologyLabel" ],
+      "area": { "x1": "descriptionLabel.left", "y1": "descriptionLabel.top", "x2": "descriptionLabel.left", "y2": "descriptionLabel.bottom", "x2-margin": 70 },
+      "components": [
+        { "id": "c4.set-description", "section": "main" },
+        { "id": "uml.add-note", "section": "left" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "gcp",
+  "name": "GCP",
+  "schema": {
+    "gcp.path": {
+      "text": "Path",
+      "type": "section"
+    },
+    "gcp.path.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of Path.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 0
+    }
+  }
+}

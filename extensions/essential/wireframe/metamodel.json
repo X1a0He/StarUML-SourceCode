@@ -1,0 +1,260 @@
+{
+  "WFOrientationKind": {
+    "kind": "enum",
+    "literals": [
+      "portrait",
+      "landscape"
+    ]
+  },
+  "WFPositionKind": {
+    "kind": "enum",
+    "literals": [
+      "top",
+      "bottom",
+      "left",
+      "right"
+    ]
+  },
+  "WFElement": {
+    "kind": "class",
+    "super": "ExtensibleModel",
+    "attributes": [
+      { "name": "id",  "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "WFWireframe": {
+    "kind": "class",
+    "super": "WFElement"
+  },
+  "WFWireframeDiagram": {
+    "kind": "class",
+    "super": "Diagram",
+    "views": [
+      "UMLCustomTextView",
+      "ShapeView",
+      "UMLNoteLinkView",
+      "WFFrameView",
+      "WFMobileFrameView",
+      "WFWebFrameView",
+      "WFDesktopFrameView",
+      "WFButtonView",
+      "WFTextView",
+      "WFRadioView",
+      "WFCheckboxView",
+      "WFSwitchView",
+      "WFLinkView",
+      "WFTabView",
+      "WFTabListView",
+      "WFInputView",
+      "WFDropdownView",
+      "WFPanelView",
+      "WFImageView",
+      "WFSeparatorView",
+      "WFAvatarView",
+      "WFSliderView"
+    ]
+  },
+  "WFFrame": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFFrameView"
+  },
+  "WFMobileFrame": {
+    "kind": "class",
+    "super": "WFFrame",
+    "view": "WFMobileFrameView",
+    "attributes": [
+      { "name": "orientation", "kind": "enum", "type": "WFOrientationKind", "visible": true, "default": "portrait" }
+    ]
+  },
+  "WFWebFrame": {
+    "kind": "class",
+    "super": "WFFrame",
+    "view": "WFWebFrameView"
+  },
+  "WFDesktopFrame": {
+    "kind": "class",
+    "super": "WFFrame",
+    "view": "WFDesktopFrameView"
+  },
+  "WFButton": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFButtonView"
+  },
+  "WFText": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFTextView"
+  },
+  "WFRadio": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFRadioView",
+    "attributes": [
+      { "name": "checked", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "WFCheckbox": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFCheckboxView",
+    "attributes": [
+      { "name": "checked", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "WFSwitch": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFSwitchView",
+    "attributes": [
+      { "name": "checked", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "WFLink": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFLinkView"
+  },
+  "WFTab": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFTabView",
+    "attributes": [
+      { "name": "position", "kind": "enum", "type": "WFPositionKind", "visible": true, "default": "top" }
+    ]
+  },
+  "WFTabList": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFTabListView",
+    "attributes": [
+      { "name": "position", "kind": "enum", "type": "WFPositionKind", "visible": true, "default": "top" }
+    ]
+  },
+  "WFInput": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFInputView"
+  },
+  "WFDropdown": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFDropdownView"
+  },
+  "WFPanel": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFPanelView"
+  },
+  "WFImage": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFImageView"
+  },
+  "WFSeparator": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFSeparatorView",
+    "attributes": [
+      { "name": "isVertical", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "WFAvatar": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFAvatarView"
+  },
+  "WFSlider": {
+    "kind": "class",
+    "super": "WFElement",
+    "view": "WFSliderView",
+    "attributes": [
+      { "name": "value", "kind": "prim", "type": "Integer", "visible": true, "default": 0 }
+    ]
+  },
+  "WFGeneralNodeView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "LabelView", "embedded": "subViews" },
+      { "name": "wordWrap",  "kind": "prim", "type": "Boolean", "default": true }
+    ]
+  },
+  "WFFrameView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFMobileFrameView": {
+    "kind": "class",
+    "super": "WFFrameView"
+  },
+  "WFWebFrameView": {
+    "kind": "class",
+    "super": "WFFrameView"
+  },
+  "WFDesktopFrameView": {
+    "kind": "class",
+    "super": "WFFrameView"
+  },
+  "WFButtonView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFTextView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFRadioView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFCheckboxView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFSwitchView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFLinkView": {
+    "kind": "class",
+    "super": "WFTextView"
+  },
+  "WFTabView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFTabListView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFInputView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFDropdownView": {
+    "kind": "class",
+    "super": "WFGeneralNodeView"
+  },
+  "WFPanelView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFImageView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFSeparatorView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFAvatarView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "WFSliderView": {
+    "kind": "class",
+    "super": "NodeView"
+  }
+}

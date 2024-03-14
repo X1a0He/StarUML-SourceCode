@@ -1,0 +1,162 @@
+{
+  "id": "general",
+  "name": "General",
+  "schema": {
+    "general": {
+      "text": "General",
+      "type": "section"
+    },
+    "general.working-file": {
+      "text": "Auto load working file",
+      "description": "Load the latest working file automatically when app launch",
+      "type": "check",
+      "default": false
+    },
+    "general.auto-backup": {
+      "text": "Auto backup",
+      "description": "Backup working model automatically",
+      "type": "check",
+      "default": true
+    },
+    "theme": {
+      "text": "UI Theme",
+      "type": "section"
+    },
+    "theme.default": {
+      "text": "Default Theme",
+      "description": "Default theme of UI.",
+      "type": "dropdown",
+      "options": [
+        { "value": "dark", "text": "Dark theme" },
+        { "value": "light", "text": "Light theme" }
+      ],
+      "default": "dark"
+    },
+    "view": {
+      "text": "Default View Style",
+      "type": "section"
+    },
+    "view.font": {
+      "text": "Font Face",
+      "description": "Default font face of view elements.",
+      "type": "font",
+      "default": "Arial"
+    },
+    "view.fontSize": {
+      "text": "Font Size",
+      "description": "Default font size of view elements.",
+      "type": "combo",
+      "options": [
+        { "value": 8,  "text": "8"  },
+        { "value": 9,  "text": "9"  },
+        { "value": 10, "text": "10" },
+        { "value": 11, "text": "11" },
+        { "value": 12, "text": "12" },
+        { "value": 13, "text": "13" },
+        { "value": 14, "text": "14" },
+        { "value": 16, "text": "16" },
+        { "value": 20, "text": "20" },
+        { "value": 24, "text": "24" },
+        { "value": 28, "text": "28" },
+        { "value": 32, "text": "32" }
+      ],
+      "default": 13
+    },
+    "view.fillColor": {
+      "text": "Fill Color",
+      "description": "Default fill color of view elements.",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    "view.lineColor": {
+      "text": "Line Color",
+      "description": "Default line color of view elements.",
+      "type": "color",
+      "default": "#000000"
+    },
+    "view.fontColor": {
+      "text": "Font Color",
+      "description": "Default font color of view elements.",
+      "type": "color",
+      "default": "#000000"
+    },
+    "view.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of edge-type view elements.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 1
+    },
+    "view.showShadow": {
+      "text": "Show Shadow",
+      "description": "Default showing shadow of view elements.",
+      "type": "check",
+      "default": true
+    },
+    "diagramEditor": {
+      "text": "DiagramEditor",
+      "type": "section"
+    },
+    "diagramEditor.showGrid": {
+      "text": "Show Grid",
+      "description": "Show grid on diagram editor.",
+      "type": "check",
+      "default": true
+    },
+    "diagramEditor.snapToGrid": {
+      "text": "Snap to Grid",
+      "description": "Snap to grid on diagram editor.",
+      "type": "check",
+      "default": true
+    },
+    "diagramEditor.gridSize": {
+      "text": "Grid Size",
+      "description": "Default size (width and height) of grid.",
+      "type": "combo",
+      "options": [
+        { "value": 2,  "text": "2"  },
+        { "value": 4,  "text": "4"  },
+        { "value": 6,  "text": "6" },
+        { "value": 8,  "text": "8" },
+        { "value": 10, "text": "10" },
+        { "value": 12, "text": "12" },
+        { "value": 14, "text": "14" },
+        { "value": 16, "text": "16" },
+        { "value": 18, "text": "18" },
+        { "value": 20, "text": "20" }
+      ],
+      "default": 8
+    },
+    "diagramEditor.backgroundColor": {
+      "text": "Background Color",
+      "description": "Background color of diagram editor.",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    "validation": {
+      "text": "Validation",
+      "type": "section"
+    },
+    "validation.validateModel": {
+      "text": "Validate Model",
+      "description": "Validate model asynchronously when opening or saving files.",
+      "type": "check",
+      "default": true
+    },
+    "checkUpdate": {
+      "text": "Check Updates",
+      "type": "section"
+    },
+    "checkUpdate.checkUpdateOnStart": {
+      "text": "Check Updates on Start",
+      "description": "Check updates on application start.",
+      "type": "check",
+      "default": true
+    }
+  }
+}

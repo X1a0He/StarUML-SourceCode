@@ -1,0 +1,46 @@
+{
+  "menu": [
+    {
+      "id": "model.add-diagram",
+      "submenu": [
+        { "label": "Mindmap Diagram", "id": "mindmap.diagram", "command": "factory:create-diagram", "command-arg": { "id": "MMMindmapDiagram" } }
+      ]
+    },
+    {
+      "id": "model.add",
+      "submenu": [
+        { "label": "Mindmap", "id": "mindmap.mindmap", "command": "factory:create-model", "command-arg": {"id":"MMMindmap"} }
+      ]
+    }
+  ],
+  "context-menu": {
+    "diagram-canvas": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "Mindmap Diagram", "id": "mindmap.diagram", "command": "factory:create-diagram", "command-arg": { "id": "MMMindmapDiagram" } }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "Mindmap", "id": "mindmap.mindmap", "command": "factory:create-model", "command-arg": {"id":"MMMindmap"} }
+        ]
+      }
+      ],
+    "model-explorer": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "Mindmap Diagram", "id": "mindmap.diagram", "command": "factory:create-diagram", "command-arg": { "id": "MMMindmapDiagram" } }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "Mindmap", "id": "mindmap.mindmap", "command": "factory:create-model", "command-arg": {"id":"MMMindmap"} }
+        ]
+      }  
+    ]
+  }
+}

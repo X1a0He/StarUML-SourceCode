@@ -1,0 +1,112 @@
+{
+  "menu": [
+    {
+      "id": "file.new-from-template",
+      "submenu": [
+        { "label": "BPMN Business Process Modeling", "command": "bpmn:new-from-template", "command-arg": "templates/BusinessProcessModel.mdj" }
+      ]
+    },
+    {
+      "id": "model.add-diagram",
+      "submenu": [
+        { "label": "BPMN Diagram", "id": "bpmn.diagram", "command": "factory:create-diagram", "command-arg": {"id": "BPMNDiagram"} }
+      ]
+    },
+    {
+      "id": "model.add",
+      "submenu": [
+        { "label": "Business Process", "id": "bpmn.process", "command": "factory:create-model", "command-arg": {"id":"BPMNProcess"} },
+        { "label": "Collaboration", "id": "bpmn.collaboration", "command": "factory:create-model", "command-arg": {"id":"BPMNCollaboration"} },
+        { "label": "Choreography", "id": "bpmn.choreography", "command": "factory:create-model", "command-arg": {"id":"BPMNChoreography"} },
+        { "label": "Global Conversation", "id": "bpmn.global-conversation", "command": "factory:create-model", "command-arg": {"id":"BPMNGlobalConversation"} },
+        { "label": "Task", "id": "bpmn.task", "command": "factory:create-model", "command-arg": {"id":"BPMNTask"} },
+        { "label": "Sub Process", "id": "bpmn.subprocess", "command": "factory:create-model", "command-arg": {"id":"BPMNSubProcess"} },
+        { "label": "Gateway", "id": "bpmn.gateway", "command": "factory:create-model", "command-arg": {"id":"BPMNGateway"} },
+        { "label": "Start Event", "id": "bpmn.start-event", "command": "factory:create-model", "command-arg": {"id":"BPMNStartEvent"} },
+        { "label": "Intermediate Event (Throw)", "id": "bpmn.intermediate-throw-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateThrowEvent"} },
+        { "label": "Intermediate Event (Catch)", "id": "bpmn.intermediate-catch-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateCatchEvent"} },
+        { "label": "End Event", "id": "bpmn.end-event", "command": "factory:create-model", "command-arg": {"id":"BPMNEndEvent"} },
+        { "label": "Compensate Event Definition", "id": "bpmn.compensate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCompensateEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Cancel Event Definition", "id": "bpmn.cancel-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCancelEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Error Event Definition", "id": "bpmn.error-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNErrorEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Link Event Definition", "id": "bpmn.link-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNLinkEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Signal Event Definition", "id": "bpmn.signal-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNSignalEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Timer Event Definition", "id": "bpmn.timer-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTimerEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Escalation Event Definition", "id": "bpmn.escalation-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNEscalationEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Message Event Definition", "id": "bpmn.message-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNMessageEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Terminate Event Definition", "id": "bpmn.terminate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTerminateEventDefinition", "field": "eventDefinitions"} },
+        { "label": "Conditional Event Definition", "id": "bpmn.conditional-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNConditionalEventDefinition", "field": "eventDefinitions"} }
+      ]
+    }
+  ],
+  "context-menu": {
+    "diagram-canvas": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "BPMN Diagram", "id": "bpmn.diagram", "command": "factory:create-diagram", "command-arg": {"id": "BPMNDiagram"} }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "Business Process", "id": "bpmn.process", "command": "factory:create-model", "command-arg": {"id":"BPMNProcess"} },
+          { "label": "Collaboration", "id": "bpmn.collaboration", "command": "factory:create-model", "command-arg": {"id":"BPMNCollaboration"} },
+          { "label": "Choreography", "id": "bpmn.choreography", "command": "factory:create-model", "command-arg": {"id":"BPMNChoreography"} },
+          { "label": "Global Conversation", "id": "bpmn.global-conversation", "command": "factory:create-model", "command-arg": {"id":"BPMNGlobalConversation"} },  
+          { "label": "Task", "id": "bpmn.task", "command": "factory:create-model", "command-arg": {"id":"BPMNTask"} },
+          { "label": "Sub Process", "id": "bpmn.subprocess", "command": "factory:create-model", "command-arg": {"id":"BPMNSubProcess"} },
+          { "label": "Gateway", "id": "bpmn.gateway", "command": "factory:create-model", "command-arg": {"id":"BPMNGateway"} },  
+          { "label": "Start Event", "id": "bpmn.start-event", "command": "factory:create-model", "command-arg": {"id":"BPMNStartEvent"} },
+          { "label": "Intermediate Event (Throw)", "id": "bpmn.intermediate-throw-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateThrowEvent"} },
+          { "label": "Intermediate Event (Catch)", "id": "bpmn.intermediate-catch-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateCatchEvent"} },
+          { "label": "End Event", "id": "bpmn.end-event", "command": "factory:create-model", "command-arg": {"id":"BPMNEndEvent"} },
+          { "label": "Compensate Event Definition", "id": "bpmn.compensate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCompensateEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Cancel Event Definition", "id": "bpmn.cancel-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCancelEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Error Event Definition", "id": "bpmn.error-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNErrorEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Link Event Definition", "id": "bpmn.link-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNLinkEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Signal Event Definition", "id": "bpmn.signal-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNSignalEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Timer Event Definition", "id": "bpmn.timer-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTimerEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Escalation Event Definition", "id": "bpmn.escalation-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNEscalationEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Message Event Definition", "id": "bpmn.message-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNMessageEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Terminate Event Definition", "id": "bpmn.terminate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTerminateEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Conditional Event Definition", "id": "bpmn.conditional-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNConditionalEventDefinition", "field": "eventDefinitions"} }
+        ]
+      }
+    ],
+    "model-explorer": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "BPMN Diagram", "id": "bpmn.diagram", "command": "factory:create-diagram", "command-arg": {"id": "BPMNDiagram"} }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "Business Process", "id": "bpmn.process", "command": "factory:create-model", "command-arg": {"id":"BPMNProcess"} },
+          { "label": "Collaboration", "id": "bpmn.collaboration", "command": "factory:create-model", "command-arg": {"id":"BPMNCollaboration"} },
+          { "label": "Choreography", "id": "bpmn.choreography", "command": "factory:create-model", "command-arg": {"id":"BPMNChoreography"} },
+          { "label": "Global Conversation", "id": "bpmn.global-conversation", "command": "factory:create-model", "command-arg": {"id":"BPMNGlobalConversation"} },  
+          { "label": "Task", "id": "bpmn.task", "command": "factory:create-model", "command-arg": {"id":"BPMNTask"} },
+          { "label": "Sub Process", "id": "bpmn.subprocess", "command": "factory:create-model", "command-arg": {"id":"BPMNSubProcess"} },
+          { "label": "Gateway", "id": "bpmn.gateway", "command": "factory:create-model", "command-arg": {"id":"BPMNGateway"} },  
+          { "label": "Start Event", "id": "bpmn.start-event", "command": "factory:create-model", "command-arg": {"id":"BPMNStartEvent"} },
+          { "label": "Intermediate Event (Throw)", "id": "bpmn.intermediate-throw-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateThrowEvent"} },
+          { "label": "Intermediate Event (Catch)", "id": "bpmn.intermediate-catch-event", "command": "factory:create-model", "command-arg": {"id":"BPMNIntermediateCatchEvent"} },
+          { "label": "End Event", "id": "bpmn.end-event", "command": "factory:create-model", "command-arg": {"id":"BPMNEndEvent"} },
+          { "label": "Compensate Event Definition", "id": "bpmn.compensate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCompensateEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Cancel Event Definition", "id": "bpmn.cancel-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNCancelEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Error Event Definition", "id": "bpmn.error-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNErrorEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Link Event Definition", "id": "bpmn.link-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNLinkEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Signal Event Definition", "id": "bpmn.signal-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNSignalEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Timer Event Definition", "id": "bpmn.timer-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTimerEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Escalation Event Definition", "id": "bpmn.escalation-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNEscalationEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Message Event Definition", "id": "bpmn.message-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNMessageEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Terminate Event Definition", "id": "bpmn.terminate-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNTerminateEventDefinition", "field": "eventDefinitions"} },
+          { "label": "Conditional Event Definition", "id": "bpmn.conditional-event-definition", "command": "factory:create-model", "command-arg": {"id":"BPMNConditionalEventDefinition", "field": "eventDefinitions"} }
+        ]
+      }
+    ]
+  }
+}

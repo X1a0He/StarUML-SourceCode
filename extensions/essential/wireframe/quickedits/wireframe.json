@@ -1,0 +1,42 @@
+{
+  "components": [
+    {
+      "id": "wireframe.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "wireframe.add-tab",
+      "type": "button",
+      "icon": "icon-tool-WFAddTab",
+      "hint": "Add Tab",
+      "command": "wireframe:add-tab"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "wireframe.common",
+      "targets": [
+        "WFButtonView", "WFTextView", "WFRadioView", "WFCheckboxView", "WFLinkView", "WFTabView", "WFInputView", "WFDropdownView"
+      ],
+      "area": { "x1": "left", "y1": "nameLabel.top", "x2": "right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "wireframe.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left"}
+      ]
+    },
+    {
+      "id": "wireframe.tab-list",
+      "targets": [
+        "WFTabListView"
+      ],
+      "area": { "x1": "left", "y1": "top", "x2": "right", "y2": "bottom" },
+      "components": [
+        { "id": "uml.add-note", "section": "left"},
+        { "id": "wireframe.add-tab", "section": "right" }
+      ]
+    }
+  ]
+}

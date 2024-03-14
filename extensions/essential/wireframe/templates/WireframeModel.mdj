@@ -1,0 +1,51 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "WFWireframe",
+			"_id": "AAAAAAGIlA70ZqY2dSU=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Wireframe",
+			"ownedElements": [
+				{
+					"_type": "WFWireframeDiagram",
+					"_id": "AAAAAAGIlA70ZqY3RPw=",
+					"_parent": {
+						"$ref": "AAAAAAGIlA70ZqY2dSU="
+					},
+					"name": "Wireframe Diagram",
+					"defaultDiagram": true,
+					"ownedViews": [
+						{
+							"_type": "WFMobileFrameView",
+							"_id": "AAAAAAGIlA9UaaZCvgw=",
+							"_parent": {
+								"$ref": "AAAAAAGIlA70ZqY3RPw="
+							},
+							"model": {
+								"$ref": "AAAAAAGIlA9UaKZAg2k="
+							},
+							"font": "Arial;13;0",
+							"left": 80,
+							"top": 72,
+							"width": 328,
+							"height": 520
+						}
+					]
+				},
+				{
+					"_type": "WFMobileFrame",
+					"_id": "AAAAAAGIlA9UaKZAg2k=",
+					"_parent": {
+						"$ref": "AAAAAAGIlA70ZqY2dSU="
+					},
+					"name": "MobileFrame1"
+				}
+			]
+		}
+	]
+}

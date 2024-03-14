@@ -1,0 +1,26 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "BPMNProcess",
+			"_id": "AAAAAAGIalrH9F/QGPM=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Business Process",
+			"ownedElements": [
+				{
+					"_type": "BPMNDiagram",
+					"_id": "AAAAAAGIalrH9V/Rgvk=",
+					"_parent": {
+						"$ref": "AAAAAAGIalrH9F/QGPM="
+					},
+					"name": "BPMN Diagram",
+					"defaultDiagram": true
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,1 @@
+{"_type":"Project","_id":"AAAAAAFF+h6SjaM2Hec=","name":"Untitled","ownedElements":[{"_type":"AWSModel","_id":"AAAAAAGKC35bAi/tMGY=","_parent":{"$ref":"AAAAAAFF+h6SjaM2Hec="},"name":"AWS Architecture","ownedElements":[{"_type":"AWSDiagram","_id":"AAAAAAGKC35bAi/u0X4=","_parent":{"$ref":"AAAAAAGKC35bAi/tMGY="},"name":"Main"}]}]}

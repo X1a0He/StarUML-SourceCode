@@ -1,0 +1,74 @@
+{
+  "id": "c4",
+  "name": "C4 Model",
+  "schema": {
+    "c4.person": {
+      "text": "Person",
+      "type": "section"
+    },
+    "c4.person.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Person.",
+      "type": "color",
+      "default": "#38bcff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "c4.software-system": {
+      "text": "Software System",
+      "type": "section"
+    },
+    "c4.software-system.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Software System.",
+      "type": "color",
+      "default": "#6dceff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "c4.container": {
+      "text": "Container",
+      "type": "section"
+    },
+    "c4.container.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Container.",
+      "type": "color",
+      "default": "#a3e0ff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "c4.component": {
+      "text": "Component",
+      "type": "section"
+    },
+    "c4.component.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Component.",
+      "type": "color",
+      "default": "#d8f2ff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "c4.relationship": {
+      "text": "Relationship",
+      "type": "section"
+    },
+    "c4.relationship.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of relationship.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 1
+    }
+  }
+}

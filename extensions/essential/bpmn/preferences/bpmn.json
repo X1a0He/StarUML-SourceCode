@@ -1,0 +1,132 @@
+{
+  "id": "bpmn",
+  "name": "BPMN",
+  "schema": {
+    "bpmn.activity": {
+      "text": "Activity",
+      "type": "section"
+    },
+    "bpmn.activity.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Activity.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.event": {
+      "text": "Event",
+      "type": "section"
+    },
+    "bpmn.event.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Event.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.message": {
+      "text": "Message",
+      "type": "section"
+    },
+    "bpmn.message.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Message.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.gateway": {
+      "text": "Gateway",
+      "type": "section"
+    },
+    "bpmn.gateway.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Gateway.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.dataobject": {
+      "text": "Data Object",
+      "type": "section"
+    },
+    "bpmn.dataobject.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Data Object.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.conversation": {
+      "text": "Conversation",
+      "type": "section"
+    },
+    "bpmn.conversation.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Conversation.",
+      "type": "color",
+      "default": "#ffffff",
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "bpmn.sequence-flow": {
+      "text": "Sequence Flow",
+      "type": "section"
+    },
+    "bpmn.sequence-flow.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of sequence flow.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 2
+    },
+    "bpmn.message-flow": {
+      "text": "Message Flow",
+      "type": "section"
+    },
+    "bpmn.message-flow.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of message flow.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 2
+    },
+    "bpmn.conversation-link": {
+      "text": "Conversation Link",
+      "type": "section"
+    },
+    "bpmn.conversation-link.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of conversation link.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 2
+    }
+  }
+}

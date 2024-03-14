@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Annotations",
+    "id": "annotation",
+    "items": [
+      { "label": "Text", "id": "Text", "icon": "icon-UMLText", "rubberband": "rect", "command-arg": { "min-width": 60, "min-height": 15 } },
+      { "label": "Text Box", "id": "TextBox", "icon": "icon-UMLTextBox", "rubberband": "rect", "command-arg": { "min-width": 60, "min-height": 15 } },
+      { "label": "Free Line", "id": "FreeLine", "icon": "icon-FreeLine", "rubberband": "line" },
+      { "label": "Note", "id": "Note", "icon": "icon-UMLNote", "rubberband": "rect", "command-arg": { "min-width": 70, "min-height": 40 } },
+      { "label": "Note Link", "id": "NoteLink", "icon": "icon-UMLNoteLink", "rubberband": "line" },
+      { "label": "Hyperlink", "id": "Hyperlink", "icon": "icon-Hyperlink", "rubberband": "rect", "command-arg": { "min-width": 70, "min-height": 20 } },
+      { "label": "Rectangle", "id": "Rect", "icon": "icon-Rectangle", "rubberband": "rect", "command-arg": { "min-width": 50, "min-height": 50 } },
+      { "label": "Rounded Rectangle", "id": "RoundRect", "icon": "icon-RoundedRectangle", "rubberband": "rect", "command-arg": { "min-width": 50, "min-height": 50 } },
+      { "label": "Ellipse", "id": "Ellipse", "icon": "icon-Ellipse", "rubberband": "rect", "command-arg": { "min-width": 50, "min-height": 50 } },
+      { "label": "Image", "id": "Image", "icon": "icon-Image", "rubberband": "rect", "command-arg": { "min-width": 100, "min-height": 100 } }
+    ]
+  }
+]

@@ -1,0 +1,212 @@
+{
+  "components": [
+    {
+      "id": "gcp.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "gcp.set-icon",
+      "type": "button",
+      "icon": "icon-tool-gcp-icon",
+      "hint": "GCP Icon",
+      "command": "gcp:set-icon"
+    },
+    {
+      "id": "gcp.set-product-icon",
+      "type": "button",
+      "icon": "icon-tool-gcp-icon",
+      "hint": "GCP Product Icon",
+      "command": "gcp:set-product-icon"
+    },
+    {
+      "id": "gcp.zone-type",
+      "type": "dropdown",
+      "hint": "Zone Type",
+      "property": "zoneType",
+      "dropdown-width": 270,
+      "items": [
+        {
+          "icon": "icon-tool-gcp-icon-zone-project",
+          "text": "Project",
+          "value": "project"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-logical-group",
+          "text": "Logical Group",
+          "value": "logical-group"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-region",
+          "text": "Region",
+          "value": "region"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-zone",
+          "text": "Zone",
+          "value": "zone"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-sub-network",
+          "text": "SubNetwork",
+          "value": "sub-network"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-firewall",
+          "text": "Firewall",
+          "value": "firewall"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-instance-group",
+          "text": "Instance Group",
+          "value": "instance-group"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-replica-pool",
+          "text": "Replica Pool",
+          "value": "replica-pool"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-kubernetes-cluster",
+          "text": "Kubernetes Cluster",
+          "value": "kubernetes-cluster"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-pod",
+          "text": "Pod",
+          "value": "pod"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-account",
+          "text": "Account",
+          "value": "account"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-optional",
+          "text": "Optional Component",
+          "value": "optional"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-system",
+          "text": "System",
+          "value": "system"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-infrastructure-system",
+          "text": "Infrastructure System",
+          "value": "infrastructure-system"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-on-premises",
+          "text": "On-Premises",
+          "value": "on-premises"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-external-saas-providers",
+          "text": "External SaaS Providers",
+          "value": "external-saas-providers"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-external-data-sources",
+          "text": "External Data Sources",
+          "value": "external-data-sources"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-external-thirdparty-infrastructure",
+          "text": "External 3rd-party Infrastructure",
+          "value": "external-thirdparty-infrastructure"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-external-firstparty-infrastructure",
+          "text": "External 1st-party Infrastructure",
+          "value": "external-firstparty-infrastructure"
+        },
+        {
+          "icon": "icon-tool-gcp-icon-zone-user",
+          "text": "User",
+          "value": "user"
+        }
+      ],
+      "command": "engine:set-property"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "gcp.user",
+      "targets": ["GCPUserView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "gcp.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "gcp.set-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "gcp.zone",
+      "targets": ["GCPZoneView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "gcp.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "gcp.zone-type", "section": "right" }
+      ]
+    },
+    {
+      "id": "gcp.product",
+      "targets": ["GCPProductView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "gcp.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "gcp.set-product-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "gcp.service",
+      "targets": ["GCPServiceView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "gcp.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "gcp.set-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "gcp.arrow",
+      "targets": ["GCPPathView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.left",
+        "y2": "nameLabel.bottom",
+        "x2-margin": 70
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "components": [
+    {
+      "id": "aws.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "aws.set-icon",
+      "type": "button",
+      "icon": "icon-tool-aws-icon",
+      "hint": "AWS Icon",
+      "command": "aws:set-icon"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "aws.group",
+      "targets": ["AWSGroupView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "aws.set-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "aws.service",
+      "targets": ["AWSServiceView", "AWSServiceView.nameLabel"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "aws.set-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "aws.resource",
+      "targets": [
+        "AWSResourceView",
+        "AWSGeneralResourceView",
+        "AWSResourceView.nameLabel",
+        "AWSGeneralResourceView.nameLabel"
+      ],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" },
+        { "id": "aws.set-icon", "section": "right" }
+      ]
+    },
+    {
+      "id": "aws.callout",
+      "targets": ["AWSCalloutView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [{ "id": "aws.set-name", "section": "main" }]
+    },
+    {
+      "id": "aws.node",
+      "targets": [
+        "AWSServiceView",
+        "AWSGenericGroupView",
+        "AWSSecurityGroupView",
+        "AWSAvailabilityZoneView"
+      ],
+      "area": {
+        "x1": "left",
+        "y1": "nameLabel.top",
+        "x2": "right",
+        "y2": "nameLabel.bottom"
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" }
+      ]
+    },
+    {
+      "id": "aws.arrow",
+      "targets": ["AWSArrowView"],
+      "area": {
+        "x1": "nameLabel.left",
+        "y1": "nameLabel.top",
+        "x2": "nameLabel.left",
+        "y2": "nameLabel.bottom",
+        "x2-margin": 70
+      },
+      "components": [
+        { "id": "aws.set-name", "section": "main" },
+        { "id": "uml.add-note", "section": "left" }
+      ]
+    }
+  ]
+}

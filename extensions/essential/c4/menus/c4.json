@@ -1,0 +1,64 @@
+{
+  "menu": [
+    {
+      "id": "file.new-from-template",
+      "submenu": [
+        { "label": "C4 Model", "command": "c4:new-from-template", "command-arg": "templates/C4Model.mdj" }
+      ]
+    },
+    {
+      "id": "model.add-diagram",
+      "submenu": [
+        { "label": "C4 Diagram", "id": "c4.diagram", "command": "factory:create-diagram", "command-arg": {"id": "C4Diagram"} }
+      ]
+    },
+    {
+      "id": "model.add",
+      "submenu": [
+        { "label": "C4 Model", "id": "c4.model", "command": "factory:create-model", "command-arg": {"id":"C4Model"} },
+        { "label": "C4 Person", "id": "c4.person", "command": "factory:create-model", "command-arg": {"id":"C4Person"} },
+        { "label": "C4 Software System", "id": "c4.software-system", "command": "factory:create-model", "command-arg": {"id":"C4SoftwareSystem"} },
+        { "label": "C4 Container", "id": "c4.container", "command": "factory:create-model", "command-arg": {"id":"C4Container"} },
+        { "label": "C4 Component", "id": "c4.component", "command": "factory:create-model", "command-arg": {"id":"C4Component"} }
+      ]
+    }
+  ],
+  "context-menu": {
+    "diagram-canvas": [
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "C4 Model", "id": "c4.model", "command": "factory:create-model", "command-arg": {"id":"C4Model"} },
+          { "label": "C4 Person", "id": "c4.person", "command": "factory:create-model", "command-arg": {"id":"C4Person"} },
+          { "label": "C4 Software System", "id": "c4.software-system", "command": "factory:create-model", "command-arg": {"id":"C4SoftwareSystem"} },
+          { "label": "C4 Container", "id": "c4.container", "command": "factory:create-model", "command-arg": {"id":"C4Container"} },
+          { "label": "C4 Component", "id": "c4.component", "command": "factory:create-model", "command-arg": {"id":"C4Component"} }
+        ]
+      },
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "C4 Diagram", "id": "c4.diagram", "command": "factory:create-diagram", "command-arg": {"id": "C4Diagram"} }
+        ]
+      }
+    ],
+    "model-explorer": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          { "label": "C4 Diagram", "id": "c4.diagram", "command": "factory:create-diagram", "command-arg": {"id": "C4Diagram"} }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          { "label": "C4 Model", "id": "c4.model", "command": "factory:create-model", "command-arg": {"id":"C4Model"} },
+          { "label": "C4 Person", "id": "c4.person", "command": "factory:create-model", "command-arg": {"id":"C4Person"} },
+          { "label": "C4 Software System", "id": "c4.software-system", "command": "factory:create-model", "command-arg": {"id":"C4SoftwareSystem"} },
+          { "label": "C4 Container", "id": "c4.container", "command": "factory:create-model", "command-arg": {"id":"C4Container"} },
+          { "label": "C4 Component", "id": "c4.component", "command": "factory:create-model", "command-arg": {"id":"C4Component"} }  
+        ]
+      }
+    ]
+  }
+}

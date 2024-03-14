@@ -1,0 +1,140 @@
+{
+  "C4ContainerKind": {
+    "kind": "enum",
+    "literals": [
+      "server-webapp",
+      "client-webapp",
+      "desktop-app",
+      "mobile-app",
+      "console-app",
+      "serverless-function",
+      "database",
+      "blob-store",
+      "filesystem",
+      "shell-script",
+      "etc"
+    ]
+  },
+  "C4Element": {
+    "kind": "class",
+    "super": "ExtensibleModel",
+    "attributes": [
+      { "name": "technology",  "kind": "prim", "type": "String", "visible": true, "default": "" },
+      { "name": "description", "kind": "prim", "type": "String", "visible": true, "multiline": true, "default": "" }
+    ],
+    "view": "C4ElementView"
+  },
+  "C4Model": {
+    "kind": "class",
+    "super": "C4Element"
+  },
+  "C4Diagram": {
+    "kind": "class",
+    "super": "Diagram",
+    "views": [
+      "C4PersonView",
+      "C4SoftwareSystemView",
+      "C4ContainerView",
+      "C4ComponentView",
+      "C4RelationshipView",
+      "UMLCustomTextView",
+      "ShapeView",
+      "UMLNoteLinkView",
+      "UMLPackageView",
+      "UMLContainmentView",
+      "UMLClassView",
+      "UMLInterfaceView",
+      "UMLSignalView",
+      "UMLDataTypeView",
+      "UMLPrimitiveTypeView",
+      "UMLEnumerationView",
+      "UMLDependencyView",
+      "UMLGeneralizationView",
+      "UMLRealizationView",
+      "UMLInterfaceRealizationView",
+      "UMLAssociationView",
+      "UMLAssociationClassLinkView",
+      "UMLPortView",
+      "UMLPartView",
+      "UMLConnectorView",
+      "UMLComponentRealizationView",
+      "UMLNodeView",
+      "UMLDeploymentView",
+      "UMLCommunicationPathView"
+    ]
+  },
+  "C4Person": {
+    "kind": "class",
+    "super": "C4Element",
+    "view": "C4PersonView"
+  },
+  "C4SoftwareSystem": {
+    "kind": "class",
+    "super": "C4Element",
+    "view": "C4SoftwareSystemView"
+  },
+  "C4Container": {
+    "kind": "class",
+    "super": "C4Element",
+    "view": "C4ContainerView",
+    "attributes": [
+      { "name": "kind", "kind": "enum", "type": "C4ContainerKind", "visible": true }
+    ]
+  },
+  "C4Component": {
+    "kind": "class",
+    "super": "C4Element",
+    "view": "C4ComponentView"
+  },
+  "C4Relationship": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "C4RelationshipView",
+    "attributes": [
+      { "name": "technology",  "kind": "prim", "type": "String", "visible": true, "default": "" },
+      { "name": "description", "kind": "prim", "type": "String", "visible": true, "multiline": true, "default": "" }
+    ]
+  },
+  "C4GeneralNodeView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel",        "kind": "ref", "type": "LabelView", "embedded": "subViews" },
+      { "name": "technologyLabel",  "kind": "ref", "type": "LabelView", "embedded": "subViews" },
+      { "name": "descriptionLabel", "kind": "ref", "type": "LabelView", "embedded": "subViews" },
+      { "name": "wordWrap",         "kind": "prim", "type": "Boolean", "default": true }
+    ]
+  },
+  "C4GeneralEdgeView": {
+    "kind": "class",
+    "super": "EdgeView",
+    "attributes": [
+      { "name": "descriptionLabel", "kind": "ref",  "type": "EdgeLabelView", "embedded": "subViews" },
+      { "name": "technologyLabel",  "kind": "ref",  "type": "EdgeLabelView", "embedded": "subViews" }
+    ]
+  },
+  "C4ElementView": {
+    "kind": "class",
+    "super": "C4GeneralNodeView"
+  },
+  "C4PersonView": {
+    "kind": "class",
+    "super": "C4GeneralNodeView"
+  },
+  "C4SoftwareSystemView": {
+    "kind": "class",
+    "super": "C4GeneralNodeView"
+  },
+  "C4ContainerView": {
+    "kind": "class",
+    "super": "C4GeneralNodeView"
+  },
+  "C4ComponentView": {
+    "kind": "class",
+    "super": "C4GeneralNodeView"
+  },
+  "C4RelationshipView": {
+    "kind": "class",
+    "super": "C4GeneralEdgeView"
+  }
+}

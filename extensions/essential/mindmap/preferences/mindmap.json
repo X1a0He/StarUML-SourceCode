@@ -1,0 +1,44 @@
+{
+  "id": "mindmap",
+  "name": "Mindmap",
+  "schema": {
+    "mindmap.edge": {
+      "text": "Edge",
+      "type": "section"
+    },
+    "mindmap.edge.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of edge.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 1
+    },
+    "mindmap.node": {
+      "text": "Node",
+      "type": "section"
+    },
+    "mindmap.node.fillColor": {
+      "text": "Fill Color",
+      "description": "Fill color of Node.",
+      "type": "color",
+      "default": null,
+      "default-button": {
+        "text": "Use Default"
+      }
+    },
+    "mindmap.node.lineColor": {
+      "text": "Line Color",
+      "description": "Line color of Node.",
+      "type": "color",
+      "default": null,
+      "default-button": {
+        "text": "Use Default"
+      }
+    }
+  }
+}

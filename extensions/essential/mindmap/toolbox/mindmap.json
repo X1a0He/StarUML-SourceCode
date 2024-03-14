@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Mindmap",
+    "id": "mindmap",
+    "diagram-types": [ "MMMindmapDiagram" ],
+    "auto-expands": [ "MMMindmapDiagram" ],
+    "items": [
+      { "label": "Node", "id": "MMNode", "icon": "icon-MMNode", "rubberband": "rect" },
+      { "label": "Edge", "id": "MMEdge", "icon": "icon-MMEdge", "rubberband": "line" }
+    ]
+  }
+]

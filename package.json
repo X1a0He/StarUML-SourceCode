@@ -1,0 +1,65 @@
+{
+  "name": "StarUML",
+  "version": "6.0.1",
+  "apiVersion": "6.0.1",
+  "description": "A sophisticated software modeler",
+  "copyright": "Copyright© MKLabs Co.,Ltd.",
+  "homepage": "https://staruml.io",
+  "author": {
+    "name": "MKLabs Co.,Ltd.",
+    "email": "support@staruml.io"
+  },
+  "config": {
+    "product_id": "STARUML.V6",
+    "app_title": "StarUML",
+    "app_icon": "styles/icons/logo_64.png",
+    "download_url": "https://staruml.io/download",
+    "purchase_url": "https://staruml.io/buy",
+    "validation_url": "https://staruml.io/api/license/validate",
+    "documentation_url": "https://docs.staruml.io",
+    "forum_url": "https://groups.google.com/forum/#!forum/staruml",
+    "release_notes_url": "https://staruml.io/download",
+    "feature_request_url": "https://staruml.uservoice.com",
+    "thirdparty_licenses_url": "https://staruml.io/thirdparty",
+    "defaultTemplate": "Default.mdj",
+    "extension_registry": "https://staruml.io/api/extensions/registry.json",
+    "extension_url": "https://staruml.io/api/extensions/{0}/{0}-{1}.zip"
+  },
+  "main": "./src/main-process/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niklauslee/staruml.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niklauslee/staruml/issues"
+  },
+  "dependencies": {
+    "browser-fs-access": "^0.34.1",
+    "color-string": "^1.9.1",
+    "dagre": "^0.8.1",
+    "decompress-zip": "^0.3.2",
+    "ejs": "^3.1.6",
+    "electron-settings": "^4.0.2",
+    "electron-updater": "^4.3.9",
+    "escape-html": "^1.0.3",
+    "file-url": "^2.0.2",
+    "filenamify": "^2.0.0",
+    "fs-extra": "^9.0.1",
+    "fs-jetpack": "^4.2.0",
+    "keycode": "^2.1.9",
+    "lodash": "^4.17.20",
+    "markdown": "^0.5.0",
+    "mustache": "^2.3.0",
+    "pdfkit": "^0.13.0",
+    "pegjs": "^0.10.0",
+    "request": "^2.81.0",
+    "semver": "^5.3.0",
+    "slash": "^1.0.0",
+    "sortablejs": "^1.5.1",
+    "svg-to-pdfkit": "^0.1.8",
+    "svgcanvas": "^2.5.0",
+    "temp": "^0.8.3",
+    "url-parse": "^1.4.7",
+    "yargs": "^17.2.1"
+  }
+}

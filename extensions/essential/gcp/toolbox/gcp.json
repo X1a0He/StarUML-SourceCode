@@ -1,0 +1,40 @@
+[
+  {
+    "label": "GCP",
+    "id": "gcp.elements",
+    "diagram-types": ["GCPDiagram"],
+    "auto-expands": ["GCPDiagram"],
+    "items": [
+      {
+        "label": "Zone",
+        "id": "GCPZone",
+        "icon": "icon-GCPZone",
+        "rubberband": "rect"
+      },
+      {
+        "label": "User",
+        "id": "GCPUser",
+        "icon": "icon-GCPUser",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Product",
+        "id": "GCPProduct",
+        "icon": "icon-GCPProduct",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Service",
+        "id": "GCPService",
+        "icon": "icon-GCPService",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Path",
+        "id": "GCPPath",
+        "icon": "icon-GCPPath",
+        "rubberband": "line"
+      }
+    ]
+  }
+]

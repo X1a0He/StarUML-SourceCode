@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "id": "mindmap.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "mindmap.add-node-right",
+      "type": "button",
+      "icon": "icon-tool-MMAddNodeRight",
+      "hint": "Add Node Right",
+      "command": "mindmap:add-node-right"
+    },
+    {
+      "id": "mindmap.add-node-left",
+      "type": "button",
+      "icon": "icon-tool-MMAddNodeLeft",
+      "hint": "Add Node Left",
+      "command": "mindmap:add-node-left"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "mindmap.node",
+      "targets": [
+        "MMNodeView"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "mindmap.set-name", "section": "main" },
+        { "id": "mindmap.add-node-left", "section": "left" },
+        { "id": "mindmap.add-node-right", "section": "right" }
+      ]
+    }
+  ]
+}

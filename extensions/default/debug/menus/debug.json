@@ -1,0 +1,14 @@
+{
+  "menu": [
+    {
+      "label": "Debug",
+      "id": "debug",
+      "position": "before",
+      "relative-id": "help",
+      "submenu": [
+        { "label": "Show DevTools", "id": "debug.show-devtools", "command": "debug:show-devtools" },
+        { "label": "Reload", "id": "debug.reload", "command": "debug:reload" }
+      ]
+    }
+  ]
+}

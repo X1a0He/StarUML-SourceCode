@@ -1,0 +1,650 @@
+{
+  "BPMNProcessType": {
+    "kind": "enum",
+    "literals": [
+      "none",
+      "public",
+      "private"
+    ]
+  },
+  "BPMNGatewayDirection": {
+    "kind": "enum",
+    "literals": [
+      "unspecified",
+      "converging",
+      "diverging",
+      "mixed"
+    ]
+  },
+  "BPMNEventBasedGatewayType": {
+    "kind": "enum",
+    "literals": [
+      "parallel",
+      "exclusive"
+    ]
+  },
+  "BPMNAssociationDirection": {
+    "kind": "enum",
+    "literals": [
+      "none",
+      "one",
+      "both"
+    ]
+  },
+  "BPMNMultiInstanceBehavior": {
+    "kind": "enum",
+    "literals": [
+      "none",
+      "one",
+      "all",
+      "complex"
+    ]
+  },
+  "BPMNChoreographyLoopType": {
+    "kind": "enum",
+    "literals": [
+      "none",
+      "standard",
+      "multiInstanceSequential",
+      "multiInstanceParallel"
+    ]
+  },
+  "BPMNDiagram": {
+    "kind": "class",
+    "super": "Diagram",
+    "views": [
+      "UMLCustomTextView",
+      "ShapeView",
+      "UMLNoteLinkView",
+      "BPMNTaskView",
+      "BPMNSubProcessView",
+      "BPMNEventView",
+      "BPMNGatewayView",
+      "BPMNSequenceFlowView",
+      "BPMNMessageView",
+      "BPMNMessageFlowView",
+      "BPMNPoolView",
+      "BPMNLaneView"
+    ]
+  },
+  "BPMNBaseElement": {
+    "kind": "class",
+    "super": "ExtensibleModel",
+    "attributes": [
+      { "name": "id",  "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNRootElement": {
+    "kind": "class",
+    "super": "BPMNBaseElement"
+  },
+  "BPMNCollaboration": {
+    "kind": "class",
+    "super": "BPMNRootElement"
+  },
+  "BPMNChoreography": {
+    "kind": "class",
+    "super": "BPMNCollaboration"
+  },
+  "BPMNGlobalConversation": {
+    "kind": "class",
+    "super": "BPMNCollaboration"
+  },
+  "BPMNParticipant": {
+    "kind": "class",
+    "super": "BPMNBaseElement",
+    "view": "BPMNPoolView",
+    "attributes": [
+      { "name": "minimum", "kind": "prim", "type": "Integer", "visible": true, "default": 0 },
+      { "name": "maximum", "kind": "prim", "type": "Integer", "visible": true, "default": 1 }
+    ]
+  },
+  "BPMNLane": {
+    "kind": "class",
+    "super": "BPMNBaseElement",
+    "view": "BPMNLaneView"
+  },
+  "BPMNProcess": {
+    "kind": "class",
+    "super": "BPMNRootElement",
+    "attributes": [
+      { "name": "processType",  "kind": "enum", "type": "BPMNProcessType", "visible": true, "default": "none" },
+      { "name": "isClosed", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "isExecutable", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNFlowElement": {
+    "kind": "class",
+    "super": "BPMNBaseElement"
+  },
+  "BPMNActivity": {
+    "kind": "class",
+    "super": "BPMNFlowElement",
+    "attributes": [
+      { "name": "isForCompensation", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "startQuantity", "kind": "prim", "type": "Integer", "visible": true, "default": 0 },
+      { "name": "completionQuantity", "kind": "prim", "type": "Integer", "visible": true, "default": 0 },
+      { "name": "isMultiInstance", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "multiInstanceBehavior",  "kind": "enum", "type": "BPMNMultiInstanceBehavior", "visible": true, "default": "none" },
+      { "name": "isLoop", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "isSequential", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "testBefore", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "loopExpression", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNCallActivity": {
+    "kind": "class",
+    "super": "BPMNActivity",
+    "view": "BPMNCallActivityView",
+    "attributes": [
+      { "name": "calledRef", "kind": "ref", "type": "BPMNActivity", "visible": true }
+    ]
+  },
+  "BPMNTask": {
+    "kind": "class",
+    "super": "BPMNActivity",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "isGlobal", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNSendTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "implementation", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNReceiveTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "implementation", "kind": "prim", "type": "String", "visible": true, "default": "" },
+      { "name": "instantiate", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNServiceTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "implementation", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNUserTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "implementation", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNManualTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView"
+  },
+  "BPMNBusinessRuleTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "implementation", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNScriptTask": {
+    "kind": "class",
+    "super": "BPMNTask",
+    "view": "BPMNTaskView",
+    "attributes": [
+      { "name": "scriptFormat", "kind": "prim", "type": "String", "visible": true, "default": "" },
+      { "name": "script", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNSubProcess": {
+    "kind": "class",
+    "super": "BPMNActivity",
+    "view": "BPMNSubProcessView",
+    "attributes": [
+      { "name": "triggeredByEvent", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNAdHocSubProcess": {
+    "kind": "class",
+    "super": "BPMNSubProcess",
+    "view": "BPMNAdHocSubProcessView"
+  },
+  "BPMNTransaction": {
+    "kind": "class",
+    "super": "BPMNSubProcess",
+    "view": "BPMNTransactionView"
+  },
+  "BPMNChoreographyActivity": {
+    "kind": "class",
+    "super": "BPMNFlowElement",
+    "attributes": [
+      { "name": "loopType", "kind": "enum", "type": "BPMNChoreographyLoopType", "visible": true, "default": "none" },
+      { "name": "initiatingParticipant", "kind": "ref", "type": "BPMNParticipant", "visible": true },
+      { "name": "upperParticipants", "kind": "refs", "type": "BPMNParticipant", "visible": true },
+      { "name": "lowerParticipants", "kind": "refs", "type": "BPMNParticipant", "visible": true }
+    ]
+  },
+  "BPMNChoreographyTask": {
+    "kind": "class",
+    "super": "BPMNChoreographyActivity",
+    "view": "BPMNChoreographyTaskView"
+  },
+  "BPMNSubChoreography": {
+    "kind": "class",
+    "super": "BPMNChoreographyActivity",
+    "view": "BPMNSubChoreographyView"
+  },
+  "BPMNCallChoreography": {
+    "kind": "class",
+    "super": "BPMNChoreographyActivity"
+  },
+  "BPMNEventDefinition": {
+    "kind": "class",
+    "super": "BPMNRootElement"
+  },
+  "BPMNCompensateEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNCancelEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNErrorEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNLinkEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNSignalEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNTimerEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNEscalationEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNMessageEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNTerminateEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNConditionalEventDefinition": {
+    "kind": "class",
+    "super": "BPMNEventDefinition"
+  },
+  "BPMNEvent": {
+    "kind": "class",
+    "super": "BPMNFlowElement",
+    "view": "BPMNEventView",
+    "attributes": [
+      { "name": "eventDefinitions", "kind": "objs", "type": "BPMNEventDefinition" }
+    ]
+  },
+  "BPMNThrowEvent": {
+    "kind": "class",
+    "super": "BPMNEvent",
+    "view": "BPMNEventView"
+  },
+  "BPMNCatchEvent": {
+    "kind": "class",
+    "super": "BPMNEvent",
+    "view": "BPMNEventView",
+    "attributes": [
+      { "name": "parallelMultiple", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNImplicitThrowEvent": {
+    "kind": "class",
+    "super": "BPMNThrowEvent",
+    "view": "BPMNEventView"
+  },
+  "BPMNIntermediateThrowEvent": {
+    "kind": "class",
+    "super": "BPMNThrowEvent",
+    "view": "BPMNEventView"
+  },
+  "BPMNEndEvent": {
+    "kind": "class",
+    "super": "BPMNThrowEvent",
+    "view": "BPMNEventView"
+  },
+  "BPMNStartEvent": {
+    "kind": "class",
+    "super": "BPMNCatchEvent",
+    "view": "BPMNEventView",
+    "attributes": [
+      { "name": "isInterrupting", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNIntermediateCatchEvent": {
+    "kind": "class",
+    "super": "BPMNCatchEvent",
+    "view": "BPMNEventView"
+  },
+  "BPMNBoundaryEvent": {
+    "kind": "class",
+    "super": "BPMNCatchEvent",
+    "view": "BPMNEventView",
+    "attributes": [
+      { "name": "cancelActivity", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNGateway": {
+    "kind": "class",
+    "super": "BPMNFlowElement",
+    "view": "BPMNGatewayView",
+    "attributes": [
+      { "name": "gatewayDirection",  "kind": "enum", "type": "BPMNGatewayDirection", "visible": true }
+    ]
+  },
+  "BPMNExclusiveGateway": {
+    "kind": "class",
+    "super": "BPMNGateway",
+    "view": "BPMNGatewayView",
+    "attributes": [
+      { "name": "default", "kind": "ref", "type": "BPMNSequenceFlow", "visible": true }
+    ]
+  },
+  "BPMNInclusiveGateway": {
+    "kind": "class",
+    "super": "BPMNGateway",
+    "view": "BPMNGatewayView",
+    "attributes": [
+      { "name": "default", "kind": "ref", "type": "BPMNSequenceFlow", "visible": true }
+    ]
+  },
+  "BPMNParallelGateway": {
+    "kind": "class",
+    "super": "BPMNGateway",
+    "view": "BPMNGatewayView"
+  },
+  "BPMNComplexGateway": {
+    "kind": "class",
+    "super": "BPMNGateway",
+    "view": "BPMNGatewayView",
+    "attributes": [
+      { "name": "default", "kind": "ref", "type": "BPMNSequenceFlow", "visible": true }
+    ]
+  },
+  "BPMNEventBasedGateway": {
+    "kind": "class",
+    "super": "BPMNGateway",
+    "view": "BPMNGatewayView",
+    "attributes": [
+      { "name": "instantiate", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "eventGatewayType", "kind": "enum", "type": "BPMNEventBasedGatewayType", "visible": true, "default": "exclusive" }
+    ]
+  },
+  "BPMNItemAwareElement": {
+    "kind": "class",
+    "super": "BPMNBaseElement"
+  },
+  "BPMNDataObject": {
+    "kind": "class",
+    "super": "BPMNItemAwareElement",
+    "view": "BPMNDataObjectView",
+    "attributes": [
+      { "name": "isCollection", "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+    ]
+  },
+  "BPMNDataStore": {
+    "kind": "class",
+    "super": "BPMNItemAwareElement",
+    "view": "BPMNDataStoreView"
+  },
+  "BPMNDataInput": {
+    "kind": "class",
+    "super": "BPMNItemAwareElement",
+    "view": "BPMNDataInputView"
+  },
+  "BPMNDataOutput": {
+    "kind": "class",
+    "super": "BPMNItemAwareElement",
+    "view": "BPMNDataOutputView"
+  },
+  "BPMNMessage": {
+    "kind": "class",
+    "super": "BPMNRootElement",
+    "view": "BPMNMessageView"
+  },
+  "BPMNConversationNode": {
+    "kind": "class",
+    "super": "BPMNBaseElement"
+  },
+  "BPMNConversation": {
+    "kind": "class",
+    "super": "BPMNConversationNode",
+    "view": "BPMNConversationView"
+  },
+  "BPMNSubConversation": {
+    "kind": "class",
+    "super": "BPMNConversationNode",
+    "view": "BPMNConversationView"
+  },
+  "BPMNCallConversation": {
+    "kind": "class",
+    "super": "BPMNConversationNode",
+    "view": "BPMNConversationView",
+    "attributes": [
+      { "name": "calledRef", "kind": "ref", "type": "BPMNCollaboration", "visible": true }
+    ]
+  },
+  "BPMNConversationLink": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNConversationLinkView"
+  },
+  "BPMNArtifact": {
+    "kind": "class",
+    "super": "BPMNBaseElement"
+  },
+  "BPMNTextAnnotation": {
+    "kind": "class",
+    "super": "BPMNArtifact",
+    "view": "BPMNTextAnnotationView",
+    "attributes": [
+      { "name": "text", "kind": "prim", "type": "String", "visible": true, "default": "" }
+    ]
+  },
+  "BPMNGroup": {
+    "kind": "class",
+    "super": "BPMNArtifact",
+    "view": "BPMNGroupView"
+  },
+  "BPMNAssociation": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNAssociationView",
+    "attributes": [
+      { "name": "associationDirection", "kind": "enum", "type": "BPMNAssociationDirection", "visible": true, "default": "none" }
+    ]
+  },  
+  "BPMNDataAssociation": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNDataAssociationView"
+  },  
+  "BPMNSequenceFlow": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNSequenceFlowView",
+    "attributes": [
+      { "name": "isImmediate", "kind": "prim", "type": "Boolean", "visible": true, "default": false },
+      { "name": "condition", "kind": "prim", "type": "String", "visible": true }
+    ]
+  },
+  "BPMNMessageFlow": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNMessageFlowView",
+    "attributes": [
+      { "name": "messageRef", "kind": "ref", "type": "BPMNMessage", "visible": true }
+    ]
+  },
+  "BPMNMessageLink": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "BPMNMessageLinkView"
+  },
+  "BPMNGeneralNodeView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "LabelView", "embedded": "subViews" },
+      { "name": "wordWrap",  "kind": "prim", "type": "Boolean", "default": true }
+    ]
+  },
+  "BPMNFloatingNodeView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "NodeLabelView", "embedded": "subViews" },
+      { "name": "wordWrap",  "kind": "prim", "type": "Boolean", "default": true }
+    ]
+  },
+  "BPMNGeneralEdgeView": {
+    "kind": "class",
+    "super": "EdgeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "EdgeLabelView", "embedded": "subViews" }
+    ]
+  },
+  "BPMNActivityView": {
+    "kind": "class",
+    "super": "BPMNGeneralNodeView"
+  },
+  "BPMNCallActivityView": {
+    "kind": "class",
+    "super": "BPMNActivityView"
+  },
+  "BPMNTaskView": {
+    "kind": "class",
+    "super": "BPMNActivityView"
+  },
+  "BPMNSubProcessView": {
+    "kind": "class",
+    "super": "BPMNActivityView"
+  },
+  "BPMNAdHocSubProcessView": {
+    "kind": "class",
+    "super": "BPMNActivityView"
+  },
+  "BPMNTransactionView": {
+    "kind": "class",
+    "super": "BPMNActivityView"
+  },
+  "BPMNChoreographyActivityView": {
+    "kind": "class",
+    "super": "BPMNGeneralNodeView"
+  },
+  "BPMNChoreographyTaskView": {
+    "kind": "class",
+    "super": "BPMNChoreographyActivityView"
+  },
+  "BPMNSubChoreographyView": {
+    "kind": "class",
+    "super": "BPMNChoreographyActivityView"
+  },
+  "BPMNEventView": {
+    "kind": "class",
+    "super": "BPMNFloatingNodeView"
+  },
+  "BPMNMessageView": {
+    "kind": "class",
+    "super": "BPMNFloatingNodeView"
+  },
+  "BPMNConversationView": {
+    "kind": "class",
+    "super": "BPMNFloatingNodeView"
+  },
+  "BPMNConversationLinkView": {
+    "kind": "class",
+    "super": "EdgeView"
+  },
+  "BPMNGatewayView": {
+    "kind": "class",
+    "super": "BPMNFloatingNodeView"
+  },
+  "BPMNDataObjectView": {
+    "kind": "class",
+    "super": "BPMNFloatingNodeView"
+  },
+  "BPMNDataStoreView": {
+    "kind": "class",
+    "super": "BPMNGeneralNodeView"
+  },
+  "BPMNDataInputView": {
+    "kind": "class",
+    "super": "BPMNDataObjectView"
+  },
+  "BPMNDataOutputView": {
+    "kind": "class",
+    "super": "BPMNDataObjectView"
+  },
+  "BPMNTextAnnotationView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "wordWrap",  "kind": "prim", "type": "Boolean", "default": true },
+      { "name": "horzAlign", "kind": "prim", "type": "Integer", "default": 0 },
+      { "name": "vertAlign", "kind": "prim", "type": "Integer", "default": 3 }
+    ]
+  },
+  "BPMNGroupView": {
+    "kind": "class",
+    "super": "NodeView"
+  },
+  "BPMNAssociationView": {
+    "kind": "class",
+    "super": "EdgeView"
+  },
+  "BPMNDataAssociationView": {
+    "kind": "class",
+    "super": "EdgeView"
+  },
+  "BPMNMessageLinkView": {
+    "kind": "class",
+    "super": "EdgeView"
+  },
+  "BPMNSequenceFlowView": {
+    "kind": "class",
+    "super": "BPMNGeneralEdgeView"
+  },
+  "BPMNMessageFlowView": {
+    "kind": "class",
+    "super": "BPMNGeneralEdgeView"
+  },
+  "BPMNPoolView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "LabelView", "embedded": "subViews" },
+      { "name": "isVertical", "kind": "prim", "type": "Boolean", "default": false }
+    ]
+  },
+  "BPMNLaneView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      { "name": "nameLabel", "kind": "ref",  "type": "LabelView", "embedded": "subViews" },
+      { "name": "isVertical", "kind": "prim", "type": "Boolean", "default": false }
+    ]
+  }  
+}

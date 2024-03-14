@@ -1,0 +1,147 @@
+[
+  {
+    "label": "Wireframe Frames",
+    "id": "wireframe.frames",
+    "diagram-types": [ "WFWireframeDiagram" ],
+    "auto-expands": [ "WFWireframeDiagram" ],
+    "items": [
+      {
+        "label": "Frame", 
+        "id": "WFFrame", 
+        "icon": "icon-WFFrame",
+        "rubberband": "rect" 
+      },
+      {
+        "label": "Frame (Mobile)",
+        "id": "WFMobileFrame", 
+        "icon": "icon-WFMobileFrame",
+        "rubberband": "rect" 
+      },
+      {
+        "label": "Frame (Web)",
+        "id": "WFWebFrame", 
+        "icon": "icon-WFWebFrame",
+        "rubberband": "rect" 
+      },
+      {
+        "label": "Frame (Desktop)",
+        "id": "WFDesktopFrame", 
+        "icon": "icon-WFDesktopFrame",
+        "rubberband": "rect" 
+      }
+    ]
+  },
+  {
+    "label": "Wireframe Components",
+    "id": "wireframe.components",
+    "diagram-types": [ "WFWireframeDiagram" ],
+    "auto-expands": [ "WFWireframeDiagram" ],
+    "items": [
+      {
+        "label": "Button", 
+        "id": "WFButton", 
+        "icon": "icon-WFButton",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Text", 
+        "id": "WFText", 
+        "icon": "icon-WFText",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Radio", 
+        "id": "WFRadio", 
+        "icon": "icon-WFRadio",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Checkbox", 
+        "id": "WFCheckbox", 
+        "icon": "icon-WFCheckbox",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Switch", 
+        "id": "WFSwitch", 
+        "icon": "icon-WFSwitch",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Link", 
+        "id": "WFLink", 
+        "icon": "icon-WFLink",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Tab List", 
+        "id": "WFTabList", 
+        "icon": "icon-WFTabList",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Tab", 
+        "id": "WFTab", 
+        "icon": "icon-WFTab",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView", "WFTabListView"] }
+      },
+      {
+        "label": "Input", 
+        "id": "WFInput", 
+        "icon": "icon-WFInput",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Dropdown", 
+        "id": "WFDropdown", 
+        "icon": "icon-WFDropdown",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Panel", 
+        "id": "WFPanel", 
+        "icon": "icon-WFPanel",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Image", 
+        "id": "WFImage", 
+        "icon": "icon-WFImage",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Separator", 
+        "id": "WFSeparator", 
+        "icon": "icon-WFSeparator",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Avatar", 
+        "id": "WFAvatar", 
+        "icon": "icon-WFAvatar",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      },
+      {
+        "label": "Slider", 
+        "id": "WFSlider", 
+        "icon": "icon-WFSlider",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["WFFrameView", "WFPanelView"] }
+      }
+    ]
+  }
+]

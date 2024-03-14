@@ -1,0 +1,89 @@
+[
+  {
+    "label": "C4 Model",
+    "id": "c4",
+    "diagram-types": [ "C4Diagram" ],
+    "auto-expands": [ "C4Diagram" ],
+    "items": [
+      {
+        "label": "Person",
+        "id": "C4Person",
+        "icon": "icon-C4Person",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Software System",
+        "id": "C4SoftwareSystem",
+        "icon": "icon-C4SoftwareSystem",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Container",
+        "id": "C4Container",
+        "icon": "icon-C4Container",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Container (Database)",
+        "id": "C4ContainerDatabase",
+        "icon": "icon-C4Container",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "C4Container",
+          "model-init": {
+            "kind": "database"
+          }
+        }
+      },
+      {
+        "label": "Container (Web App)",
+        "id": "C4ContainerWebApp",
+        "icon": "icon-C4Container",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "C4Container",
+          "model-init": {
+            "kind": "client-webapp"
+          }
+        }
+      },
+      {
+        "label": "Container (Desktop App)",
+        "id": "C4ContainerDesktopApp",
+        "icon": "icon-C4Container",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "C4Container",
+          "model-init": {
+            "kind": "desktop-app"
+          }
+        }
+      },
+      {
+        "label": "Container (Mobile App)",
+        "id": "C4ContainerMobileApp",
+        "icon": "icon-C4Container",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "C4Container",
+          "model-init": {
+            "kind": "mobile-app"
+          }
+        }
+      },
+      {
+        "label": "Component",
+        "id": "C4Component",
+        "icon": "icon-C4Component",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Element",
+        "id": "C4Element",
+        "icon": "icon-C4Element",
+        "rubberband": "rect"
+      },
+      { "label": "Relationship", "id": "C4Relationship", "icon": "icon-C4Relationship", "rubberband": "line" }
+    ]
+  }
+]

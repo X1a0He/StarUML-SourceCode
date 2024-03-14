@@ -1,0 +1,383 @@
+{
+  "components": [
+    {
+      "id": "bpmn.set-name",
+      "type": "input",
+      "hint": "name",
+      "property": "name",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "bpmn.set-text",
+      "type": "textarea",
+      "hint": "text",
+      "property": "text",
+      "command": "engine:set-property"
+    },
+    {
+      "id": "bpmn.add-lane",
+      "type": "button",
+      "icon": "icon-tool-BPMNLane",
+      "hint": "Add Lane",
+      "command": "bpmn:add-lane"
+    },
+    {
+      "id": "bpmn.add-boundary-event",
+      "type": "button",
+      "icon": "icon-tool-BPMNBoundaryEvent",
+      "hint": "Add Boundary Event",
+      "command": "bpmn:add-boundary-event"
+    },
+    {
+      "id": "bpmn.add-compensate-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNCompensateEventDefinition",
+      "hint": "Add Compensate Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNCompensateEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-cancel-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNCancelEventDefinition",
+      "hint": "Add Cancel Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNCancelEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-error-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNErrorEventDefinition",
+      "hint": "Add Error Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNErrorEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-link-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNLinkEventDefinition",
+      "hint": "Add Link Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNLinkEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-signal-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNSignalEventDefinition",
+      "hint": "Add Signal Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNSignalEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-timer-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNTimerEventDefinition",
+      "hint": "Add Timer Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNTimerEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-escalation-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNEscalationEventDefinition",
+      "hint": "Add Escalation Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNEscalationEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-message-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNMessageEventDefinition",
+      "hint": "Add Message Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNMessageEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-terminate-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNTerminateEventDefinition",
+      "hint": "Add Terminate Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNTerminateEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.add-conditional-event-definition",
+      "type": "button",
+      "icon": "icon-tool-BPMNConditionalEventDefinition",
+      "hint": "Add Conditional Event Definition",
+      "command": "bpmn:add-event-definition",
+      "command-arg": {
+        "id": "BPMNConditionalEventDefinition",
+        "parent-model": "model",
+        "field": "eventDefinitions"
+      }
+    },
+    {
+      "id": "bpmn.create-choreography-participant-upper",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-create-participant-upper",
+      "hint": "Create Participant (Upper)",
+      "command": "bpmn:create-choreography-participant",
+      "command-arg": {
+        "id": "BPMNParticipant",
+        "parent-model": "model",
+        "field": "upperParticipants"
+      }
+    },
+    {
+      "id": "bpmn.create-choreography-participant-lower",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-create-participant-lower",
+      "hint": "Create Participant (Lower)",
+      "command": "bpmn:create-choreography-participant",
+      "command-arg": {
+        "id": "BPMNParticipant",
+        "parent-model": "model",
+        "field": "lowerParticipants"
+      }
+    },
+    {
+      "id": "bpmn.assign-choreography-participant-upper",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-add-participant-upper",
+      "hint": "Assign Participant (Upper)",
+      "command": "bpmn:assign-choreography-participant",
+      "command-arg": {
+        "id": "BPMNParticipant",
+        "parent-model": "model",
+        "field": "upperParticipants"
+      }
+    },
+    {
+      "id": "bpmn.assign-choreography-participant-lower",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-add-participant-lower",
+      "hint": "Assign Participant (Lower)",
+      "command": "bpmn:assign-choreography-participant",
+      "command-arg": {
+        "id": "BPMNParticipant",
+        "parent-model": "model",
+        "field": "lowerParticipants"
+      }
+    },
+    {
+      "id": "bpmn.assign-choreography-initiating-participant",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-initiating-participant",
+      "hint": "Initiating Participant",
+      "command": "bpmn:assign-choreography-initiating-participant"
+    },
+    {
+      "id": "bpmn.add-choreography-initiating-message",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-add-initiating-message",
+      "hint": "Create Initiating Message",
+      "command": "bpmn:add-choreography-initiating-message",
+      "command-arg": {
+      }
+    },
+    {
+      "id": "bpmn.add-choreography-return-message",
+      "type": "button",
+      "icon": "icon-tool-bpmn-choreography-add-return-message",
+      "hint": "Create Return Message",
+      "command": "bpmn:add-choreography-return-message"
+    },
+    {
+      "id": "bpmn.add-text-annotation",
+      "type": "button",
+      "icon": "icon-tool-bpmn-add-annotation",
+      "hint": "Add Text Annotation",
+      "command": "bpmn:add-text-annotation"
+    }
+  ],
+  "quickedits": [
+    {
+      "id": "bpmn.pool",
+      "targets": [
+        "BPMNPoolView"
+      ],
+      "area": { "x1": "left", "y1": "nameLabel.top", "x2": "left", "y2": "nameLabel.top", "x2-margin": 150, "y2-margin": 15 },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" },
+        { "id": "bpmn.add-lane", "section": "right" }
+      ]
+    },
+    {
+      "id": "bpmn.lane",
+      "targets": [
+        "BPMNLaneView"
+      ],
+      "area": { "x1": "left", "y1": "nameLabel.top", "x2": "left", "y2": "nameLabel.top", "x2-margin": 150, "y2-margin": 15 },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.activity",
+      "targets": [
+        "BPMNCallActivityView",
+        "BPMNTaskView",
+        "BPMNSubProcessView",
+        "BPMNAdHocSubProcessView",
+        "BPMNTransactionView"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" },
+        { "id": "bpmn.add-boundary-event", "section": "right" }
+      ]
+    },
+    {
+      "id": "bpmn.event",
+      "targets": [
+        "BPMNEventView", "BPMNEventView.nameLabel"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" },
+        { "id": "bpmn.add-compensate-event-definition", "section": "right" },
+        { "id": "bpmn.add-cancel-event-definition", "section": "right" },
+        { "id": "bpmn.add-error-event-definition", "section": "right" },
+        { "id": "bpmn.add-link-event-definition", "section": "right" },
+        { "id": "bpmn.add-signal-event-definition", "section": "right" },
+        { "id": "bpmn.add-timer-event-definition", "section": "right", "row": 2 },
+        { "id": "bpmn.add-escalation-event-definition", "section": "right", "row": 2 },
+        { "id": "bpmn.add-message-event-definition", "section": "right", "row": 2 },
+        { "id": "bpmn.add-terminate-event-definition", "section": "right", "row": 2 },
+        { "id": "bpmn.add-conditional-event-definition", "section": "right", "row": 2 }
+      ]
+    },
+    {
+      "id": "bpmn.gateway",
+      "targets": [
+        "BPMNGatewayView", "BPMNGatewayView.nameLabel"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.data-object",
+      "targets": [
+        "BPMNDataObjectView", "BPMNDataInputView", "BPMNDataOutputView", "BPMNDataStoreView", "BPMNDataObjectView.nameLabel", "BPMNDataInputView.nameLabel", "BPMNDataOutputView.nameLabel"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.message",
+      "targets": [
+        "BPMNMessageView", "BPMNMessageView.nameLabel"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.choreography",
+      "targets": [
+        "BPMNChoreographyTaskView",
+        "BPMNSubChoreographyView"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" },
+        { "id": "bpmn.assign-choreography-participant-upper", "section": "right" },
+        { "id": "bpmn.create-choreography-participant-upper", "section": "right" },
+        { "id": "bpmn.add-choreography-initiating-message", "section": "right" },
+        { "id": "bpmn.assign-choreography-participant-lower", "section": "right", "row": 2 },
+        { "id": "bpmn.create-choreography-participant-lower", "section": "right", "row": 2 },
+        { "id": "bpmn.add-choreography-return-message", "section": "right", "row": 2 },
+        { "id": "bpmn.assign-choreography-initiating-participant", "section": "right", "row": 3 }
+      ]
+    },
+    {
+      "id": "bpmn.conversation",
+      "targets": [
+        "BPMNConversationView", "BPMNConversationView.nameLabel"
+      ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.right", "y2": "nameLabel.bottom" },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.sequence-flow",
+      "targets": [ "BPMNSequenceFlowView", "BPMNSequenceFlowView.nameLabel" ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.left", "y2": "nameLabel.bottom", "x2-margin": 70 },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.message-flow",
+      "targets": [ "BPMNMessageFlowView", "BPMNMessageFlowView.nameLabel" ],
+      "area": { "x1": "nameLabel.left", "y1": "nameLabel.top", "x2": "nameLabel.left", "y2": "nameLabel.bottom", "x2-margin": 70 },
+      "components": [
+        { "id": "bpmn.set-name", "section": "main" },
+        { "id": "bpmn.add-text-annotation", "section": "left" }
+      ]
+    },
+    {
+      "id": "bpmn.text-annotation",
+      "targets": [
+        "BPMNTextAnnotationView"
+      ],
+      "area": { "x1": "left", "y1": "top", "x2": "right", "y2": "bottom" },
+      "components": [
+        { "id": "bpmn.set-text", "section": "main" }
+      ]
+    }
+  ]
+}

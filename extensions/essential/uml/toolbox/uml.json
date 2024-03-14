@@ -1,0 +1,670 @@
+[
+  {
+    "label": "Information Flows",
+    "id": "uml.information-flow",
+    "diagram-types": [ "UMLInformationFlowDiagram" ],
+    "auto-expands": [ "UMLInformationFlowDiagram" ],
+    "items": [
+      { "label": "Information Item", "id": "UMLInformationItem", "icon": "icon-UMLInformationItem", "rubberband": "rect" },
+      { "label": "Information Flow", "id": "UMLInformationFlow", "icon": "icon-UMLInformationFlow", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Use Cases",
+    "id": "uml.usecase",
+    "diagram-types": [ "UMLUseCaseDiagram", "UMLInformationFlowDiagram" ],
+    "auto-expands": [ "UMLUseCaseDiagram" ],
+    "items": [
+      { "label": "Package", "id": "UMLPackage", "icon": "icon-UMLPackage", "rubberband": "rect" },
+      { "label": "Use Case Subject", "id": "UMLUseCaseSubject", "icon": "icon-UMLUseCaseSubject", "rubberband": "rect" },
+      { "label": "Use Case", "id": "UMLUseCase", "icon": "icon-UMLUseCase", "rubberband": "rect" },
+      { "label": "Actor", "id": "UMLActor", "icon": "icon-UMLActor", "rubberband": "rect" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
+      { "label": "Association", "id": "UMLAssociation", "icon": "icon-UMLAssociation", "rubberband": "line" },
+      {
+        "label": "Directed Association",
+        "id": "UMLDirectedAssociation",
+        "icon": "icon-UMLDirectedAssociation",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLAssociation",
+          "model-init": {
+            "end1": { "navigable": "unspecified" },
+            "end2": { "navigable": "navigable" }
+          }
+        }
+      },
+      { "label": "Generalization", "id": "UMLGeneralization", "icon": "icon-UMLGeneralization", "rubberband": "line" },
+      { "label": "Dependency", "id": "UMLDependency", "icon": "icon-UMLDependency", "rubberband": "line" },
+      { "label": "Include", "id": "UMLInclude", "icon": "icon-UMLInclude", "rubberband": "line" },
+      { "label": "Extend", "id": "UMLExtend", "icon": "icon-UMLExtend", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Classes (Basic)",
+    "id": "uml.class",
+    "diagram-types": [ "UMLClassDiagram", "UMLCompositeStructureDiagram", "UMLInformationFlowDiagram" ],
+    "auto-expands": [ "UMLClassDiagram", "UMLCompositeStructureDiagram" ],
+    "items": [
+      { "label": "Class", "id": "UMLClass", "icon": "icon-UMLClass", "rubberband": "rect" },
+      { "label": "Interface", "id": "UMLInterface", "icon": "icon-UMLInterface", "rubberband": "rect" },
+      { "label": "Association", "id": "UMLAssociation", "icon": "icon-UMLAssociation", "rubberband": "line" },
+      {
+        "label": "Directed Association",
+        "id": "UMLDirectedAssociation",
+        "icon": "icon-UMLDirectedAssociation",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLAssociation",
+          "model-init": {
+            "end1": { "navigable": "unspecified" },
+            "end2": { "navigable": "navigable" }
+          }
+        }
+      },
+      {
+        "label": "Aggregation",
+        "id": "UMLAggregation",
+        "icon": "icon-UMLAggregation",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLAssociation",
+          "model-init": {
+            "end2": { "aggregation": "shared" }
+          }
+        }
+      },
+      {
+        "label": "Composition",
+        "id": "UMLComposition",
+        "icon": "icon-UMLComposition",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLAssociation",
+          "model-init": {
+            "end2": { "aggregation": "composite" }
+          }
+        }
+      },
+      { "label": "Dependency", "id": "UMLDependency", "icon": "icon-UMLDependency", "rubberband": "line" },
+      { "label": "Generalization", "id": "UMLGeneralization", "icon": "icon-UMLGeneralization", "rubberband": "line" },
+      { "label": "Interface Realization", "id": "UMLInterfaceRealization", "icon": "icon-UMLInterfaceRealization", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Classes (Advanced)",
+    "id": "uml.class-adv",
+    "diagram-types": [ "UMLClassDiagram", "UMLCompositeStructureDiagram" ],
+    "items": [
+      { "label": "Signal", "id": "UMLSignal", "icon": "icon-UMLSignal", "rubberband": "rect" },
+      { "label": "DataType", "id": "UMLDataType", "icon": "icon-UMLDataType", "rubberband": "rect" },
+      { "label": "PrimitiveType", "id": "UMLPrimitiveType", "icon": "icon-UMLPrimitiveType", "rubberband": "rect" },
+      { "label": "Enumeration", "id": "UMLEnumeration", "icon": "icon-UMLEnumeration", "rubberband": "rect" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
+      {
+        "label": "N-ary Association Node",
+        "id": "UMLNaryAssociationNode",
+        "icon": "icon-UMLNaryAssociationNode",
+        "rubberband": "rect",
+        "command-arg": {
+          "model-init": {
+            "name": ""
+          }
+        }
+      },
+      { "label": "Association Class", "id": "UMLAssociationClass", "icon": "icon-UMLAssociationClassLink", "rubberband": "line" },
+      { "label": "Template Binding", "id": "UMLTemplateBinding", "icon": "icon-UMLTemplateBinding", "rubberband": "line" },
+      { "label": "Realization", "id": "UMLRealization", "icon": "icon-UMLRealization", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Packages",
+    "id": "uml.package",
+    "diagram-types": [ "UMLClassDiagram", "UMLPackageDiagram" ],
+    "auto-expands": [ "UMLPackageDiagram" ],
+    "items": [
+      { "label": "Package", "id": "UMLPackage", "icon": "icon-UMLPackage", "rubberband": "rect" },
+      { "label": "Model", "id": "UMLModel", "icon": "icon-UMLModel", "rubberband": "rect" },
+      { "label": "Subsystem", "id": "UMLSubsystem", "icon": "icon-UMLSubsystem", "rubberband": "rect" },
+      { "label": "Containment", "id": "UMLContainment", "icon": "icon-UMLContainment", "rubberband": "line" },
+      { "label": "Dependency", "id": "UMLDependency", "icon": "icon-UMLDependency", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Component",
+    "id": "uml.component",
+    "diagram-types": [ "UMLComponentDiagram", "UMLDeploymentDiagram" ],
+    "auto-expands": [ "UMLComponentDiagram", "UMLDeploymentDiagram" ],
+    "items": [
+      { "label": "Component", "id": "UMLComponent", "icon": "icon-UMLComponent", "rubberband": "rect" },
+      { "label": "Artifact", "id": "UMLArtifact", "icon": "icon-UMLArtifact", "rubberband": "rect" },
+      { "label": "Interface", "id": "UMLInterface", "icon": "icon-UMLInterface", "rubberband": "rect" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
+      { "label": "Dependency", "id": "UMLDependency", "icon": "icon-UMLDependency", "rubberband": "line" },
+      { "label": "Interface Realization", "id": "UMLInterfaceRealization", "icon": "icon-UMLInterfaceRealization", "rubberband": "line" },
+      { "label": "Component Realization", "id": "UMLComponentRealization", "icon": "icon-UMLComponentRealization", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Deployment",
+    "id": "uml.deployment",
+    "diagram-types": [ "UMLComponentDiagram", "UMLDeploymentDiagram" ],
+    "auto-expands": [ "UMLComponentDiagram", "UMLDeploymentDiagram" ],
+    "items": [
+      { "label": "Node", "id": "UMLNode", "icon": "icon-UMLNode", "rubberband": "rect" },
+      { "label": "Deployment", "id": "UMLDeployment", "icon": "icon-UMLDependency", "rubberband": "line" },
+      { "label": "Communication Path", "id": "UMLCommunicationPath", "icon": "icon-UMLCommunicationPath", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Composite Structure",
+    "id": "uml.compositestructure",
+    "diagram-types": [ "UMLClassDiagram", "UMLCompositeStructureDiagram", "UMLComponentDiagram" ],
+    "auto-expands": [ "UMLCompositeStructureDiagram" ],
+    "items": [
+      { "label": "Collaboration", "id": "UMLCollaboration", "icon": "icon-UMLCollaboration", "rubberband": "rect" },
+      { "label": "Port", "id": "UMLPort", "icon": "icon-UMLPort", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Part", "id": "UMLPart", "icon": "icon-UMLPart", "rubberband": "rect", "command-arg": { "parasitic": true } },
+      { "label": "Connector", "id": "UMLConnector", "icon": "icon-UMLConnector", "rubberband": "line" },
+      { "label": "Collaboration Use", "id": "UMLCollaborationUse", "icon": "icon-UMLCollaborationUse", "rubberband": "rect" },
+      { "label": "Role Binding", "id": "UMLRoleBinding", "icon": "icon-UMLDependency", "rubberband": "line" },
+      { "label": "Realization", "id": "UMLRealization", "icon": "icon-UMLRealization", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Instances",
+    "id": "uml.instance",
+    "diagram-types": [ "UMLClassDiagram", "UMLObjectDiagram", "UMLComponentDiagram", "UMLDeploymentDiagram" ],
+    "auto-expands": [ "UMLObjectDiagram" ],
+    "items": [
+      { "label": "Object", "id": "UMLObject", "icon": "icon-UMLObject", "rubberband": "rect" },
+      { "label": "Artifact Instance", "id": "UMLArtifactInstance", "icon": "icon-UMLArtifactInstance", "rubberband": "rect" },
+      { "label": "Component Instance", "id": "UMLComponentInstance", "icon": "icon-UMLComponentInstance", "rubberband": "rect" },
+      { "label": "Node Instance", "id": "UMLNodeInstance", "icon": "icon-UMLNodeInstance", "rubberband": "rect" },
+      { "label": "Link", "id": "UMLLink", "icon": "icon-UMLLink", "rubberband": "line" },
+      {
+        "label": "Directed Link",
+        "id": "UMLDirectedLink",
+        "icon": "icon-UMLDirectedLink",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLLink",
+          "model-init": {
+            "end1": { "navigable": "unspecified" },
+            "end2": { "navigable": "navigable" }
+          }
+        }
+      },
+      { "label": "Link Object", "id": "UMLLinkObject", "icon": "icon-UMLLinkObjectLink", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Interactions (Basic)",
+    "id": "uml.sequence",
+    "diagram-types": [ "UMLSequenceDiagram" ],
+    "auto-expands": [ "UMLSequenceDiagram" ],
+    "items": [
+      { "label": "Lifeline", "id": "UMLLifeline", "icon": "icon-UMLLifeline", "rubberband": "rect" },
+      {
+        "label": "Message",
+        "id": "UMLMessage",
+        "icon": "icon-UMLMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView", "UMLTimeSegmentView" ]
+        }
+      },
+      {
+        "label": "Self Message",
+        "id": "UMLSelfMessage",
+        "icon": "icon-UMLSelfMessage",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView" ],
+          "self-connection": true
+        }
+      },
+      {
+        "label": "Async Message",
+        "id": "UMLAsyncMessage",
+        "icon": "icon-UMLAsyncMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ],
+          "model-init": {
+            "messageSort": "asynchCall"
+          }
+        }
+      },
+      {
+        "label": "Reply Message",
+        "id": "UMLReplyMessage",
+        "icon": "icon-UMLReplyMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ],
+          "model-init": {
+            "name": "",
+            "messageSort": "reply"
+          }
+        }
+      },
+      {
+        "label": "Create Message",
+        "id": "UMLCreateMessage",
+        "icon": "icon-UMLCreateMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ],
+          "model-init": {
+            "name": "",
+            "messageSort": "createMessage"
+          }
+        }
+      },
+      {
+        "label": "Delete Message",
+        "id": "UMLDeleteMessage",
+        "icon": "icon-UMLDeleteMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ],
+          "model-init": {
+            "name": "",
+            "messageSort": "deleteMessage"
+          }
+        }
+      },
+      {
+        "label": "Async Signal Message",
+        "id": "UMLAsyncSignalMessage",
+        "icon": "icon-UMLAsyncSignalMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ],
+          "model-init": {
+            "messageSort": "asynchSignal"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "label": "Interactions (Advanced)",
+    "id": "uml.sequence-adv",
+    "diagram-types": [ "UMLSequenceDiagram" ],
+    "items": [
+      {
+        "label": "Found Message",
+        "id": "UMLFoundMessage",
+        "icon": "icon-UMLFoundMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ]
+        }
+      },
+      {
+        "label": "Lost Message",
+        "id": "UMLLostMessage",
+        "icon": "icon-UMLLostMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "connectable-views": [ "UMLSeqLifelineView", "UMLMessageEndpointView" ]
+        }
+      },
+      { "label": "Endpoint", "id": "UMLEndpoint", "icon": "icon-UMLEndpoint", "rubberband": "point" },
+      { "label": "Gate", "id": "UMLGate", "icon": "icon-UMLGate", "rubberband": "point" },
+      { "label": "State Invariant", "id": "UMLStateInvariant", "icon": "icon-UMLStateInvariant", "rubberband": "point" },
+      { "label": "Continuation", "id": "UMLContinuation", "icon": "icon-UMLContinuation", "rubberband": "rect" },
+      { "label": "Combined Fragment", "id": "UMLCombinedFragment", "icon": "icon-UMLCombinedFragment", "rubberband": "rect" },
+      { "label": "Interaction Use", "id": "UMLInteractionUse", "icon": "icon-UMLInteractionUse", "rubberband": "rect" },
+      { "label": "Time Constraint", "id": "UMLTimeConstraint", "icon": "icon-UMLTimeConstraint", "rubberband": "point" },
+      { "label": "Duration Constraint", "id": "UMLDurationConstraint", "icon": "icon-UMLDurationConstraint", "rubberband": "rect" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" }
+    ]
+  },
+  {
+    "label": "Communication",
+    "id": "uml.communication",
+    "diagram-types": [ "UMLCommunicationDiagram" ],
+    "auto-expands": [ "UMLCommunicationDiagram" ],
+    "items": [
+      { "label": "Lifeline", "id": "UMLLifeline", "icon": "icon-UMLObject", "rubberband": "rect" },
+      { "label": "Connector", "id": "UMLConnector", "icon": "icon-UMLConnector", "rubberband": "line" },
+      {
+        "label": "Self Connector",
+        "id": "UMLSelfConnector",
+        "icon": "icon-UMLSelfConnector",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLConnector",
+          "self-connection": true
+        }
+      },
+      {
+        "label": "Forward Message",
+        "id": "UMLForwardMessage",
+        "icon": "icon-UMLForwardMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "direction": "forward"
+        }
+      },
+      {
+        "label": "Reverse Message",
+        "id": "UMLReverseMessage",
+        "icon": "icon-UMLReverseMessage",
+        "rubberband": "line",
+        "command-arg": {
+          "id": "UMLMessage",
+          "direction": "reverse"
+        }
+      },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" }
+    ]
+  },
+  {
+    "label": "Timing",
+    "id": "uml.timing",
+    "diagram-types": [ "UMLTimingDiagram" ],
+    "auto-expands": [ "UMLTimingDiagram" ],
+    "items": [
+      { "label": "Lifeline", "id": "UMLLifeline", "icon": "icon-UMLTimingLifeline", "rubberband": "point" },
+      { "label": "State/Condition", "id": "UMLTimingState", "icon": "icon-UMLStateCondition", "rubberband": "point" },
+      { "label": "Time Segment", "id": "UMLTimeSegment", "icon": "icon-UMLTimeSegment", "rubberband": "rect" },
+      { "label": "Time Tick", "id": "UMLTimeTick", "icon": "icon-UMLTimeTick", "rubberband": "point" },
+      { "label": "Time Constraint", "id": "UMLTimeConstraint", "icon": "icon-UMLTimeConstraint", "rubberband": "point" },
+      { "label": "Duration Constraint", "id": "UMLDurationConstraint", "icon": "icon-UMLDurationConstraint", "rubberband": "rect" },
+      { "label": "Message", "id": "UMLMessage", "icon": "icon-UMLMessage", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Interaction Overview",
+    "id": "uml.interaction-overview",
+    "diagram-types": [ "UMLInteractionOverviewDiagram" ],
+    "auto-expands": [ "UMLInteractionOverviewDiagram" ],
+    "items": [
+      { "label": "Interaction Use", "id": "UMLInteractionUseInOverview", "icon": "icon-UMLInteractionUse", "rubberband": "react" },
+      { "label": "Interaction (Inline)", "id": "UMLInteractionInOverview", "icon": "icon-UMLInteraction", "rubberband": "react" },
+      { "label": "Initial", "id": "UMLInitialNode", "icon": "icon-UMLInitialNode", "rubberband": "point" },
+      { "label": "Final", "id": "UMLActivityFinalNode", "icon": "icon-UMLActivityFinalNode", "rubberband": "point" },
+      { "label": "Fork", "id": "UMLForkNode", "icon": "icon-UMLForkNode", "rubberband": "rect" },
+      { "label": "Join", "id": "UMLJoinNode", "icon": "icon-UMLJoinNode", "rubberband": "rect" },
+      { "label": "Merge", "id": "UMLMergeNode", "icon": "icon-UMLMergeNode", "rubberband": "point" },
+      { "label": "Decision", "id": "UMLDecisionNode", "icon": "icon-UMLDecisionNode", "rubberband": "point" },
+      { "label": "Control Flow", "id": "UMLControlFlow", "icon": "icon-UMLControlFlow", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Statechart (Basic)",
+    "id": "uml.statechart",
+    "diagram-types": [ "UMLStatechartDiagram" ],
+    "auto-expands": [ "UMLStatechartDiagram" ],
+    "items": [
+      { "label": "Simple State", "id": "UMLState", "icon": "icon-UMLState", "rubberband": "rect" },
+      {
+        "label": "Initial State",
+        "id": "UMLInitialState",
+        "icon": "icon-UMLInitialState",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "initial"
+        }
+      },
+      {
+        "label": "Choice",
+        "id": "UMLChoice",
+        "icon": "icon-UMLChoice",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "choice"
+        }
+      },
+      {
+        "label": "Join",
+        "id": "UMLJoin",
+        "icon": "icon-UMLJoin",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "join"
+        }
+      },
+      {
+        "label": "Fork",
+        "id": "UMLFork",
+        "icon": "icon-UMLFork",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "fork"
+        }
+      },
+      { "label": "Final State", "id": "UMLFinalState", "icon": "icon-UMLFinalState", "rubberband": "point" },
+      { "label": "Transition", "id": "UMLTransition", "icon": "icon-UMLTransition", "rubberband": "line" },
+      {
+        "label": "Self Transition",
+        "id": "UMLSelfTransition",
+        "icon": "icon-UMLSelfTransition",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLTransition",
+          "self-connection": true
+        }
+      }
+    ]
+  },
+  {
+    "label": "Statechart (Advanced)",
+    "id": "uml.statechart-adv",
+    "diagram-types": [ "UMLStatechartDiagram" ],
+    "items": [
+      {
+        "label": "Composite State",
+        "id": "UMLCompositeState",
+        "icon": "icon-UMLCompositeState",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLState",
+          "regionCount": 1
+        }
+      },
+      { "label": "Submachine State", "id": "UMLSubmachineState", "icon": "icon-UMLSubmachineState", "rubberband": "rect" },
+      {
+        "label": "Orthogonal State",
+        "id": "UMLOrthogonalState",
+        "icon": "icon-UMLOrthogonalState",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLState",
+          "regionCount": 2
+        }
+      },
+      {
+        "label": "Junction",
+        "id": "UMLJunction",
+        "icon": "icon-UMLJunction",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "junction"
+        }
+      },
+      {
+        "label": "Shallow History",
+        "id": "UMLShallowHistory",
+        "icon": "icon-UMLShallowHistory",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "shallowHistory"
+        }
+      },
+      {
+        "label": "Deep History",
+        "id": "UMLDeepHistory",
+        "icon": "icon-UMLDeepHistory",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "deepHistory"
+        }
+      },
+      {
+        "label": "Entry Point",
+        "id": "UMLEntryPoint",
+        "icon": "icon-UMLEntryPoint",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "entryPoint"
+        }
+      },
+      {
+        "label": "Exit Point",
+        "id": "UMLExitPoint",
+        "icon": "icon-UMLExitPoint",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "exitPoint"
+        }
+      },
+      {
+        "label": "Terminate",
+        "id": "UMLTerminate",
+        "icon": "icon-UMLTerminate",
+        "rubberband": "point",
+        "command-arg": {
+          "id": "UMLPseudostate",
+          "pseudostateKind": "terminate"
+        }
+      },
+      { "label": "Connection Point Reference", "id": "UMLConnectionPointReference", "icon": "icon-UMLConnectionPointReference", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" }
+    ]
+  },
+  {
+    "label": "Activities (Basic)",
+    "id": "uml.activity",
+    "diagram-types": [ "UMLActivityDiagram" ],
+    "auto-expands": [ "UMLActivityDiagram" ],
+    "items": [
+      { "label": "Action", "id": "UMLAction", "icon": "icon-UMLAction", "rubberband": "rect" },
+      { "label": "Initial", "id": "UMLInitialNode", "icon": "icon-UMLInitialNode", "rubberband": "point" },
+      { "label": "Final", "id": "UMLActivityFinalNode", "icon": "icon-UMLActivityFinalNode", "rubberband": "point" },
+      { "label": "Fork", "id": "UMLForkNode", "icon": "icon-UMLForkNode", "rubberband": "rect" },
+      { "label": "Join", "id": "UMLJoinNode", "icon": "icon-UMLJoinNode", "rubberband": "rect" },
+      { "label": "Merge", "id": "UMLMergeNode", "icon": "icon-UMLMergeNode", "rubberband": "point" },
+      { "label": "Decision", "id": "UMLDecisionNode", "icon": "icon-UMLDecisionNode", "rubberband": "point" },
+      { "label": "Control Flow", "id": "UMLControlFlow", "icon": "icon-UMLControlFlow", "rubberband": "line" }
+    ]
+  },
+  {
+    "label": "Activities (Advanced)",
+    "id": "uml.activity-adv",
+    "diagram-types": [ "UMLActivityDiagram" ],
+    "items": [
+      {
+        "label": "Swimlane (Vertical)",
+        "id": "UMLSwimlaneVert",
+        "icon": "icon-UMLSwimlaneVert",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLActivityPartition",
+          "view-init": {
+            "isVertical": true
+          }
+        }
+      },
+      {
+        "label": "Swimlane (Horizontal)",
+        "id": "UMLSwimlaneHorz",
+        "icon": "icon-UMLSwimlaneHorz",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLActivityPartition",
+          "view-init": {
+            "isVertical": false
+          }
+        }
+      },
+      { "label": "Interruptible Activity Region", "id": "UMLInterruptibleActivityRegion", "icon": "icon-UMLInterruptibleActivityRegion", "rubberband": "rect" },
+      { "label": "Structured Activity", "id": "UMLStructuredActivityNode", "icon": "icon-UMLStructuredActivityNode", "rubberband": "rect" },
+      { "label": "Input Pin", "id": "UMLInputPin", "icon": "icon-UMLInputPin", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Output Pin", "id": "UMLOutputPin", "icon": "icon-UMLOutputPin", "rubberband": "point", "command-arg": { "parasitic": true } },
+      {
+        "label": "Send Signal",
+        "id": "UMLSendSignal",
+        "icon": "icon-UMLSendSignal",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLAction",
+          "model-init": {
+            "kind": "sendSignal"
+          }
+        }
+      },
+      {
+        "label": "Accept Signal",
+        "id": "UMLAcceptSignal",
+        "icon": "icon-UMLAcceptSignal",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLAction",
+          "model-init": {
+            "kind": "acceptSignal"
+          }
+        }
+      },
+      {
+        "label": "Accept Time Event",
+        "id": "UMLAcceptTimeEvent",
+        "icon": "icon-UMLAcceptTimeEvent",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "UMLAction",
+          "model-init": {
+            "kind": "timeEvent"
+          }
+        }
+      },
+      { "label": "Flow Final", "id": "UMLFlowFinalNode", "icon": "icon-UMLFlowFinalNode", "rubberband": "point" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
+      { "label": "Object Node", "id": "UMLObjectNode", "icon": "icon-UMLObjectNode", "rubberband": "rect" },
+      { "label": "Central Buffer", "id": "UMLCentralBufferNode", "icon": "icon-UMLCentralBufferNode", "rubberband": "rect" },
+      { "label": "Datastore", "id": "UMLDataStoreNode", "icon": "icon-UMLDataStoreNode", "rubberband": "rect" },
+      { "label": "Activity Parameter Node", "id": "UMLActivityParameterNode", "icon": "icon-UMLActivityParameterNode", "rubberband": "rect" },
+      { "label": "Expansion Region", "id": "UMLExpansionRegion", "icon": "icon-UMLExpansionRegion", "rubberband": "rect" },
+      { "label": "Input Expansion Node", "id": "UMLInputExpansionNode", "icon": "icon-UMLInputExpansionNode", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Output Expansion Node", "id": "UMLOutputExpansionNode", "icon": "icon-UMLOutputExpansionNode", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Object Flow", "id": "UMLObjectFlow", "icon": "icon-UMLObjectFlow", "rubberband": "line" },
+      { "label": "Exception Handler", "id": "UMLExceptionHandler", "icon": "icon-UMLExceptionHandler", "rubberband": "line" },
+      { "label": "Activity Interrupt", "id": "UMLActivityInterrupt", "icon": "icon-UMLActivityInterrupt", "rubberband": "line" },
+      { "label": "Activity Edge Connector", "id": "UMLActivityEdgeConnector", "icon": "icon-UMLActivityEdgeConnector", "rubberband": "point" },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" }
+    ]
+  },
+  {
+    "label": "Profiles",
+    "id": "uml.profile",
+    "diagram-types": [ "UMLProfileDiagram" ],
+    "auto-expands": [ "UMLProfileDiagram" ],
+    "items": [
+      { "label": "MetaClass", "id": "UMLMetaClass", "icon": "icon-UMLMetaClass", "rubberband": "rect" },
+      { "label": "Stereotype", "id": "UMLStereotype", "icon": "icon-UMLStereotype", "rubberband": "rect" },
+      { "label": "Enumeration", "id": "UMLEnumeration", "icon": "icon-UMLEnumeration", "rubberband": "rect" },
+      { "label": "Extension", "id": "UMLExtension", "icon": "icon-UMLExtension", "rubberband": "line" },
+      { "label": "Generalization", "id": "UMLGeneralization", "icon": "icon-UMLGeneralization", "rubberband": "line" }
+    ]
+  }
+]

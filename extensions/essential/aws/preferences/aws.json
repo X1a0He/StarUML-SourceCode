@@ -1,0 +1,22 @@
+{
+  "id": "aws",
+  "name": "AWS",
+  "schema": {
+    "aws.arrow": {
+      "text": "Arrow",
+      "type": "section"
+    },
+    "aws.arrow.lineStyle": {
+      "text": "Line Style",
+      "description": "Default line style of arrow.",
+      "type": "dropdown",
+      "options": [
+        { "value": 0, "text": "Rectilinear" },
+        { "value": 1, "text": "Oblique" },
+        { "value": 2, "text": "Rounded Rectilinear" },
+        { "value": 3, "text": "Curve" }
+      ],
+      "default": 2
+    }
+  }
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "label": "AWS",
+    "id": "aws.elements",
+    "diagram-types": ["AWSDiagram"],
+    "auto-expands": ["AWSDiagram"],
+    "items": [
+      {
+        "label": "AWS Group",
+        "id": "AWSGroup",
+        "icon": "icon-AWSGroup",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Generic Group",
+        "id": "AWSGenericGroup",
+        "icon": "icon-AWSGenericGroup",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Availability Zone",
+        "id": "AWSAvailabilityZone",
+        "icon": "icon-AWSAvailabilityZone",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Security Group",
+        "id": "AWSSecurityGroup",
+        "icon": "icon-AWSSecurityGroup",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Service",
+        "id": "AWSService",
+        "icon": "icon-AWSService",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Resource",
+        "id": "AWSResource",
+        "icon": "icon-AWSResource",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS General Resource",
+        "id": "AWSGeneralResource",
+        "icon": "icon-AWSGeneralResource",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Callout",
+        "id": "AWSCallout",
+        "icon": "icon-AWSCallout",
+        "rubberband": "rect"
+      },
+      {
+        "label": "AWS Arrow",
+        "id": "AWSArrow",
+        "icon": "icon-AWSArrow",
+        "rubberband": "line"
+      }
+    ]
+  }
+]

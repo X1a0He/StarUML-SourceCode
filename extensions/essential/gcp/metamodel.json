@@ -1,0 +1,263 @@
+{
+  "GCPPathKind": {
+    "kind": "enum",
+    "literals": [
+      "primary",
+      "optional-primary",
+      "secondary",
+      "optional-secondary",
+      "success",
+      "failure"
+    ]
+  },
+  "GCPZoneKind": {
+    "kind": "enum",
+    "literals": [
+      "project",
+      "logical-group",
+      "region",
+      "zone",
+      "sub-network",
+      "firewall",
+      "instance-group",
+      "replica-pool",
+      "kubernetes-cluster",
+      "pod",
+      "account",
+      "optional",
+      "system",
+      "infrastructure-system",
+      "on-premises",
+      "external-saas-providers",
+      "external-data-sources",
+      "external-thirdparty-infrastructure",
+      "external-firstparty-infrastructure",
+      "user"
+    ]
+  },
+  "GCPMachineType": {
+    "kind": "enum",
+    "literals": [
+      "none",
+      "standard",
+      "shared-core-f1",
+      "shared-core-g1",
+      "high-cpu",
+      "high-memory",
+      "custom-virtual"
+    ]
+  },
+  "GCPDiskType": {
+    "kind": "enum",
+    "literals": ["none", "pd", "pd-ssd", "local-ssd"]
+  },
+  "GCPAdditionalModifierType": {
+    "kind": "enum",
+    "literals": ["none", "autoscaling", "preemptable"]
+  },
+  "GCPElement": {
+    "kind": "class",
+    "super": "ExtensibleModel",
+    "attributes": [
+      {
+        "name": "icon",
+        "kind": "prim",
+        "type": "String",
+        "visible": false,
+        "default": ""
+      }
+    ]
+  },
+  "GCPModel": {
+    "kind": "class",
+    "super": "GCPElement"
+  },
+  "GCPDiagram": {
+    "kind": "class",
+    "super": "Diagram",
+    "views": [
+      "UMLCustomTextView",
+      "ShapeView",
+      "UMLNoteLinkView",
+      "GCPUserView",
+      "GCPZoneView",
+      "GCPProductView",
+      "GCPServiceView",
+      "GCPPathView"
+    ]
+  },
+  "GCPUser": {
+    "kind": "class",
+    "super": "GCPElement",
+    "view": "GCPUserView"
+  },
+  "GCPZone": {
+    "kind": "class",
+    "super": "GCPElement",
+    "view": "GCPZoneView",
+    "attributes": [
+      {
+        "name": "zoneType",
+        "kind": "enum",
+        "type": "GCPZoneKind",
+        "default": "project",
+        "visible": true
+      }
+    ]
+  },
+  "GCPProduct": {
+    "kind": "class",
+    "super": "GCPElement",
+    "view": "GCPProductView",
+    "attributes": [
+      {
+        "name": "product",
+        "kind": "prim",
+        "type": "String",
+        "default": "",
+        "visible": true
+      },
+      {
+        "name": "multiInstance",
+        "kind": "prim",
+        "type": "Boolean",
+        "default": false,
+        "visible": true
+      },
+      {
+        "name": "expanded",
+        "kind": "prim",
+        "type": "Boolean",
+        "default": false,
+        "visible": true
+      },
+      {
+        "name": "expandedInfo",
+        "kind": "prim",
+        "type": "String",
+        "default": "",
+        "visible": true
+      },
+      {
+        "name": "machineType",
+        "kind": "enum",
+        "type": "GCPMachineType",
+        "default": "none",
+        "visible": true
+      },
+      {
+        "name": "cores",
+        "kind": "prim",
+        "type": "Integer",
+        "default": 0,
+        "visible": true
+      },
+      {
+        "name": "ram",
+        "kind": "prim",
+        "type": "Real",
+        "default": 0.0,
+        "visible": true
+      },
+      {
+        "name": "diskType",
+        "kind": "enum",
+        "type": "GCPDiskType",
+        "default": "none",
+        "visible": true
+      },
+      {
+        "name": "disks",
+        "kind": "prim",
+        "type": "Integer",
+        "default": 0,
+        "visible": true
+      },
+      {
+        "name": "additionalModifier",
+        "kind": "enum",
+        "type": "GCPAdditionalModifierType",
+        "default": "none",
+        "visible": true
+      }
+    ]
+  },
+  "GCPService": {
+    "kind": "class",
+    "super": "GCPElement",
+    "view": "GCPServiceView"
+  },
+  "GCPPath": {
+    "kind": "class",
+    "super": "DirectedRelationship",
+    "view": "GCPPathView",
+    "attributes": [
+      {
+        "name": "pathType",
+        "kind": "enum",
+        "type": "GCPPathKind",
+        "default": "primary",
+        "visible": true
+      }
+    ]
+  },
+  "GCPGeneralNodeView": {
+    "kind": "class",
+    "super": "NodeView",
+    "attributes": [
+      {
+        "name": "nameLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      { "name": "wordWrap", "kind": "prim", "type": "Boolean", "default": true }
+    ]
+  },
+  "GCPGeneralEdgeView": {
+    "kind": "class",
+    "super": "EdgeView",
+    "attributes": [
+      {
+        "name": "nameLabel",
+        "kind": "ref",
+        "type": "EdgeLabelView",
+        "embedded": "subViews"
+      }
+    ]
+  },
+  "GCPUserView": {
+    "kind": "class",
+    "super": "GCPGeneralNodeView"
+  },
+  "GCPZoneView": {
+    "kind": "class",
+    "super": "GCPGeneralNodeView"
+  },
+  "GCPProductView": {
+    "kind": "class",
+    "super": "GCPGeneralNodeView",
+    "attributes": [
+      {
+        "name": "productLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      {
+        "name": "expandedLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      }
+    ]
+  },
+  "GCPServiceView": {
+    "kind": "class",
+    "super": "GCPGeneralNodeView"
+  },
+  "GCPPathView": {
+    "kind": "class",
+    "super": "GCPGeneralEdgeView"
+  }
+}

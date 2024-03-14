@@ -1,0 +1,409 @@
+[
+  {
+    "label": "BPMN Basic",
+    "id": "bpmn.basic",
+    "diagram-types": [ "BPMNDiagram" ],
+    "auto-expands": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Task",
+        "id": "BPMNTask",
+        "icon": "icon-BPMNTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Gateway",
+        "id": "BPMNExclusiveGateway",
+        "icon": "icon-BPMNExclusiveGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Start Event",
+        "id": "BPMNStartEvent",
+        "icon": "icon-BPMNStartEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "End Event",
+        "id": "BPMNEndEvent",
+        "icon": "icon-BPMNEndEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Sequence Flow",
+        "id": "BPMNSequenceFlow",
+        "icon": "icon-BPMNSequenceFlow",
+        "rubberband": "line"
+      }
+    ]
+  },
+  {
+    "label": "BPMN Artifact",
+    "id": "bpmn.artifact",
+    "diagram-types": [ "BPMNDiagram" ],
+    "auto-expands": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Text Annotation",
+        "id": "BPMNTextAnnotation",
+        "icon": "icon-BPMNTextAnnotation",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Group",
+        "id": "BPMNGroup",
+        "icon": "icon-BPMNGroup",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Association",
+        "id": "BPMNAssociation",
+        "icon": "icon-BPMNAssociation",
+        "rubberband": "line"
+      }
+    ]
+  },
+  {
+    "label": "BPMN Swimlanes",
+    "id": "bpmn.swimlanes",
+    "diagram-types": [ "BPMNDiagram" ],
+    "auto-expands": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Pool",
+        "id": "BPMNParticipant",
+        "icon": "icon-BPMNParticipant",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Pool (Vert)",
+        "id": "BPMNParticipantVert",
+        "icon": "icon-BPMNParticipantVert",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "BPMNParticipant",
+          "view-init": {
+            "isVertical": true
+          }
+        }
+      },
+      {
+        "label": "Lane",
+        "id": "BPMNLane",
+        "icon": "icon-BPMNLane",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNPoolView"] }
+      },
+      {
+        "label": "Lane (Vert)",
+        "id": "BPMNLaneVert",
+        "icon": "icon-BPMNLaneVert",
+        "rubberband": "rect",
+        "command-arg": {
+          "id": "BPMNLane",
+          "view-init": {
+            "isVertical": true
+          },
+          "container-views": ["BPMNPoolView"]
+        }
+      }
+    ]
+  },
+  {
+    "label": "BPMN Activities",
+    "id": "bpmn.activities",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Task",
+        "id": "BPMNTask",
+        "icon": "icon-BPMNTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Send Task",
+        "id": "BPMNSendTask",
+        "icon": "icon-BPMNSendTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Receive Task",
+        "id": "BPMNReceiveTask",
+        "icon": "icon-BPMNReceiveTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Service Task",
+        "id": "BPMNServiceTask",
+        "icon": "icon-BPMNServiceTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "User Task",
+        "id": "BPMNUserTask",
+        "icon": "icon-BPMNUserTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Manual Task",
+        "id": "BPMNManualTask",
+        "icon": "icon-BPMNManualTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Business Rule Task",
+        "id": "BPMNBusinessRuleTask",
+        "icon": "icon-BPMNBusinessRuleTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Script Task",
+        "id": "BPMNScriptTask",
+        "icon": "icon-BPMNScriptTask",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Call Activity",
+        "id": "BPMNCallActivity",
+        "icon": "icon-BPMNCallActivity",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Sub Process",
+        "id": "BPMNSubProcess",
+        "icon": "icon-BPMNSubProcess",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Ad-Hoc Sub Process",
+        "id": "BPMNAdHocSubProcess",
+        "icon": "icon-BPMNAdHocSubProcess",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Transaction",
+        "id": "BPMNTransaction",
+        "icon": "icon-BPMNTransaction",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      }
+    ]
+  },
+  {
+    "label": "BPMN Gateways",
+    "id": "bpmn.gateways",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Gateway (Exclusive)",
+        "id": "BPMNExclusiveGateway",
+        "icon": "icon-BPMNExclusiveGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Gateway (Event-Based)",
+        "id": "BPMNEventBasedGateway",
+        "icon": "icon-BPMNEventBasedGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Gateway (Inclusive)",
+        "id": "BPMNInclusiveGateway",
+        "icon": "icon-BPMNInclusiveGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Gateway (Complex)",
+        "id": "BPMNComplexGateway",
+        "icon": "icon-BPMNComplexGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Gateway (Parallel)",
+        "id": "BPMNParallelGateway",
+        "icon": "icon-BPMNParallelGateway",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      }
+    ]
+  },
+  {
+    "label": "BPMN Events",
+    "id": "bpmn.events",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Start Event",
+        "id": "BPMNStartEvent",
+        "icon": "icon-BPMNStartEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Intermediate Event (Throw)",
+        "id": "BPMNIntermediateThrowEvent",
+        "icon": "icon-BPMNIntermediateEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Intermediate Event (Catch)",
+        "id": "BPMNIntermediateCatchEvent",
+        "icon": "icon-BPMNIntermediateEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Boundary Event",
+        "id": "BPMNBoundaryEvent",
+        "icon": "icon-BPMNBoundaryEvent",
+        "rubberband": "rect",
+        "command-arg": { "parasitic": true }
+      },
+      {
+        "label": "End Event",
+        "id": "BPMNEndEvent",
+        "icon": "icon-BPMNEndEvent",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      }
+    ]
+  },
+  {
+    "label": "BPMN Data",
+    "id": "bpmn.data",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Data Object",
+        "id": "BPMNDataObject",
+        "icon": "icon-BPMNDataObject",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Data Store",
+        "id": "BPMNDataStore",
+        "icon": "icon-BPMNDataStore",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Data Input",
+        "id": "BPMNDataInput",
+        "icon": "icon-BPMNDataInput",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Data Output",
+        "id": "BPMNDataOutput",
+        "icon": "icon-BPMNDataOutput",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Data Association",
+        "id": "BPMNDataAssociation",
+        "icon": "icon-BPMNDataAssociation",
+        "rubberband": "line",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      }
+    ]
+  },
+  {
+    "label": "BPMN Message",
+    "id": "bpmn.message",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Message",
+        "id": "BPMNMessage",
+        "icon": "icon-BPMNMessage",
+        "rubberband": "rect",
+        "command-arg": { "container-views": ["BPMNLaneView", "BPMNPoolView"] }
+      },
+      {
+        "label": "Message Flow",
+        "id": "BPMNMessageFlow",
+        "icon": "icon-BPMNMessageFlow",
+        "rubberband": "line"
+      }
+    ]
+  },
+  {
+    "label": "BPMN Choreography",
+    "id": "bpmn.choreography",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Choreography Task",
+        "id": "BPMNChoreographyTask",
+        "icon": "icon-BPMNChoreographyTask",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Sub Choreography",
+        "id": "BPMNSubChoreography",
+        "icon": "icon-BPMNSubChoreography",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Message Link",
+        "id": "BPMNMessageLink",
+        "icon": "icon-BPMNMessageLink",
+        "rubberband": "line"
+      }
+    ]
+  },
+  {
+    "label": "BPMN Conversation",
+    "id": "bpmn.conversation",
+    "diagram-types": [ "BPMNDiagram" ],
+    "items": [
+      {
+        "label": "Conversation",
+        "id": "BPMNConversation",
+        "icon": "icon-BPMNConversation",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Sub Conversation",
+        "id": "BPMNSubConversation",
+        "icon": "icon-BPMNSubConversation",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Call Conversation",
+        "id": "BPMNCallConversation",
+        "icon": "icon-BPMNCallConversation",
+        "rubberband": "rect"
+      },
+      {
+        "label": "Conversation Link",
+        "id": "BPMNConversationLink",
+        "icon": "icon-BPMNConversationLink",
+        "rubberband": "line"
+      }
+    ]
+  }
+]

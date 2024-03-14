@@ -1,0 +1,86 @@
+{
+  "menu": [
+    {
+      "id": "file.new-from-template",
+      "submenu": [
+        {
+          "label": "AWS Architecture",
+          "command": "aws:new-from-template",
+          "command-arg": "templates/AWSArchitecture.mdj"
+        }
+      ]
+    },
+    {
+      "id": "model.add-diagram",
+      "submenu": [
+        {
+          "label": "AWS Architecture Diagram",
+          "id": "aws.diagram",
+          "command": "factory:create-diagram",
+          "command-arg": { "id": "AWSDiagram" }
+        }
+      ]
+    },
+    {
+      "id": "model.add",
+      "submenu": [
+        {
+          "label": "AWS Model",
+          "id": "aws.model",
+          "command": "factory:create-model",
+          "command-arg": { "id": "AWSModel" }
+        }
+      ]
+    }
+  ],
+  "context-menu": {
+    "diagram-canvas": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          {
+            "label": "AWS Architecture Diagram",
+            "id": "aws.diagram",
+            "command": "factory:create-diagram",
+            "command-arg": { "id": "AWSDiagram" }
+          }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          {
+            "label": "AWS Model",
+            "id": "aws.model",
+            "command": "factory:create-model",
+            "command-arg": { "id": "AWSModel" }
+          }
+        ]
+      }
+    ],
+    "model-explorer": [
+      {
+        "id": "model.add-diagram",
+        "submenu": [
+          {
+            "label": "AWS Architecture Diagram",
+            "id": "aws.diagram",
+            "command": "factory:create-diagram",
+            "command-arg": { "id": "AWSDiagram" }
+          }
+        ]
+      },
+      {
+        "id": "model.add",
+        "submenu": [
+          {
+            "label": "AWS Model",
+            "id": "aws.model",
+            "command": "factory:create-model",
+            "command-arg": { "id": "AWSModel" }
+          }
+        ]
+      }
+    ]
+  }
+}
