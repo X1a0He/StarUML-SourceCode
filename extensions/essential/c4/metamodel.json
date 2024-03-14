@@ -19,14 +19,28 @@
     "kind": "class",
     "super": "ExtensibleModel",
     "attributes": [
-      { "name": "technology",  "kind": "prim", "type": "String", "visible": true, "default": "" },
-      { "name": "description", "kind": "prim", "type": "String", "visible": true, "multiline": true, "default": "" }
+      {
+        "name": "technology",
+        "kind": "prim",
+        "type": "String",
+        "visible": true,
+        "default": ""
+      },
+      {
+        "name": "description",
+        "kind": "prim",
+        "type": "String",
+        "visible": true,
+        "multiline": true,
+        "default": ""
+      }
     ],
     "view": "C4ElementView"
   },
   "C4Model": {
     "kind": "class",
-    "super": "C4Element"
+    "super": "C4Element",
+    "ordering": 1100
   },
   "C4Diagram": {
     "kind": "class",
@@ -66,51 +80,99 @@
   "C4Person": {
     "kind": "class",
     "super": "C4Element",
-    "view": "C4PersonView"
+    "view": "C4PersonView",
+    "ordering": 1200
   },
   "C4SoftwareSystem": {
     "kind": "class",
     "super": "C4Element",
-    "view": "C4SoftwareSystemView"
+    "view": "C4SoftwareSystemView",
+    "ordering": 1201
   },
   "C4Container": {
     "kind": "class",
     "super": "C4Element",
     "view": "C4ContainerView",
     "attributes": [
-      { "name": "kind", "kind": "enum", "type": "C4ContainerKind", "visible": true }
-    ]
+      {
+        "name": "kind",
+        "kind": "enum",
+        "type": "C4ContainerKind",
+        "visible": true
+      }
+    ],
+    "ordering": 1202
   },
   "C4Component": {
     "kind": "class",
     "super": "C4Element",
-    "view": "C4ComponentView"
+    "view": "C4ComponentView",
+    "ordering": 1203
   },
   "C4Relationship": {
     "kind": "class",
     "super": "DirectedRelationship",
     "view": "C4RelationshipView",
     "attributes": [
-      { "name": "technology",  "kind": "prim", "type": "String", "visible": true, "default": "" },
-      { "name": "description", "kind": "prim", "type": "String", "visible": true, "multiline": true, "default": "" }
-    ]
+      {
+        "name": "technology",
+        "kind": "prim",
+        "type": "String",
+        "visible": true,
+        "default": ""
+      },
+      {
+        "name": "description",
+        "kind": "prim",
+        "type": "String",
+        "visible": true,
+        "multiline": true,
+        "default": ""
+      }
+    ],
+    "ordering": 1204
   },
   "C4GeneralNodeView": {
     "kind": "class",
     "super": "NodeView",
     "attributes": [
-      { "name": "nameLabel",        "kind": "ref", "type": "LabelView", "embedded": "subViews" },
-      { "name": "technologyLabel",  "kind": "ref", "type": "LabelView", "embedded": "subViews" },
-      { "name": "descriptionLabel", "kind": "ref", "type": "LabelView", "embedded": "subViews" },
-      { "name": "wordWrap",         "kind": "prim", "type": "Boolean", "default": true }
+      {
+        "name": "nameLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      {
+        "name": "technologyLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      {
+        "name": "descriptionLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      { "name": "wordWrap", "kind": "prim", "type": "Boolean", "default": true }
     ]
   },
   "C4GeneralEdgeView": {
     "kind": "class",
     "super": "EdgeView",
     "attributes": [
-      { "name": "descriptionLabel", "kind": "ref",  "type": "EdgeLabelView", "embedded": "subViews" },
-      { "name": "technologyLabel",  "kind": "ref",  "type": "EdgeLabelView", "embedded": "subViews" }
+      {
+        "name": "descriptionLabel",
+        "kind": "ref",
+        "type": "EdgeLabelView",
+        "embedded": "subViews"
+      },
+      {
+        "name": "technologyLabel",
+        "kind": "ref",
+        "type": "EdgeLabelView",
+        "embedded": "subViews"
+      }
     ]
   },
   "C4ElementView": {

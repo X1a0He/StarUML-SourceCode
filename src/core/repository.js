@@ -106,7 +106,7 @@ class Reader {
   constructor(data, ctors) {
     if (!_.isObject(data)) {
       console.error(
-        "Reader constructor: 'data' parameter should be JSON object"
+        "Reader constructor: 'data' parameter should be JSON object",
       );
       return;
     }
@@ -140,7 +140,7 @@ class Reader {
         console.error(
           "Reader.read(): type of data to be read should be one of number, string, boolean, or null.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -168,7 +168,7 @@ class Reader {
         console.error(
           "Reader.readObj(): type of data to be read should be an Object.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -176,13 +176,13 @@ class Reader {
         console.error(
           "Reader.readObj(): '_type' field is not found to instantiate an Object.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
       if (!_.isFunction(this.ctors[value._type])) {
         console.error(
-          "Reader.readObj(): type." + value._type + " is not registered."
+          "Reader.readObj(): type." + value._type + " is not registered.",
         );
         return;
       }
@@ -220,7 +220,7 @@ class Reader {
         console.error(
           "Reader.readObjArray(): type of data to be read should be an array.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -235,20 +235,20 @@ class Reader {
         if (!_.isObject(o)) {
           console.error(
             "Reader.readObjArray(): one of array elements is not Object.",
-            o
+            o,
           );
           continue;
         }
         if (!o._type) {
           console.error(
             "Reader.readObjArray(): '_type' field is not found to instantiate an Object.",
-            o
+            o,
           );
           continue;
         }
         if (!_.isFunction(this.ctors[o._type])) {
           console.error(
-            "Reader.readObjArray(): type." + o._type + " is not registered."
+            "Reader.readObjArray(): type." + o._type + " is not registered.",
           );
           continue;
         }
@@ -287,7 +287,7 @@ class Reader {
         console.error(
           "Reader.readRef(): data is not a reference ('$ref' not found).",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -316,7 +316,7 @@ class Reader {
         console.error(
           "Reader.readRefArray(): type of data to be read should be an array.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -331,14 +331,14 @@ class Reader {
         if (!_.isObject(_refObj)) {
           console.error(
             "Reader.readRefArray(): one of array elements is not Object.",
-            _refObj
+            _refObj,
           );
           return;
         }
         if (!_.isString(_refObj.$ref)) {
           console.error(
             "Reader.readRefArray(): data is not a reference ('$ref' not found).",
-            _refObj
+            _refObj,
           );
           return;
         }
@@ -375,7 +375,7 @@ class Reader {
         console.error(
           "Reader.readVariant(): type of data to be read should be one of number, string, boolean, null, or reference.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -402,7 +402,7 @@ class Reader {
     if (typeof value !== "undefined") {
       if (!_.isFunction(this.ctors[typeName])) {
         console.error(
-          "Reader.readCustom(): type." + typeName + " is not registered."
+          "Reader.readCustom(): type." + typeName + " is not registered.",
         );
         return;
       }
@@ -414,7 +414,7 @@ class Reader {
           "Reader.readCustom(): Object of type." +
             typeName +
             " should have '__read' function.",
-          custom
+          custom,
         );
         return;
       }
@@ -458,7 +458,7 @@ class Writer {
       console.error(
         "Writer.write(): type of 'value' parameter should be one of string, number or boolean.",
         name + " = ",
-        value
+        value,
       );
       return;
     }
@@ -496,7 +496,7 @@ class Writer {
   writeObjArray(name, value) {
     if (!name) {
       console.error(
-        "Writer.writeObjArray(): missing required parameters: name"
+        "Writer.writeObjArray(): missing required parameters: name",
       );
       return;
     }
@@ -504,7 +504,7 @@ class Writer {
       console.error(
         "Writer.writeObjArray(): type of 'value' parameter should be an array.",
         name + " = ",
-        value
+        value,
       );
       return;
     }
@@ -521,7 +521,7 @@ class Writer {
       } else {
         console.error(
           "Writer.writeObjArray(): one of 'value' array is not instanceof Element.",
-          o
+          o,
         );
         return;
       }
@@ -547,7 +547,7 @@ class Writer {
         console.error(
           "Writer.writeRef(): 'value' parameter is not instanceof Element.",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -565,7 +565,7 @@ class Writer {
   writeRefArray(name, value) {
     if (!name) {
       console.error(
-        "Writer.writeRefArray(): missing required parameters: name"
+        "Writer.writeRefArray(): missing required parameters: name",
       );
       return;
     }
@@ -573,7 +573,7 @@ class Writer {
       console.error(
         "Writer.writeRefArray(): type of 'value' parameter should be an array.",
         name + " = ",
-        value
+        value,
       );
       return;
     }
@@ -589,7 +589,7 @@ class Writer {
       } else {
         console.error(
           "Writer.writeRefArray(): one of 'value' array is not instanceof Element.",
-          o
+          o,
         );
         return;
       }
@@ -618,7 +618,7 @@ class Writer {
       console.error(
         "Writer.writeVariant(): invalid type of parameter: value.",
         name + " = ",
-        value
+        value,
       );
     }
   }
@@ -641,7 +641,7 @@ class Writer {
         console.error(
           "Writer.writeCustom(): the 'value' parameter should have '__write' function",
           name + " = ",
-          value
+          value,
         );
         return;
       }
@@ -1580,7 +1580,7 @@ class Repository extends EventEmitter {
   writeObject(elem) {
     var writer = new Writer();
     elem.save(writer);
-    var data = JSON.stringify(writer.current);
+    var data = JSON.stringify(writer.current, null, "\t");
     return data;
   }
 
@@ -2141,7 +2141,7 @@ class Repository extends EventEmitter {
         arg = item.substring(1, item.length).trim();
         if (arg.length === 0) {
           throw new Error(
-            "[Selector] Type selector requires type name after '@'"
+            "[Selector] Type selector requires type name after '@'",
           );
         }
         terms.push({ op: "@", type: arg });
@@ -2150,7 +2150,7 @@ class Repository extends EventEmitter {
         arg = item.substring(1, item.length).trim();
         if (arg.length === 0) {
           throw new Error(
-            "[Selector] Field selector requires field name after '.'"
+            "[Selector] Field selector requires field name after '.'",
           );
         }
         terms.push({ op: ".", field: arg });
@@ -2169,7 +2169,7 @@ class Repository extends EventEmitter {
           )
         ) {
           throw new Error(
-            "[Selector] Value selector should be format of '[field=value]'"
+            "[Selector] Value selector should be format of '[field=value]'",
           );
         }
         terms.push({ op: "[]", field: f.trim(), value: v.trim() });

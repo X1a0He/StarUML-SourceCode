@@ -496,6 +496,12 @@
         "label": "Open Sub-Diagram",
         "id": "edit.open-sub-diagram",
         "command": "edit:open-sub-diagram"
+      },
+      { "type": "separator" },
+      {
+        "label": "Tag Editor...",
+        "id": "model.tag-editor",
+        "command": "model:tag-editor"
       }
     ],
     "model-explorer": [

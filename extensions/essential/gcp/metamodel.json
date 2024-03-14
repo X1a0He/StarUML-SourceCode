@@ -70,7 +70,8 @@
   },
   "GCPModel": {
     "kind": "class",
-    "super": "GCPElement"
+    "super": "GCPElement",
+    "ordering": 1100
   },
   "GCPDiagram": {
     "kind": "class",
@@ -89,7 +90,8 @@
   "GCPUser": {
     "kind": "class",
     "super": "GCPElement",
-    "view": "GCPUserView"
+    "view": "GCPUserView",
+    "ordering": 1200
   },
   "GCPZone": {
     "kind": "class",
@@ -103,7 +105,8 @@
         "default": "project",
         "visible": true
       }
-    ]
+    ],
+    "ordering": 1201
   },
   "GCPProduct": {
     "kind": "class",
@@ -180,12 +183,14 @@
         "default": "none",
         "visible": true
       }
-    ]
+    ],
+    "ordering": 1202
   },
   "GCPService": {
     "kind": "class",
     "super": "GCPElement",
-    "view": "GCPServiceView"
+    "view": "GCPServiceView",
+    "ordering": 1203
   },
   "GCPPath": {
     "kind": "class",
@@ -199,7 +204,8 @@
         "default": "primary",
         "visible": true
       }
-    ]
+    ],
+    "ordering": 1204
   },
   "GCPGeneralNodeView": {
     "kind": "class",

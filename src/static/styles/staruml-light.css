@@ -9405,7 +9405,7 @@ div.k-notification.k-notification-error {
 }
 .tag-value-editor .dialog-body {
   min-width: 300px;
-  height: 200px;
+  height: 320px;
 }
 .tag-value-editor .dialog-body .item {
   margin-bottom: 0.5em;

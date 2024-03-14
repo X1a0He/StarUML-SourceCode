@@ -83,6 +83,15 @@ class FCFlowchartDiagram extends type.Diagram {
   getDisplayClassName() {
     return "FlowchartDiagram";
   }
+
+  canAcceptModel(model) {
+    return (
+      model instanceof type.Hyperlink ||
+      model instanceof type.Diagram ||
+      model instanceof type.FCModelElement ||
+      model instanceof type.FCFlow
+    );
+  }
 }
 
 /**

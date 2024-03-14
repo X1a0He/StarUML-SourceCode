@@ -14,7 +14,8 @@
   },
   "AWSModel": {
     "kind": "class",
-    "super": "AWSElement"
+    "super": "AWSElement",
+    "ordering": 1100
   },
   "AWSDiagram": {
     "kind": "class",
@@ -37,7 +38,8 @@
   "AWSGroup": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSGroupView"
+    "view": "AWSGroupView",
+    "ordering": 1200
   },
   "AWSGenericGroup": {
     "kind": "class",
@@ -51,42 +53,50 @@
         "visible": true,
         "default": false
       }
-    ]
+    ],
+    "ordering": 1201
   },
   "AWSAvailabilityZone": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSAvailabilityZoneView"
+    "view": "AWSAvailabilityZoneView",
+    "ordering": 1202
   },
   "AWSSecurityGroup": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSSecurityGroupView"
+    "view": "AWSSecurityGroupView",
+    "ordering": 1203
   },
   "AWSService": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSServiceView"
+    "view": "AWSServiceView",
+    "ordering": 1204
   },
   "AWSResource": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSResourceView"
+    "view": "AWSResourceView",
+    "ordering": 1205
   },
   "AWSGeneralResource": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSGeneralResourceView"
+    "view": "AWSGeneralResourceView",
+    "ordering": 1206
   },
   "AWSCallout": {
     "kind": "class",
     "super": "AWSElement",
-    "view": "AWSCalloutView"
+    "view": "AWSCalloutView",
+    "ordering": 1207
   },
   "AWSArrow": {
     "kind": "class",
     "super": "DirectedRelationship",
-    "view": "AWSArrowView"
+    "view": "AWSArrowView",
+    "ordering": 1208
   },
   "AWSGeneralNodeView": {
     "kind": "class",

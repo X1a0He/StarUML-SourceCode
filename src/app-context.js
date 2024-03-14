@@ -1504,6 +1504,7 @@ class AppContext extends EventEmitter {
       if (key === "diagramEditor.showGrid") {
         this.menu.updateStates(null, null, { "view.show-grid": value });
       }
+      this.diagrams.repaint();
     });
   }
 

@@ -1204,6 +1204,9 @@ class Tag extends Model {
     /** @member {number} */
     this.number = 0;
 
+    /** @member {string} */
+    this.options = "";
+
     /** @member {boolean} */
     this.hidden = false;
   }
@@ -1226,6 +1229,9 @@ class Tag extends Model {
         break;
       case Tag.TK_NUMBER:
         s = this.name + "=" + this.number;
+        break;
+      case Tag.TK_ENUM:
+        s = this.name + "=" + this.value;
         break;
       case "hidden": // DEPRECATED
         this.kind = Tag.TK_STRING;
@@ -1250,6 +1256,8 @@ class Tag extends Model {
         return this.checked ? "true" : "false";
       case Tag.TK_NUMBER:
         return `${this.number}`;
+      case Tag.TK_ENUM:
+        return `${this.value}`;
       case "hidden": // DEPRECATED
         return `"${this.value}"`;
       default:
@@ -1281,6 +1289,12 @@ Tag.TK_BOOLEAN = "boolean";
  * @const {string}
  */
 Tag.TK_NUMBER = "number";
+
+/**
+ * TagKind: Enum (`'enum'`)
+ * @const {string}
+ */
+Tag.TK_ENUM = "enum";
 
 /**
  * Hyperlink

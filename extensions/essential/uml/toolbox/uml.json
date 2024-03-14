@@ -639,7 +639,6 @@
         }
       },
       { "label": "Flow Final", "id": "UMLFlowFinalNode", "icon": "icon-UMLFlowFinalNode", "rubberband": "point" },
-      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
       { "label": "Object Node", "id": "UMLObjectNode", "icon": "icon-UMLObjectNode", "rubberband": "rect" },
       { "label": "Central Buffer", "id": "UMLCentralBufferNode", "icon": "icon-UMLCentralBufferNode", "rubberband": "rect" },
       { "label": "Datastore", "id": "UMLDataStoreNode", "icon": "icon-UMLDataStoreNode", "rubberband": "rect" },
@@ -647,11 +646,11 @@
       { "label": "Expansion Region", "id": "UMLExpansionRegion", "icon": "icon-UMLExpansionRegion", "rubberband": "rect" },
       { "label": "Input Expansion Node", "id": "UMLInputExpansionNode", "icon": "icon-UMLInputExpansionNode", "rubberband": "point", "command-arg": { "parasitic": true } },
       { "label": "Output Expansion Node", "id": "UMLOutputExpansionNode", "icon": "icon-UMLOutputExpansionNode", "rubberband": "point", "command-arg": { "parasitic": true } },
+      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" },
       { "label": "Object Flow", "id": "UMLObjectFlow", "icon": "icon-UMLObjectFlow", "rubberband": "line" },
       { "label": "Exception Handler", "id": "UMLExceptionHandler", "icon": "icon-UMLExceptionHandler", "rubberband": "line" },
       { "label": "Activity Interrupt", "id": "UMLActivityInterrupt", "icon": "icon-UMLActivityInterrupt", "rubberband": "line" },
-      { "label": "Activity Edge Connector", "id": "UMLActivityEdgeConnector", "icon": "icon-UMLActivityEdgeConnector", "rubberband": "point" },
-      { "label": "Frame", "id": "UMLFrame", "icon": "icon-UMLFrame", "rubberband": "rect", "command": "uml:create-model-and-view.frame" }
+      { "label": "Activity Edge Connector", "id": "UMLActivityEdgeConnector", "icon": "icon-UMLActivityEdgeConnector", "rubberband": "point" }
     ]
   },
   {

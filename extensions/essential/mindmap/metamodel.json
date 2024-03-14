@@ -5,34 +5,37 @@
   },
   "MMMindmap": {
     "kind": "class",
-    "super": "MMElement"
+    "super": "MMElement",
+    "ordering": 1100
   },
   "MMMindmapDiagram": {
     "kind": "class",
     "super": "Diagram",
-    "views": [
-      "UMLCustomTextView",
-      "ShapeView",
-      "UMLNoteLinkView",
-      "MMNodeView"
-    ]
+    "views": ["UMLCustomTextView", "ShapeView", "UMLNoteLinkView", "MMNodeView"]
   },
   "MMNode": {
     "kind": "class",
     "super": "MMElement",
-    "view": "MMNodeView"
+    "view": "MMNodeView",
+    "ordering": 1200
   },
   "MMEdge": {
     "kind": "class",
     "super": "DirectedRelationship",
-    "view": "MMEdgeView"
+    "view": "MMEdgeView",
+    "ordering": 1201
   },
   "MMNodeView": {
     "kind": "class",
     "super": "NodeView",
     "attributes": [
-      { "name": "nameLabel", "kind": "ref",  "type": "LabelView", "embedded": "subViews" },
-      { "name": "wordWrap",  "kind": "prim", "type": "Boolean", "default": true }
+      {
+        "name": "nameLabel",
+        "kind": "ref",
+        "type": "LabelView",
+        "embedded": "subViews"
+      },
+      { "name": "wordWrap", "kind": "prim", "type": "Boolean", "default": true }
     ]
   },
   "MMEdgeView": {
