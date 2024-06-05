@@ -96,8 +96,6 @@ class Window extends EventEmitter {
     // browserOptions.height = options.height || 900
 
     if (options.hide === true) {
-      browserOptions.width = 0;
-      browserOptions.height = 0;
       browserOptions.show = false;
     }
 
