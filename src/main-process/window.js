@@ -33,8 +33,8 @@ function windowStateKeeper(windowName) {
     }
     // Default
     windowState = {
-      x: undefined,
-      y: undefined,
+      x: 0,
+      y: 0,
       width: 1200,
       height: 900,
     };
@@ -58,8 +58,8 @@ function windowStateKeeper(windowName) {
   setBounds();
 
   return {
-    x: windowState.x,
-    y: windowState.y,
+    x: windowState.x < 0 ? 0 : windowState.x,
+    y: windowState.y < 0 ? 0 : windowState.y,
     width: windowState.width,
     height: windowState.height,
     isMaximized: windowState.isMaximized,

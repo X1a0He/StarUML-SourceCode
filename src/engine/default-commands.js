@@ -135,7 +135,7 @@ function handleNew(template) {
  * @param {boolean} saveAs
  * @return {type.Project} the saved project
  */
-function handleSave(fullPath, saveAs) {
+async function handleSave(fullPath, saveAs) {
   try {
     // Set focus to body in order to apply changes of documentation editor
     $("#diagram-canvas").focus();
@@ -145,7 +145,7 @@ function handleSave(fullPath, saveAs) {
       if (app.project.getFilename() && !saveAs) {
         return app.project.save(app.project.getFilename());
       } else {
-        var selectedPath = app.dialogs.showSaveDialog(
+        var selectedPath = await app.dialogs.showSaveDialog(
           "Save Project As",
           "Untitled" + Constants.APP_EXT,
           MODEL_FILE_FILTERS,
@@ -199,7 +199,7 @@ function doFileOpen(fullPath) {
  * param {string} fullPath
  * @return {type.Project} The loaded project
  */
-function handleOpen(fullPath) {
+async function handleOpen(fullPath) {
   if (fullPath) {
     if (app.repository.isModified() || app.project.getFilename()) {
       ipcRenderer.send("command", "application:open", fullPath);
@@ -207,7 +207,7 @@ function handleOpen(fullPath) {
       return doFileOpen(fullPath);
     }
   } else {
-    const files = app.dialogs.showOpenDialog(
+    const files = await app.dialogs.showOpenDialog(
       Strings.SELECT_MODEL_FILE,
       null,
       MODEL_FILE_FILTERS,
@@ -229,11 +229,11 @@ function handleOpen(fullPath) {
  * param {string} fullPath
  * @return {type.Element} The imported element
  */
-function handleImportFragment(fullPath) {
+async function handleImportFragment(fullPath) {
   if (fullPath) {
     return app.project.importFromFile(app.project.getProject(), fullPath);
   } else {
-    const selectedPath = app.dialogs.showOpenDialog(
+    const selectedPath = await app.dialogs.showOpenDialog(
       Strings.SELECT_MODEL_FRAGMENT_FILE,
       null,
       FRAGMENT_FILE_FILTERS,
@@ -275,58 +275,54 @@ function doFileExportAsync(elem, filename) {
  * param {string} fullPath
  * @return {Promise}
  */
-function handleExportFragment(element, fullPath) {
+async function handleExportFragment(element, fullPath) {
   if (element) {
     if (fullPath) {
       return doFileExportAsync(element, fullPath);
-    } else {
-      let filename = app.dialogs.showSaveDialog(
-        Strings.EXPORT_MODEL_FRAGMENT,
-        "Fragment" + Constants.FRAG_EXT,
-        FRAGMENT_FILE_FILTERS,
-      );
-      if (filename) {
-        if (!path.extname(filename)) {
-          filename = filename + Constants.FRAG_EXT;
-        }
-        return doFileExportAsync(element, filename);
+    }
+    let filename = await app.dialogs.showSaveDialog(
+      Strings.EXPORT_MODEL_FRAGMENT,
+      "Fragment" + Constants.FRAG_EXT,
+      FRAGMENT_FILE_FILTERS,
+    );
+    if (filename) {
+      if (!path.extname(filename)) {
+        filename = filename + Constants.FRAG_EXT;
+      }
+      return doFileExportAsync(element, filename);
+    }
+    return Promise.reject(USER_CANCELED);
+  } else {
+    if (fullPath) {
+      const { buttonId, returnValue } = await app.elementPickerDialog
+        .showDialog(Strings.SELECT_ELEMENT_TO_EXPORT, null, null)
+        .getPromise();
+      if (buttonId === "ok" && returnValue !== null) {
+        return doFileExportAsync(returnValue, fullPath);
       } else {
         return Promise.reject(USER_CANCELED);
       }
-    }
-  } else {
-    if (fullPath) {
-      app.elementPickerDialog
-        .showDialog(Strings.SELECT_ELEMENT_TO_EXPORT, null, null)
-        .then(({ buttonId, returnValue }) => {
-          if (buttonId === "ok" && returnValue !== null) {
-            return doFileExportAsync(returnValue, fullPath);
-          } else {
-            return Promise.reject(USER_CANCELED);
-          }
-        });
     } else {
-      app.elementPickerDialog
+      const { buttonId, returnValue } = await app.elementPickerDialog
         .showDialog(Strings.SELECT_ELEMENT_TO_EXPORT, null, null)
-        .then(({ buttonId, returnValue }) => {
-          if (buttonId === "ok" && returnValue !== null) {
-            let filename = app.dialogs.showSaveDialog(
-              Strings.EXPORT_MODEL_FRAGMENT,
-              "Fragment" + Constants.FRAG_EXT,
-              FRAGMENT_FILE_FILTERS,
-            );
-            if (filename) {
-              if (!path.extname(filename)) {
-                filename = filename + Constants.FRAG_EXT;
-              }
-              return doFileExportAsync(returnValue, filename);
-            } else {
-              return Promise.reject(USER_CANCELED);
-            }
-          } else {
-            return Promise.reject(USER_CANCELED);
+        .getPromise();
+      if (buttonId === "ok" && returnValue !== null) {
+        let filename = await app.dialogs.showSaveDialog(
+          Strings.EXPORT_MODEL_FRAGMENT,
+          "Fragment" + Constants.FRAG_EXT,
+          FRAGMENT_FILE_FILTERS,
+        );
+        if (filename) {
+          if (!path.extname(filename)) {
+            filename = filename + Constants.FRAG_EXT;
           }
-        });
+          return doFileExportAsync(returnValue, filename);
+        } else {
+          return Promise.reject(USER_CANCELED);
+        }
+      } else {
+        return Promise.reject(USER_CANCELED);
+      }
     }
   }
 }
@@ -351,7 +347,7 @@ function handlePreferences(preferenceId) {
 /**
  * @private
  */
-function handleExportDiagramToPNG(diagram, fullPath) {
+async function handleExportDiagramToPNG(diagram, fullPath) {
   diagram = diagram || app.diagrams.getCurrentDiagram();
   if (diagram) {
     try {
@@ -361,7 +357,7 @@ function handleExportDiagramToPNG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialog(
           "Export Diagram as PNG",
           initialFilePath + ".png",
           PNG_FILE_FILTERS,
@@ -381,7 +377,7 @@ function handleExportDiagramToPNG(diagram, fullPath) {
 /**
  * @private
  */
-function handleExportDiagramToJPEG(diagram, fullPath) {
+async function handleExportDiagramToJPEG(diagram, fullPath) {
   diagram = diagram || app.diagrams.getCurrentDiagram();
   if (diagram) {
     try {
@@ -391,7 +387,7 @@ function handleExportDiagramToJPEG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialog(
           "Export Diagram as JPEG",
           initialFilePath + ".jpg",
           JPEG_FILE_FILTERS,
@@ -411,7 +407,7 @@ function handleExportDiagramToJPEG(diagram, fullPath) {
 /**
  * @private
  */
-function handleExportDiagramToSVG(diagram, fullPath) {
+async function handleExportDiagramToSVG(diagram, fullPath) {
   diagram = diagram || app.diagrams.getCurrentDiagram();
   if (diagram) {
     try {
@@ -421,7 +417,7 @@ function handleExportDiagramToSVG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialog(
           "Export Diagram as SVG",
           initialFilePath + ".svg",
           SVG_FILE_FILTERS,
@@ -443,21 +439,21 @@ function handleExportDiagramToSVG(diagram, fullPath) {
  * Export all diagram to PNGs in a folder
  * @param {string} basePath
  */
-function handleExportDiagramAllToPNGs(basePath) {
+async function handleExportDiagramAllToPNGs(basePath) {
   var diagrams = app.repository.getInstancesOf("Diagram");
   if (diagrams && diagrams.length > 0) {
     try {
       if (basePath) {
         DiagramExport.exportAll("png", diagrams, basePath);
       } else {
-        const selectedPath = app.dialogs.showOpenDialog(
+        const selectedPath = await app.dialogs.showOpenDialog(
           "Select a folder where all diagrams to be exported as PNGs",
           undefined,
           undefined,
           { properties: ["openDirectory", "createDirectory"] },
         );
-        if (selectedPath) {
-          DiagramExport.exportAll("png", diagrams, selectedPath);
+        if (selectedPath && selectedPath.length > 0) {
+          DiagramExport.exportAll("png", diagrams, selectedPath[0]);
         }
       }
     } catch (err) {
@@ -473,21 +469,21 @@ function handleExportDiagramAllToPNGs(basePath) {
  * Export all diagram to JPEGs in a folder
  * @param {string} basePath
  */
-function handleExportDiagramAllToJPEGs(basePath) {
+async function handleExportDiagramAllToJPEGs(basePath) {
   var diagrams = app.repository.getInstancesOf("Diagram");
   if (diagrams && diagrams.length > 0) {
     try {
       if (basePath) {
         DiagramExport.exportAll("jpg", diagrams, basePath);
       } else {
-        const selectedPath = app.dialogs.showOpenDialog(
+        const selectedPath = await app.dialogs.showOpenDialog(
           "Select a folder where all diagrams to be exported as JPEGs",
           undefined,
           undefined,
           { properties: ["openDirectory", "createDirectory"] },
         );
-        if (selectedPath) {
-          DiagramExport.exportAll("jpg", diagrams, selectedPath);
+        if (selectedPath && selectedPath.length > 0) {
+          DiagramExport.exportAll("jpg", diagrams, selectedPath[0]);
         }
       }
     } catch (err) {
@@ -503,21 +499,21 @@ function handleExportDiagramAllToJPEGs(basePath) {
  * Export all diagram to SVGs in a folder
  * @param {string} basePath
  */
-function handleExportDiagramAllToSVGs(basePath) {
+async function handleExportDiagramAllToSVGs(basePath) {
   var diagrams = app.repository.getInstancesOf("Diagram");
   if (diagrams && diagrams.length > 0) {
     try {
       if (basePath) {
         DiagramExport.exportAll("svg", diagrams, basePath);
       } else {
-        const selectedPath = app.dialogs.showOpenDialog(
+        const selectedPath = await app.dialogs.showOpenDialog(
           "Select a folder where all diagrams to be exported as SVGs",
           undefined,
           undefined,
           { properties: ["openDirectory", "createDirectory"] },
         );
-        if (selectedPath) {
-          DiagramExport.exportAll("svg", diagrams, selectedPath);
+        if (selectedPath && selectedPath.length > 0) {
+          DiagramExport.exportAll("svg", diagrams, selectedPath[0]);
         }
       }
     } catch (err) {
@@ -532,46 +528,46 @@ function handleExportDiagramAllToSVGs(basePath) {
  * @private
  * Handler for Print to PDF
  */
-function handlePrintToPDF() {
-  PrintDialog.showDialog().then(function ({ buttonId, returnValue }) {
-    const printOptions = returnValue;
-    if (buttonId === "save") {
-      var diagrams = [];
-      if (printOptions.range === "current") {
-        var current = app.diagrams.getCurrentDiagram();
-        if (current) {
-          diagrams.push(current);
-        }
-      } else {
-        diagrams = app.repository.getInstancesOf("Diagram");
+async function handlePrintToPDF() {
+  const { buttonId, returnValue } = await PrintDialog.showDialog();
+  const printOptions = returnValue;
+  if (buttonId === "save") {
+    var diagrams = [];
+    if (printOptions.range === "current") {
+      var current = app.diagrams.getCurrentDiagram();
+      if (current) {
+        diagrams.push(current);
       }
-      if (diagrams.length > 0) {
-        var fn = filenamify(app.project.getProject().name);
-        let filename = app.dialogs.showSaveDialog(
-          "Print to PDF",
-          fn + ".pdf",
-          PDF_FILE_FILTERS,
-        );
-        if (filename) {
-          if (!path.extname(filename)) {
-            filename = filename + ".pdf";
-          }
-          try {
-            DiagramExport.exportToPDF(diagrams, filename, printOptions);
-          } catch (err) {
-            app.dialogs.showErrorDialog(
-              "Failed to generate PDF. (Error=" + err + ")",
-            );
-            console.error(err);
-          }
-        } else {
-          return Promise.reject(USER_CANCELED);
-        }
-      } else {
-        app.dialogs.showAlertDialog("No current diagram.");
-      }
+    } else {
+      diagrams = app.repository.getInstancesOf("Diagram");
     }
-  });
+    if (diagrams.length > 0) {
+      var fn = filenamify(app.project.getProject().name);
+      let filename = await app.dialogs.showSaveDialog(
+        "Print to PDF",
+        fn + ".pdf",
+        PDF_FILE_FILTERS,
+      );
+      if (filename) {
+        if (!path.extname(filename)) {
+          // eslint-disable-next-line operator-assignment
+          filename = filename + ".pdf";
+        }
+        try {
+          DiagramExport.exportToPDF(diagrams, filename, printOptions);
+        } catch (err) {
+          app.dialogs.showErrorDialog(
+            "Failed to generate PDF. (Error=" + err + ")",
+          );
+          console.error(err);
+        }
+      } else {
+        return Promise.reject(USER_CANCELED);
+      }
+    } else {
+      app.dialogs.showAlertDialog("No current diagram.");
+    }
+  }
 }
 
 /*

@@ -727,9 +727,14 @@ class DialogManager {
    * @param {string} defaultPath
    * @param {Array<{name:string, extensions:string[]}>} filters
    * @param {Object} options
-   * @return {Array<string>} filenames or null
+   * @return {Promise<string[]>} filenames or null
    */
-  showOpenDialog(title, defaultPath, filters = DEFAULT_FILE_FILTERS, options) {
+  async showOpenDialog(
+    title,
+    defaultPath,
+    filters = DEFAULT_FILE_FILTERS,
+    options,
+  ) {
     options = Object.assign(
       {
         title: title,
@@ -740,7 +745,8 @@ class DialogManager {
     if (defaultPath) {
       options.defaultPath = defaultPath;
     }
-    return ipcRenderer.sendSync("show-open-dialog", options);
+    // return ipcRenderer.sendSync("show-open-dialog", options);
+    return ipcRenderer.invoke("show-open-dialog", options);
   }
 
   /**
@@ -749,9 +755,9 @@ class DialogManager {
    * @param {string} title
    * @param {string} defaultPath
    * @param {Array<{name:string, extensions:string[]}>} filters
-   * @return {string} filename or null
+   * @return {Promise<string>} filename or null
    */
-  showSaveDialog(title, defaultPath, filters = DEFAULT_FILE_FILTERS) {
+  async showSaveDialog(title, defaultPath, filters = DEFAULT_FILE_FILTERS) {
     const options = {
       title: title,
       filters: filters,
@@ -759,7 +765,8 @@ class DialogManager {
     if (defaultPath) {
       options.defaultPath = defaultPath;
     }
-    return ipcRenderer.sendSync("show-save-dialog", options);
+    // return ipcRenderer.sendSync("show-save-dialog", options);
+    return ipcRenderer.invoke("show-save-dialog", options);
   }
 
   /**

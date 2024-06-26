@@ -12,79 +12,78 @@
  *
  */
 
-const _ = require('lodash')
-const path = require('path')
-const { EventEmitter } = require('events')
-const Window = require('./window')
-const ApplicationMenu = require('./application-menu')
-const ContextMenu = require('./context-menu')
-const electron = require('electron')
-const app = electron.app
-const autoUpdater = require('electron-updater').autoUpdater
-const BrowserWindow = electron.BrowserWindow
-const ipcMain = electron.ipcMain
-const MetadataManager = require('./metadata-manager')
-const ExtensionLoader = require('../extensibility/extension-loader')
-const packageJSON = require('../../package.json')
+const _ = require("lodash");
+const path = require("path");
+const { EventEmitter } = require("events");
+const Window = require("./window");
+const ApplicationMenu = require("./application-menu");
+const ContextMenu = require("./context-menu");
+const electron = require("electron");
+const app = electron.app;
+const autoUpdater = require("electron-updater").autoUpdater;
+const BrowserWindow = electron.BrowserWindow;
+const ipcMain = electron.ipcMain;
+const MetadataManager = require("./metadata-manager");
+const ExtensionLoader = require("../extensibility/extension-loader");
+const packageJSON = require("../../package.json");
 
-autoUpdater.setFeedURL('https://update.staruml.io/releases-v6')
+autoUpdater.setFeedURL("https://update.staruml.io/releases-v6");
 
 /**
  * Application
  */
 class Application extends EventEmitter {
-
-  constructor () {
-    super()
+  constructor() {
+    super();
 
     /**
      * @member {boolean}
      */
-    this.cliMode = false
+    this.cliMode = false;
 
     /**
      * @member {Array<Window>}
      */
-    this.windows = []
+    this.windows = [];
 
     /**
      * @member {ApplicationMenu}
      */
-    this.applicationMenu = new ApplicationMenu()
+    this.applicationMenu = new ApplicationMenu();
 
     /**
      * @member {ContextMenu}
      */
-    this.contextMenu = new ContextMenu()
+    this.contextMenu = new ContextMenu();
 
     /**
      * @member {MetadataManager}
      */
-    this.metadata = new MetadataManager()
-    global.app = this.metadata
+    this.metadata = new MetadataManager();
+    global.app = this.metadata;
     // load default elements
-    require('../core/graphics')
-    require('../core/core')
+    require("../core/graphics");
+    require("../core/core");
     // load default metamodel
-    const metamodel = require('../../resources/default/metamodel.json')
-    this.metadata.metamodels.register(metamodel)
+    const metamodel = require("../../resources/default/metamodel.json");
+    this.metadata.metamodels.register(metamodel);
     // load default rules
-    require('../../resources/default/rules')
+    require("../../resources/default/rules");
 
     /**
      * @member {Object}
      * .state = 'no-update' | 'available' | 'ready'
      */
     this.autoUpdateInfo = {
-      state: 'no-update',
+      state: "no-update",
       showDialog: false,
-      release: null
-    }
+      release: null,
+    };
 
-    this.loadExtensions()
-    this.handleCommands()
-    this.handleMessages()
-    this.handleEvents()
+    this.loadExtensions();
+    this.handleCommands();
+    this.handleMessages();
+    this.handleEvents();
   }
 
   /**
@@ -92,8 +91,8 @@ class Application extends EventEmitter {
    *
    * @param {Window} window
    */
-  addWindow (window) {
-    this.windows.push(window)
+  addWindow(window) {
+    this.windows.push(window);
   }
 
   /**
@@ -101,16 +100,20 @@ class Application extends EventEmitter {
    *
    * @param {Window} window
    */
-  removeWindow (window) {
+  removeWindow(window) {
     if (this.windows.indexOf(window) > -1) {
-      this.windows.splice(this.windows.indexOf(window), 1)
+      this.windows.splice(this.windows.indexOf(window), 1);
     }
     // FIXME: This is a temporal solution for #218
     if (this.windows.length === 0) {
-      this.applicationMenu.updateStates({}, {
-        'debug.show-devtools': false,
-        'debug.reload': false
-      }, {})
+      this.applicationMenu.updateStates(
+        {},
+        {
+          "debug.show-devtools": false,
+          "debug.reload": false,
+        },
+        {},
+      );
     }
   }
 
@@ -122,11 +125,11 @@ class Application extends EventEmitter {
    * @param {Object} options
    * @return {Window}
    */
-  openWindow (options) {
-    options = options || {}
-    let window = new Window(options)
-    this.addWindow(window)
-    return window
+  openWindow(options) {
+    options = options || {};
+    let window = new Window(options);
+    this.addWindow(window);
+    return window;
   }
 
   /**
@@ -134,8 +137,10 @@ class Application extends EventEmitter {
    *
    * @return {Window}
    */
-  focusedWindow () {
-    return _.find(this.windows, (win) => { return win.isFocused() })
+  focusedWindow() {
+    return _.find(this.windows, (win) => {
+      return win.isFocused();
+    });
   }
 
   /**
@@ -143,8 +148,10 @@ class Application extends EventEmitter {
    * @param {BrowserWindow} browserWindow
    * @return {Window}
    */
-  getWindow (browserWindow) {
-    return _.find(this.windows, (win) => { return win.browserWindow === browserWindow })
+  getWindow(browserWindow) {
+    return _.find(this.windows, (win) => {
+      return win.browserWindow === browserWindow;
+    });
   }
 
   /**
@@ -152,21 +159,30 @@ class Application extends EventEmitter {
    *
    * @param {string} command
    */
-  sendCommand (command, ...args) {
+  sendCommand(command, ...args) {
     if (!this.emit(command, ...args)) {
-      const focusedWindow = this.focusedWindow()
+      const focusedWindow = this.focusedWindow();
       if (focusedWindow) {
-        focusedWindow.sendCommand(command, ...args)
-      } else { // no open window
+        focusedWindow.sendCommand(command, ...args);
+      } else {
+        // no open window
         // FIXME: This is a temporal solution for #218
-        if (command === 'project:open-recent') {
-          this.openWindow({fileToOpen: args[0]})
-        } else if (command === 'uml:new-from-template') {
-          const fullPath = path.join(electron.app.getAppPath(), 'extensions/essential/uml', args[0])
-          this.openWindow({fileToOpen: fullPath})
-        } else if (command === 'erd:new-from-template') {
-          const fullPath = path.join(electron.app.getAppPath(), 'extensions/essential/erd', args[0])
-          this.openWindow({fileToOpen: fullPath})
+        if (command === "project:open-recent") {
+          this.openWindow({ fileToOpen: args[0] });
+        } else if (command === "uml:new-from-template") {
+          const fullPath = path.join(
+            electron.app.getAppPath(),
+            "extensions/essential/uml",
+            args[0],
+          );
+          this.openWindow({ fileToOpen: fullPath });
+        } else if (command === "erd:new-from-template") {
+          const fullPath = path.join(
+            electron.app.getAppPath(),
+            "extensions/essential/erd",
+            args[0],
+          );
+          this.openWindow({ fileToOpen: fullPath });
         }
       }
     }
@@ -177,11 +193,11 @@ class Application extends EventEmitter {
    *
    * @param {string} command
    */
-  sendCommandToAll (command, ...args) {
+  sendCommandToAll(command, ...args) {
     if (!this.emit(command, ...args)) {
-      this.windows.forEach(win => {
-        win.sendCommand(command, ...args)
-      })
+      this.windows.forEach((win) => {
+        win.sendCommand(command, ...args);
+      });
     }
   }
 
@@ -190,216 +206,241 @@ class Application extends EventEmitter {
    *
    * @param {string} channel
    */
-  sendMessageToAll (channel, ...args) {
-    this.windows.forEach(win => {
-      win.sendMessage(channel, ...args)
-    })
+  sendMessageToAll(channel, ...args) {
+    this.windows.forEach((win) => {
+      win.sendMessage(channel, ...args);
+    });
   }
 
   /**
    * Load extensions
    */
-  loadExtensions () {
-    const extensionLoader = new ExtensionLoader()
-    const paths = ['essential', 'default', 'dev', extensionLoader.getUserExtensionPath()]
-    const features = ['metamodel', 'elements', 'rules']
-    extensionLoader.init(paths, features)
+  loadExtensions() {
+    const extensionLoader = new ExtensionLoader();
+    const paths = [
+      "essential",
+      "default",
+      "dev",
+      extensionLoader.getUserExtensionPath(),
+    ];
+    const features = ["metamodel", "elements", "rules"];
+    extensionLoader.init(paths, features);
   }
 
   /**
    * Handle commands triggered by menu items
    */
-  handleCommands () {
+  handleCommands() {
     // Handle commands at main process level
-    this.on('application:quit', () => {
-      global.app.quit()
-    })
-    this.on('application:new', () => {
-      this.openWindow()
-    })
-    this.on('application:new-from-template', (arg) => {
+    this.on("application:quit", () => {
+      global.app.quit();
+    });
+    this.on("application:new", () => {
+      this.openWindow();
+    });
+    this.on("application:new-from-template", (arg) => {
       if (arg) {
-        this.openWindow({template: arg})
+        this.openWindow({ template: arg });
       }
-    })
-    this.on('application:open', (arg) => {
-      var options = {}
-      options.fileToOpen = arg
-      this.openWindow(options)
-    })
+    });
+    this.on("application:open", (arg) => {
+      var options = {};
+      options.fileToOpen = arg;
+      this.openWindow(options);
+    });
 
     if (!packageJSON.config.setappBuild) {
-      this.on('application:check-for-updates', (arg) => {
-        autoUpdater.checkForUpdatesAndNotify()
-      })
-      this.on('application:install-and-restart', (arg) => {
-        autoUpdater.quitAndInstall(false, true)
-      })
+      this.on("application:check-for-updates", (arg) => {
+        autoUpdater.checkForUpdatesAndNotify();
+      });
+      this.on("application:install-and-restart", (arg) => {
+        autoUpdater.quitAndInstall(false, true);
+      });
     }
   }
 
   /**
    * Handle messages from renderer processes.
    */
-  handleMessages () {
-    ipcMain.on('setup-application-menu', (event, template, keystrokesByCommand) => {
-      this.applicationMenu.setup(template, keystrokesByCommand)
-    })
+  handleMessages() {
+    ipcMain.on(
+      "setup-application-menu",
+      (event, template, keystrokesByCommand) => {
+        this.applicationMenu.setup(template, keystrokesByCommand);
+      },
+    );
 
-    ipcMain.on('setup-context-menu', (event, templatesBySelector, keystrokesByCommand) => {
-      this.contextMenu.setup(templatesBySelector, keystrokesByCommand)
-    })
+    ipcMain.on(
+      "setup-context-menu",
+      (event, templatesBySelector, keystrokesByCommand) => {
+        this.contextMenu.setup(templatesBySelector, keystrokesByCommand);
+      },
+    );
 
-    ipcMain.on('popup-context-menu', (event, selector) => {
-      this.contextMenu.popup(selector)
-    })
+    ipcMain.on("popup-context-menu", (event, selector) => {
+      this.contextMenu.popup(selector);
+    });
 
-    ipcMain.on('update-menu-states', (event, visibleStates, enabledStates, checkedStates) => {
-      this.applicationMenu.updateStates(visibleStates, enabledStates, checkedStates)
-      this.contextMenu.updateStates(visibleStates, enabledStates, checkedStates)
-    })
+    ipcMain.on(
+      "update-menu-states",
+      (event, visibleStates, enabledStates, checkedStates) => {
+        this.applicationMenu.updateStates(
+          visibleStates,
+          enabledStates,
+          checkedStates,
+        );
+        this.contextMenu.updateStates(
+          visibleStates,
+          enabledStates,
+          checkedStates,
+        );
+      },
+    );
 
     if (!packageJSON.config.setappBuild) {
-      ipcMain.on('check-update', (event) => {
+      ipcMain.on("check-update", (event) => {
         if (!global.application.cliMode) {
-          autoUpdater.checkForUpdatesAndNotify()
+          autoUpdater.checkForUpdatesAndNotify();
         }
-      })
+      });
     }
 
-    ipcMain.on('validate', (event, filename) => {
-      this.metadata.loadFromFile(filename)
-      const errors = this.metadata.validate()
-      event.sender.send('validation-result', errors)
-    })
+    ipcMain.on("validate", (event, filename) => {
+      this.metadata.loadFromFile(filename);
+      const errors = this.metadata.validate();
+      event.sender.send("validation-result", errors);
+    });
 
-    ipcMain.on('command', (event, command, ...args) => {
-      this.emit(command, ...args)
-    })
+    ipcMain.on("command", (event, command, ...args) => {
+      this.emit(command, ...args);
+    });
 
-    ipcMain.on('close-window', (event) => {
-      const window = BrowserWindow.fromWebContents(event.sender)
-      window.close()
-    })
+    ipcMain.on("close-window", (event) => {
+      const window = BrowserWindow.fromWebContents(event.sender);
+      window.close();
+    });
 
-    ipcMain.on('modified-change', (event, modified) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.on("modified-change", (event, modified) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
       if (win) {
-        const window = this.getWindow(win)
-        window.setModified(modified)
+        const window = this.getWindow(win);
+        window.setModified(modified);
       }
-    })
+    });
 
-    ipcMain.on('relaunch', (event) => {
-      app.relaunch()
-    })
+    ipcMain.on("relaunch", (event) => {
+      app.relaunch();
+    });
 
-    ipcMain.on('quit', (event) => {
-      app.quit()
-    })
+    ipcMain.on("quit", (event) => {
+      app.quit();
+    });
 
-    ipcMain.on('web-contents:undo', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.undo()
-    })
+    ipcMain.on("web-contents:undo", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.undo();
+    });
 
-    ipcMain.on('web-contents:redo', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.redo()
-    })
+    ipcMain.on("web-contents:redo", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.redo();
+    });
 
-    ipcMain.on('web-contents:cut', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.cut()
-    })
+    ipcMain.on("web-contents:cut", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.cut();
+    });
 
-    ipcMain.on('web-contents:copy', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.copy()
-    })
+    ipcMain.on("web-contents:copy", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.copy();
+    });
 
-    ipcMain.on('web-contents:paste', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.paste()
-    })
+    ipcMain.on("web-contents:paste", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.paste();
+    });
 
-    ipcMain.on('web-contents:reload', (event) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.reload()
-    })
+    ipcMain.on("web-contents:reload", (event) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.reload();
+    });
 
-    ipcMain.on('web-contents:open-dev-tools', (event, options) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      win.webContents.openDevTools(options)
-    })
+    ipcMain.on("web-contents:open-dev-tools", (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      win.webContents.openDevTools(options);
+    });
 
-    ipcMain.on('show-open-dialog', (event, options) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      event.returnValue = electron.dialog.showOpenDialogSync(win, options)
-    })
+    ipcMain.on("show-message-box", (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      event.returnValue = electron.dialog.showMessageBoxSync(win, options);
+    });
 
-    ipcMain.on('show-save-dialog', (event, options) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      event.returnValue = electron.dialog.showSaveDialogSync(win, options)
-    })
+    ipcMain.on("show-error-box", (event, title, content) => {
+      event.returnValue = electron.dialog.showErrorBox(title, content);
+    });
 
-    ipcMain.on('show-message-box', (event, options) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
-      event.returnValue = electron.dialog.showMessageBoxSync(win, options)
-    })
+    ipcMain.on("get-app-path", (event) => {
+      event.returnValue = app.getAppPath();
+    });
 
-    ipcMain.on('show-error-box', (event, title, content) => {
-      event.returnValue = electron.dialog.showErrorBox(title, content)
-    })
+    ipcMain.on("get-user-path", (event) => {
+      event.returnValue = app.getPath("userData");
+    });
 
-    ipcMain.on('get-app-path', (event) => {
-      event.returnValue = app.getAppPath()
-    })
-
-    ipcMain.on('get-user-path', (event) => {
-      event.returnValue = app.getPath('userData')
-    })
-
-    ipcMain.on('console-log', (event, ...args) => {
-      console.log(...args)
-    })
+    ipcMain.on("console-log", (event, ...args) => {
+      console.log(...args);
+    });
 
     // Propagated events triggered in a window process
-    ipcMain.on('window-event-propagate', (event, eventName, ...args) => {
-      const window = BrowserWindow.fromWebContents(event.sender)
-      window.emit(eventName, ...args)
-    })
+    ipcMain.on("window-event-propagate", (event, eventName, ...args) => {
+      const window = BrowserWindow.fromWebContents(event.sender);
+      window.emit(eventName, ...args);
+    });
 
-    ipcMain.on('update-touchbar', (event, states) => {
-      const win = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.on("update-touchbar", (event, states) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
       if (win) {
-        const window = this.getWindow(win)
-        window.touchbar.updateStates(states)
+        const window = this.getWindow(win);
+        window.touchbar.updateStates(states);
       }
-    })
+    });
+
+    // handle invoke calls
+
+    ipcMain.handle("show-open-dialog", async (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      const returnValue = await electron.dialog.showOpenDialog(win, options);
+      return returnValue.canceled ? [] : returnValue.filePaths;
+    });
+
+    ipcMain.handle("show-save-dialog", async (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      const resultValue = await electron.dialog.showSaveDialog(win, options);
+      return resultValue.canceled ? null : resultValue.filePath;
+    });
   }
 
-  handleEvents () {
+  handleEvents() {
     if (!packageJSON.config.setappBuild) {
       // Forward autoUpdate events to all app.updateManager(s) in renderer processes.
-      autoUpdater.on('error', (err) => {
-        this.sendMessageToAll('autoUpdater:error', err)
-      })
-      autoUpdater.on('update-available', (info) => {
-        this.sendMessageToAll('autoUpdater:update-available', info)
-      })
-      autoUpdater.on('update-not-available', (info) => {
-        this.sendMessageToAll('autoUpdater:update-not-available', info)
-      })
-      autoUpdater.on('download-progress', (info) => {
-        this.sendMessageToAll('autoUpdater:download-progress', info)
-      })
-      autoUpdater.on('update-downloaded', (info) => {
-        this.sendMessageToAll('autoUpdater:update-downloaded', info)
-      })
+      autoUpdater.on("error", (err) => {
+        this.sendMessageToAll("autoUpdater:error", err);
+      });
+      autoUpdater.on("update-available", (info) => {
+        this.sendMessageToAll("autoUpdater:update-available", info);
+      });
+      autoUpdater.on("update-not-available", (info) => {
+        this.sendMessageToAll("autoUpdater:update-not-available", info);
+      });
+      autoUpdater.on("download-progress", (info) => {
+        this.sendMessageToAll("autoUpdater:download-progress", info);
+      });
+      autoUpdater.on("update-downloaded", (info) => {
+        this.sendMessageToAll("autoUpdater:update-downloaded", info);
+      });
     }
   }
-
 }
 
-module.exports = Application
+module.exports = Application;
