@@ -1135,8 +1135,9 @@ function handleEnterLicenseKey() {
   if (app.licenseManager.getStatus() === true) {
     app.dialogs.showInfoDialog("You already have a valid license.");
   } else {
-    EnterLicenseDialog.showDialog();
+    return EnterLicenseDialog.showDialog();
   }
+  return undefined;
 }
 
 function handleDeleteLicenseKey() {
@@ -1239,6 +1240,8 @@ function handleCLIImage(format, selector, output) {
           break;
         case "svg":
           DiagramExport.exportToSVG(diagram, filePath);
+          break;
+        default:
           break;
       }
       ipcRenderer.send("console-log", `[StarUML] ${filePath}`);

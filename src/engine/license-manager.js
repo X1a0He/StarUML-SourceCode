@@ -17,8 +17,9 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const UnregisteredDialog = require("../dialogs/unregistered-dialog");
-const SK = "DF9B72CC966FBE3A46F99858C5AEE";
 const packageJSON = require("../../package.json");
+
+const SK = "DF9B72CC966FBE3A46F99858C5AEE";
 
 // Check License When File Save
 const LICENSE_CHECK_PROBABILITY = 0.3;
@@ -138,8 +139,8 @@ class LicenseManager extends EventEmitter {
               $.post(app.config.validation_url, {
                 licenseKey: licenseInfo.licenseKey,
               })
-                .done((data) => {
-                  resolve(data);
+                .done((data1) => {
+                  resolve(data1);
                 })
                 .fail((err) => {
                   if (err && err.status === 499) {
@@ -159,19 +160,45 @@ class LicenseManager extends EventEmitter {
     });
   }
 
-  checkLicenseValidity() {
+  /**
+   * Return evaluation period status
+   * @private
+   * @return {number} Remaining days
+   */
+  checkEvaluationPeriod() {
+    const file = path.join(window.app.getUserPath(), "lib.so");
+    if (!fs.existsSync(file)) {
+      const timestamp = Date.now();
+      fs.writeFileSync(file, timestamp.toString());
+    }
+    try {
+      const timestamp = parseInt(fs.readFileSync(file, "utf8"));
+      const now = Date.now();
+      const remains =
+        30 - Math.floor((now - timestamp) / (1000 * 60 * 60 * 24));
+      return remains;
+    } catch (err) {
+      console.error(err);
+    }
+    return -1; // expired
+  }
+
+  async checkLicenseValidity() {
     if (packageJSON.config.setappBuild) {
       setStatus(this, true);
     } else {
-      this.validate().then(
-        () => {
-          setStatus(this, true);
-        },
-        () => {
-          setStatus(this, false);
-          UnregisteredDialog.showDialog();
-        },
-      );
+      try {
+        const result = await this.validate();
+        setStatus(this, true);
+      } catch (err) {
+        const remains = this.checkEvaluationPeriod();
+        const isExpired = remains < 0;
+        const result = await UnregisteredDialog.showDialog(remains);
+        setStatus(this, false);
+        if (isExpired) {
+          app.quit();
+        }
+      }
     }
   }
 
@@ -207,14 +234,7 @@ class LicenseManager extends EventEmitter {
     });
   }
 
-  htmlReady() {
-    this.projectManager.on("projectSaved", (filename, project) => {
-      var val = Math.floor(Math.random() * (1.0 / LICENSE_CHECK_PROBABILITY));
-      if (val === 0) {
-        this.checkLicenseValidity();
-      }
-    });
-  }
+  htmlReady() {}
 
   appReady() {
     this.checkLicenseValidity();

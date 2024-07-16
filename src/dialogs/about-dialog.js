@@ -61,12 +61,15 @@ function showDialog() {
       case "PRO":
         licenseTypeName = "Professional Edition";
         break;
+      default:
+        break;
     }
     $license.html(info.name);
     $licenseType.html(licenseTypeName);
     $quantity.html(info.quantity + " User(s)");
   } else {
-    $license.html("UNREGISTERED");
+    $licenseToLabel.remove();
+    $license.html("(Evaluation mode)");
   }
   return dialog;
 }

@@ -12,8 +12,6 @@
  *
  */
 
-/* global app */
-
 const _ = require("lodash");
 const URL = require("url");
 const fs = require("fs");
@@ -552,10 +550,12 @@ class AppContext extends EventEmitter {
           return false;
         };
     document.ondrop = (e) => {
+      // eslint-disable-next-line no-restricted-globals
       event.stopPropagation();
+      // eslint-disable-next-line no-restricted-globals
       event.preventDefault();
       const files = e.dataTransfer.files;
-      for (let f of files) {
+      for (const f of files) {
         if (path.extname(f.path).toLowerCase() === Constants.APP_EXT) {
           this.commands.execute("project:open", f.path);
         }
@@ -757,17 +757,17 @@ class AppContext extends EventEmitter {
     this.htmlReady();
 
     // load keymaps
-    let keys = require(`../resources/default/keymaps/${process.platform}.json`);
+    const keys = require(`../resources/default/keymaps/${process.platform}.json`);
     this.keymaps.add(keys);
     // load menus
-    let menus = require(`../resources/default/menus/${process.platform}.json`);
-    this.menu.add(menus["menu"]);
+    const menus = require(`../resources/default/menus/${process.platform}.json`);
+    this.menu.add(menus.menu);
     this.contextMenu.add(menus["context-menu"]);
     // load preferences
-    let prefs = require("../resources/default/preferences/default.json");
+    const prefs = require("../resources/default/preferences/default.json");
     this.preferences.register(prefs);
     // load core metamodel
-    let coreMetamodel = require("../resources/default/metamodel.json");
+    const coreMetamodel = require("../resources/default/metamodel.json");
     this.metamodels.register(coreMetamodel);
 
     $(window.document).ready(() => {
@@ -846,7 +846,7 @@ class AppContext extends EventEmitter {
           // update ModelExplorer
           this.modelExplorer.update(elem);
           // update Relations of elem in ModelExplorer
-          let relations = this.repository.getRelationshipsOf(elem);
+          const relations = this.repository.getRelationshipsOf(elem);
           if (relations.length > 0) {
             relations.forEach((rel) => {
               this.modelExplorer.update(rel);
@@ -1483,6 +1483,8 @@ class AppContext extends EventEmitter {
             // THIS IS DUPLICATION OF SHORTCUT WITH MENU
           }
           break;
+        default:
+          break;
       }
     });
   }
@@ -1531,6 +1533,14 @@ class AppContext extends EventEmitter {
         }
       }
     }, AUTO_BACKUP_INTERVAL);
+  }
+
+  relaunch() {
+    ipcRenderer.send("relaunch");
+  }
+
+  quit() {
+    ipcRenderer.send("quit");
   }
 }
 
