@@ -145,7 +145,7 @@ async function handleSave(fullPath, saveAs) {
       if (app.project.getFilename() && !saveAs) {
         return app.project.save(app.project.getFilename());
       } else {
-        var selectedPath = await app.dialogs.showSaveDialog(
+        var selectedPath = await app.dialogs.showSaveDialogAsync(
           "Save Project As",
           "Untitled" + Constants.APP_EXT,
           MODEL_FILE_FILTERS,
@@ -280,7 +280,7 @@ async function handleExportFragment(element, fullPath) {
     if (fullPath) {
       return doFileExportAsync(element, fullPath);
     }
-    let filename = await app.dialogs.showSaveDialog(
+    let filename = await app.dialogs.showSaveDialogAsync(
       Strings.EXPORT_MODEL_FRAGMENT,
       "Fragment" + Constants.FRAG_EXT,
       FRAGMENT_FILE_FILTERS,
@@ -307,7 +307,7 @@ async function handleExportFragment(element, fullPath) {
         .showDialog(Strings.SELECT_ELEMENT_TO_EXPORT, null, null)
         .getPromise();
       if (buttonId === "ok" && returnValue !== null) {
-        let filename = await app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialogAsync(
           Strings.EXPORT_MODEL_FRAGMENT,
           "Fragment" + Constants.FRAG_EXT,
           FRAGMENT_FILE_FILTERS,
@@ -357,7 +357,7 @@ async function handleExportDiagramToPNG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = await app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialogAsync(
           "Export Diagram as PNG",
           initialFilePath + ".png",
           PNG_FILE_FILTERS,
@@ -387,7 +387,7 @@ async function handleExportDiagramToJPEG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = await app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialogAsync(
           "Export Diagram as JPEG",
           initialFilePath + ".jpg",
           JPEG_FILE_FILTERS,
@@ -417,7 +417,7 @@ async function handleExportDiagramToSVG(diagram, fullPath) {
         var initialFilePath = filenamify(
           diagram.name.length > 0 ? diagram.name : "diagram",
         );
-        let filename = await app.dialogs.showSaveDialog(
+        let filename = await app.dialogs.showSaveDialogAsync(
           "Export Diagram as SVG",
           initialFilePath + ".svg",
           SVG_FILE_FILTERS,
@@ -543,7 +543,7 @@ async function handlePrintToPDF() {
     }
     if (diagrams.length > 0) {
       var fn = filenamify(app.project.getProject().name);
-      let filename = await app.dialogs.showSaveDialog(
+      let filename = await app.dialogs.showSaveDialogAsync(
         "Print to PDF",
         fn + ".pdf",
         PDF_FILE_FILTERS,
@@ -1150,7 +1150,6 @@ function handleDeleteLicenseKey() {
       fs.unlinkSync(path);
       app.licenseManager.checkLicenseValidity();
     }
-    app.dialogs;
   } else {
     app.dialogs.showInfoDialog("You don't have a valid license to delete.");
     var path2 = app.licenseManager.findLicense();

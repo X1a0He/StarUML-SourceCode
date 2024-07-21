@@ -371,6 +371,16 @@ class Application extends EventEmitter {
       win.webContents.openDevTools(options);
     });
 
+    ipcMain.on("show-open-dialog", (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      event.returnValue = electron.dialog.showOpenDialogSync(win, options);
+    });
+
+    ipcMain.on("show-save-dialog", (event, options) => {
+      const win = BrowserWindow.fromWebContents(event.sender);
+      event.returnValue = electron.dialog.showSaveDialogSync(win, options);
+    });
+
     ipcMain.on("show-message-box", (event, options) => {
       const win = BrowserWindow.fromWebContents(event.sender);
       event.returnValue = electron.dialog.showMessageBoxSync(win, options);
@@ -408,13 +418,13 @@ class Application extends EventEmitter {
 
     // handle invoke calls
 
-    ipcMain.handle("show-open-dialog", async (event, options) => {
+    ipcMain.handle("show-open-dialog-async", async (event, options) => {
       const win = BrowserWindow.fromWebContents(event.sender);
       const returnValue = await electron.dialog.showOpenDialog(win, options);
       return returnValue.canceled ? [] : returnValue.filePaths;
     });
 
-    ipcMain.handle("show-save-dialog", async (event, options) => {
+    ipcMain.handle("show-save-dialog-async", async (event, options) => {
       const win = BrowserWindow.fromWebContents(event.sender);
       const resultValue = await electron.dialog.showSaveDialog(win, options);
       return resultValue.canceled ? null : resultValue.filePath;
