@@ -29,6 +29,7 @@
   "ctrl-alt-b": "format:linestyle-curve",
   "ctrl-shift-r": "format:auto-resize",
   "ctrl-shift-h": "format:show-shadow",
+  "ctrl-shift-k": "format:inherit-style",
 
   "ctrl-t": "model:tag-editor",
 
@@ -44,6 +45,7 @@
   "ctrl-0": "view:actual-size",
   "ctrl-9": "view:fit-to-window",
   "ctrl-g": "view:show-grid",
+  "ctrl-shift-g": "view:snap-to-grid",
   "ctrl-1": "view:sidebar",
   "ctrl-2": "view:navigator",
   "ctrl-3": "view:toolbar",

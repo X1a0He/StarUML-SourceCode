@@ -29,6 +29,7 @@
   "cmd-alt-b": "format:linestyle-curve",
   "cmd-shift-r": "format:auto-resize",
   "cmd-shift-h": "format:show-shadow",
+  "cmd-shift-k": "format:inherit-style",
 
   "cmd-t": "model:tag-editor",
 
@@ -44,6 +45,7 @@
   "cmd-0": "view:actual-size",
   "cmd-9": "view:fit-to-window",
   "cmd-g": "view:show-grid",
+  "cmd-shift-g": "view:snap-to-grid",
   "cmd-1": "view:sidebar",
   "cmd-2": "view:navigator",
   "cmd-3": "view:toolbar",

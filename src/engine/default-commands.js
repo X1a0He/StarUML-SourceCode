@@ -999,6 +999,12 @@ function handleShowShadow() {
   app.engine.setElemsProperty(views, "showShadow", !showShadow);
 }
 
+function handleInheritStyle() {
+  var views = app.selections.getSelectedViews();
+  var inheritStyle = Element.mergeProps(views, "parentStyle");
+  app.engine.setElemsProperty(views, "parentStyle", !inheritStyle);
+}
+
 /*
  * View Command Handlers
  */
@@ -1171,10 +1177,6 @@ function handleReleaseNotes() {
   shell.openExternal(app.config.release_notes_url);
 }
 
-function handleRequestFeature() {
-  shell.openExternal(app.config.feature_request_url);
-}
-
 /*
  * CLI Command Handlers
  */
@@ -1329,6 +1331,7 @@ function updateMenus() {
     "format.linestyle.curve": views.length > 0,
     "format.auto-resize": views.length > 0,
     "format.show-shadow": views.length > 0,
+    "format.inherit-style": views.length > 0,
   };
 
   let lineStyle = Element.mergeProps(views, "lineStyle");
@@ -1339,6 +1342,7 @@ function updateMenus() {
     "format.linestyle.curve": lineStyle === EdgeView.LS_CURVE,
     "format.auto-resize": Element.mergeProps(views, "autoResize"),
     "format.show-shadow": Element.mergeProps(views, "showShadow"),
+    "format.inherit-style": Element.mergeProps(views, "parentStyle"),
     "view.show-grid": app.preferences.get("diagramEditor.showGrid"),
     "view.snap-to-grid": app.preferences.get("diagramEditor.snapToGrid"),
   };
@@ -1528,6 +1532,11 @@ app.commands.register(
   handleShowShadow,
   "Format: Show Shadow",
 );
+app.commands.register(
+  "format:inherit-style",
+  handleInheritStyle,
+  "Format: Inherit Style",
+);
 
 // Tools
 app.commands.register(
@@ -1622,11 +1631,6 @@ app.commands.register(
   "help:release-notes",
   handleReleaseNotes,
   "Help: Release Notes",
-);
-app.commands.register(
-  "help:request-feature",
-  handleRequestFeature,
-  "Help: Feature Request",
 );
 
 // CLI

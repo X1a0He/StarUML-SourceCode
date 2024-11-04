@@ -3788,7 +3788,11 @@ class UMLLifeline extends UMLMessageEndpoint {
     if (this.represent) {
       if (_.isString(this.represent.type) && this.represent.type.length > 0) {
         return this.represent.type;
-      } else if (this.represent.type !== null && this.represent.type.name) {
+      } else if (
+        this.represent.type !== null &&
+        typeof this.represent.type !== "undefined" &&
+        this.represent.type.name
+      ) {
         return this.represent.type.name;
       }
     }
@@ -14268,20 +14272,20 @@ class RectangleView extends ShapeView {
 class RoundRectView extends ShapeView {
   drawObject(canvas) {
     super.drawObject(canvas);
-    var r = Math.max(this.width, this.height);
+    var r = Math.min(this.width, this.height);
     canvas.fillRoundRect(
       this.left,
       this.top,
       this.getRight(),
       this.getBottom(),
-      r / 6,
+      r / 8,
     );
     canvas.roundRect(
       this.left,
       this.top,
       this.getRight(),
       this.getBottom(),
-      r / 6,
+      r / 8,
     );
   }
 }

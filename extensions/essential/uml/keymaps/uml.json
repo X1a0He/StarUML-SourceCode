@@ -11,7 +11,7 @@
   "cmdctrl-shift-b": "format:show-property",
   "cmdctrl-shift-y": "format:show-type",
   "cmdctrl-shift-m": "format:show-multiplicity",
-  "cmdctrl-shift-g": "format:show-operation-signature",
+  "cmdctrl-shift-j": "format:show-operation-signature",
   "cmdctrl-shift-a": "format:suppress-attributes",
   "cmdctrl-shift-o": "format:suppress-operations",
   "cmdctrl-shift-e": "format:suppress-receptions",

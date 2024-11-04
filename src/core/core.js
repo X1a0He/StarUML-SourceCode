@@ -1818,7 +1818,28 @@ class View extends Element {
    * @return {Rect}
    */
   getBoundingBox(canvas) {
-    return new Rect(-1, -1, 0, 0);
+    return new Rect(0, 0, 0, 0);
+  }
+
+  /**
+   * Return a bounding box including children.
+   * @private
+   *
+   * @param {Canvas} canvas
+   * @return {Rect}
+   */
+  getBoundingBoxWithChildren(canvas) {
+    if (this.visible) {
+      var r = this.getBoundingBox(canvas);
+      for (var i = 0, len = this.subViews.length; i < len; i++) {
+        var v = this.subViews[i];
+        if (v.visible) {
+          r.union(v.getBoundingBoxWithChildren(canvas));
+        }
+      }
+      return r;
+    }
+    return new Rect(0, 0, 0, 0);
   }
 
   /**
@@ -4102,10 +4123,21 @@ class Diagram extends ExtensibleModel {
       this.traverse((v) => {
         if (v !== this && v.visible) {
           const box = v.getBoundingBox(canvas);
-          if (box.x1 < -1000) console.log(v, box);
           r.union(box);
         }
       });
+      return r;
+    }
+    return new Rect(0, 0, 0, 0);
+  }
+
+  getBoundingBoxWithChildren(canvas) {
+    if (this.ownedViews.length > 0) {
+      let r = this.ownedViews[0].getBoundingBoxWithChildren(canvas);
+      for (var i = 1, len = this.ownedViews.length; i < len; i++) {
+        var v = this.ownedViews[i];
+        r.union(v.getBoundingBoxWithChildren(canvas));
+      }
       return r;
     }
     return new Rect(0, 0, 0, 0);

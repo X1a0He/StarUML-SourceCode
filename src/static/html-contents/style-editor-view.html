@@ -51,22 +51,28 @@
                 <td>
                     Color
                 </td>
-                <td>
-                    <span class="k-sprite staruml-icon icon-tool-fill-color" style="margin-right: 3px;"></span>
+                <td style="display: flex; gap: 0.5em; align-items: center;">
+                    <span class="k-sprite staruml-icon icon-tool-fill-color" style="min-width: 16px;"></span>
                     <div class="k-color-input-wrapper">
                         <div class="fill-color k-color-input small" title="Fill Color"></div>
                     </div>
-                    <span style="display: inline-block; width: 3px;"></span>
 
-                    <span class="k-sprite staruml-icon icon-tool-line-color" style="margin-right: 3px;"></span>
+                    <span class="k-sprite staruml-icon icon-tool-line-color" style="min-width: 16px;"></span>
                     <div class="k-color-input-wrapper">
                         <div class="line-color k-color-input small" title="Line Color"></div>
                     </div>
-                    <span style="display: inline-block; width: 3px;"></span>
 
-                    <span class="k-sprite staruml-icon icon-tool-font-color" style="margin-right: 3px;"></span>
+                    <span class="k-sprite staruml-icon icon-tool-font-color" style="min-width: 16px;"></span>
                     <div class="k-color-input-wrapper">
                         <div class="font-color k-color-input small" title="Text Color"></div>
+                    </div>
+
+                    <div style="display: inline-flex; align-items: center; gap: .5em; margin-left: .3em;">
+                        <label class="k-checkbox">
+                            <input type="checkbox" class="inherit-style">
+                            <div class="k-checkbox__checkmark"></div>
+                        </label>
+                        <div>Inherit</div>
                     </div>
                 </td>
             </tr>

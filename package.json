@@ -1,7 +1,7 @@
 {
   "name": "StarUML",
-  "version": "6.2.2",
-  "apiVersion": "6.2.2",
+  "version": "6.3.0",
+  "apiVersion": "6.3.0",
   "description": "A sophisticated software modeler",
   "copyright": "Copyright© MKLabs Co.,Ltd.",
   "homepage": "https://staruml.io",
@@ -19,7 +19,6 @@
     "documentation_url": "https://docs.staruml.io",
     "forum_url": "https://groups.google.com/forum/#!forum/staruml",
     "release_notes_url": "https://staruml.io/download",
-    "feature_request_url": "https://staruml.uservoice.com",
     "thirdparty_licenses_url": "https://staruml.io/thirdparty",
     "defaultTemplate": "Default.mdj",
     "extension_registry": "https://staruml.io/api/extensions/registry.json",

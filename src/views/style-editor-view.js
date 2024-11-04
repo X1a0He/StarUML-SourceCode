@@ -40,6 +40,7 @@ class StyleEditorView extends EventEmitter {
     this.$lineColor = null;
     this.$fontColor = null;
     this.$lineStyleRadio = null;
+    this.$inheritStyleCheckbox = null;
 
     this.$lineModeWrapper = null;
     this.$lineModeRadio = null;
@@ -103,6 +104,7 @@ class StyleEditorView extends EventEmitter {
     this.$lineColor = this.$view.find(".line-color");
     this.$fontColor = this.$view.find(".font-color");
     this.$lineStyleRadio = $("input[name='line-style']", this.$view);
+    this.$inheritStyleCheckbox = $("input.inherit-style", this.$view);
 
     this.$lineModeWrapper = $(".style-editor-line-mode", this.$view);
     this.$lineModeRadio = $("input[name='line-mode']", this.$view);
@@ -267,6 +269,16 @@ class StyleEditorView extends EventEmitter {
           );
         }
       });
+    });
+
+    // Inherit Style
+    self.$inheritStyleCheckbox.change(function () {
+      self.emit(
+        "styleChanged",
+        self._views,
+        "parentStyle",
+        self.$inheritStyleCheckbox.is(":checked"),
+      );
     });
 
     // Line Style
@@ -572,6 +584,14 @@ class StyleEditorView extends EventEmitter {
     }
   }
 
+  _setInheritStyle(inheritStyle) {
+    if (_.isBoolean(inheritStyle)) {
+      this.$inheritStyleCheckbox.prop("checked", inheritStyle);
+    } else {
+      this.$inheritStyleCheckbox.prop("checked", false);
+    }
+  }
+
   _setLineStyle(lineStyle) {
     if (_.isNumber(lineStyle)) {
       this.$lineStyleRadio.val([lineStyle]);
@@ -647,6 +667,7 @@ class StyleEditorView extends EventEmitter {
       var fillColor = Element.mergeProps(views, "fillColor");
       var lineColor = Element.mergeProps(views, "lineColor");
       var fontColor = Element.mergeProps(views, "fontColor");
+      var inheritStyle = Element.mergeProps(views, "parentStyle");
       var lineStyle = Element.mergeProps(views, "lineStyle");
       var lineMode = Element.mergeProps(views, "lineMode");
       var tailEndStyle = Element.mergeProps(views, "tailEndStyle");
@@ -672,6 +693,7 @@ class StyleEditorView extends EventEmitter {
       this._setFillColor(fillColor);
       this._setLineColor(lineColor);
       this._setFontColor(fontColor);
+      this._setInheritStyle(inheritStyle);
       this._setLineStyle(lineStyle);
       this._setLineMode(lineMode);
       this._setTailEndStyle(tailEndStyle);

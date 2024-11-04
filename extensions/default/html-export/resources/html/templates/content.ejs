@@ -54,10 +54,17 @@
         <h3>Diagram</h3>
         <img src="<%= toDiagram(element) %>" usemap="#<%= toFilename(element) %>">
         <map name="<%= toFilename(element) %>">
-          <% for (var i = 0, len = element.ownedViews.length; i < len; i++) { %>
-            <% let v = element.ownedViews[len - i - 1]; %>
+          <% var sortedViews = _.sortBy(element.ownedViews, function (v) {
+            return v.zIndex;
+          }); %>
+          <% for (var i = 0, len = sortedViews.length; i < len; i++) { %>
+            <% let v = sortedViews[len - i - 1]; %>
             <% if (v instanceof type.NodeView && v.model instanceof type.Model) { %>
           <area shape="rect" coords="<%=v.left - origX%>,<%=v.top - origY%>,<%=v.right - origX%>,<%=v.bottom - origY%>" href="<%= toUrl(v.model)%>">  
+            <% } %>
+            <% if (v instanceof type.EdgeView && v.model instanceof type.Model) { %>
+              <% let b = v.getBoundingBox(); %>
+              <area shape="rect" coords="<%=b.x1 - origX%>,<%=b.y1 - origY%>,<%=b.x2 - origX%>,<%=b.y2 - origY%>" href="<%= toUrl(v.model)%>">
             <% } %>
           <% } %>
         </map>
@@ -652,6 +659,12 @@
       <% var title = "Owned Elements", list = element.ownedElements || []; %>
       <%- include('list', { title: title, list: list }) %>
 
+      <!-- Diagrams -->
+      <% if (!(element instanceof type.Diagram)) { %>
+      <% var title = "Diagrams", list = [...new Set(app.repository.getViewsOf(element).map((v) => v.getDiagram()))]; %>
+      <%- include('list', { title: title, list: list }) %>
+      <% } %>
+      
       <!-- Image Map Resizer (https://github.com/davidjbradshaw/image-map-resizer) -->
       <script>
       imageMapResize();

@@ -183,9 +183,7 @@
       {
         "name": "parentStyle",
         "kind": "prim",
-        "type": "Boolean",
-        "default": false,
-        "transient": true
+        "type": "Boolean"
       },
       {
         "name": "showShadow",

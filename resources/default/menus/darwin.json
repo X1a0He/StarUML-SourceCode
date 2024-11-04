@@ -220,6 +220,12 @@
           "id": "format.show-shadow",
           "type": "checkbox",
           "command": "format:show-shadow"
+        },
+        {
+          "label": "Inherit Style",
+          "id": "format.inherit-style",
+          "type": "checkbox",
+          "command": "format:inherit-style"
         }
       ]
     },
@@ -401,12 +407,7 @@
           "id": "help.documentation",
           "command": "help:documentation"
         },
-        { "label": "Forum...", "id": "help.forum", "command": "help:forum" },
-        {
-          "label": "Request Feature...",
-          "id": "help.request-feature",
-          "command": "help:request-feature"
-        }
+        { "label": "Forum...", "id": "help.forum", "command": "help:forum" }
       ]
     }
   ],
@@ -476,6 +477,12 @@
             "id": "format.show-shadow",
             "type": "checkbox",
             "command": "format:show-shadow"
+          },
+          {
+            "label": "Inherit Style",
+            "id": "format.inherit-style",
+            "type": "checkbox",
+            "command": "format:inherit-style"
           }
         ]
       },

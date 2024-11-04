@@ -20,6 +20,16 @@
                             typeMap[ty] = [e];
                         }
                     }
+                    // tags in diagram are not traversed by default
+                    if (e instanceof type.Diagram) {
+                        e.tags.forEach(function (t) {
+                            if (typeMap['Tag']) {
+                                typeMap['Tag'].push(t);
+                            } else {
+                                typeMap['Tag'] = [t];
+                            }
+                        });
+                    }
                 });
                 var types = _.keys(typeMap).sort();
             %>

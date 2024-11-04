@@ -46,7 +46,7 @@ function getImageData(diagram, type) {
   // Make a new canvas element for making image data
   var canvasElement = document.createElement("canvas");
   var canvas = new Canvas(canvasElement.getContext("2d"));
-  var boundingBox = diagram.getBoundingBox(canvas);
+  var boundingBox = diagram.getBoundingBoxWithChildren(canvas);
 
   // Initialize new canvas
   boundingBox.expand(BOUNDING_BOX_EXPAND);
@@ -114,7 +114,7 @@ function getImageData(diagram, type) {
  * @return {string}
  */
 function getSVGImageData(diagram) {
-  const boundingBox = diagram.getBoundingBox(canvas);
+  const boundingBox = diagram.getBoundingBoxWithChildren(canvas);
   boundingBox.expand(BOUNDING_BOX_EXPAND);
   const w = boundingBox.getWidth();
   const h = boundingBox.getHeight();
