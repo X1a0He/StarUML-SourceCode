@@ -16,6 +16,7 @@ global.meta = {};
 global.type = {};
 global.rules = [];
 
+// eslint-disable-next-line dot-notation
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 const AppContext = require("./app-context");

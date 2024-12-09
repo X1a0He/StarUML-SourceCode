@@ -37,6 +37,52 @@ const PDF_DEFAULT_ZOOM = 1; // Default Zoom Level
 
 /**
  * @private
+ * SVGCanavas for SVG Export
+ */
+class SVGCanvas extends Canvas {
+  /**
+   * To embed svg image in the exported svg file, we need to convert the svg image to base64
+   */
+  drawImage(image, x, y, w, h) {
+    this.transform();
+    if (
+      typeof image.src === "string" &&
+      image.src.toLowerCase().startsWith("file://")
+    ) {
+      if (image.src.toLowerCase().endsWith(".svg")) {
+        const filePath = image.src.substring(7);
+        if (fs.existsSync(filePath)) {
+          const svgString = fs.readFileSync(filePath, "utf8");
+          const base64Svg = btoa(unescape(encodeURIComponent(svgString)));
+          const data = `data:image/svg+xml;base64,${base64Svg}`;
+          const img = new Image();
+          img.src = data;
+          img.width = image.width;
+          img.height = image.height;
+          this.context.drawImage(img, x, y, w, h);
+        }
+      } else if (image.src.toLowerCase().endsWith(".png")) {
+        const filePath = image.src.substring(7);
+        if (fs.existsSync(filePath)) {
+          const pngBuffer = fs.readFileSync(filePath);
+          const base64String = pngBuffer.toString("base64");
+          const data = `data:image/png;base64,${base64String}`;
+          const img = new Image();
+          img.src = data;
+          img.width = image.width;
+          img.height = image.height;
+          this.context.drawImage(img, x, y, w, h);
+        }
+      }
+    } else {
+      this.context.drawImage(image, x, y, w, h);
+    }
+    this.restoreTransform();
+  }
+}
+
+/**
+ * @private
  * Get Base64-encoded image data of diagram
  * @param {Editor} editor
  * @param {string} type (e.g. 'image/png')
@@ -121,7 +167,7 @@ function getSVGImageData(diagram) {
 
   // Make a new SVG canvas for making SVG image data
   var ctx = new Context(w, h);
-  var canvas = new Canvas(ctx);
+  var canvas = new SVGCanvas(ctx);
 
   // Initialize new SVG Canvas
   canvas.origin = new Point(-boundingBox.x1, -boundingBox.y1);

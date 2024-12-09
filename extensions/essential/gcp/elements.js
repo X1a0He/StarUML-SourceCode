@@ -150,7 +150,7 @@ class GCPModel extends GCPElement {}
 class GCPUser extends GCPElement {
   constructor() {
     super();
-    this.icon = "users.png"; // default user card
+    this.icon = "Users.png"; // default user card
     this.__assetBaseDir = "gcp/users-and-devices";
   }
 }

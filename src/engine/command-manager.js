@@ -21,27 +21,26 @@
  *
  */
 
-const {EventEmitter} = require('events')
+const { EventEmitter } = require("events");
 
 /**
  * Manages global application commands that can be called from menu items, key bindings, or subparts
  * of the application.
  */
 class CommandManager extends EventEmitter {
-
-  constructor () {
-    super()
+  constructor() {
+    super();
     /**
      * Map of all registered global commands
      * @member Map<string, Command>
      */
-    this.commands = {}
+    this.commands = {};
 
     /**
      * Command names
      * @member Map<string, string>
      */
-    this.commandNames = {}
+    this.commandNames = {};
   }
 
   /**
@@ -56,18 +55,22 @@ class CommandManager extends EventEmitter {
    *     CommandManager will assume it is synchronous, and return a promise that is already resolved.
    * @param {string} name - The name of command.
    */
-  register (id, commandFn, name) {
+  register(id, commandFn, name) {
     if (this.commands[id]) {
-      console.log('Attempting to register an already-registered command: ' + id)
-      return null
+      console.log(
+        "Attempting to register an already-registered command: " + id,
+      );
+      return null;
     }
     if (!id || !commandFn) {
-      console.error('Attempting to register a command with a missing id, or command function.')
-      return null
+      console.error(
+        "Attempting to register a command with a missing id, or command function.",
+      );
+      return null;
     }
-    this.commands[id] = commandFn
+    this.commands[id] = commandFn;
     if (name) {
-      this.commandNames[id] = name
+      this.commandNames[id] = name;
     }
 
     /**
@@ -77,7 +80,7 @@ class CommandManager extends EventEmitter {
      * @memberof CommandManager
      * @property {string} id The ID of the command
      */
-    this.emit('commandRegistered', id)
+    this.emit("commandRegistered", id);
   }
 
   /**
@@ -86,8 +89,8 @@ class CommandManager extends EventEmitter {
    * @param {string} id The ID of the command to run.
    * @return {object} Result of the registered command function
    */
-  execute (id, ...args) {
-    var commandFn = this.commands[id]
+  execute(id, ...args) {
+    var commandFn = this.commands[id];
     if (commandFn) {
       try {
         /**
@@ -97,16 +100,16 @@ class CommandManager extends EventEmitter {
          * @memberof CommandManager
          * @property {string} id The ID of the command
          */
-        this.emit('beforeExecuteCommand', id)
+        this.emit("beforeExecuteCommand", id);
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
-      const result = commandFn(...args)
-      return result
+      const result = commandFn(...args);
+      return result;
     } else {
-      return false
+      return false;
     }
   }
 }
 
-module.exports = CommandManager
+module.exports = CommandManager;

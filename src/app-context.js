@@ -691,10 +691,11 @@ class AppContext extends EventEmitter {
     var initParams = JSON.parse(searchParams.get("initParams")) || {};
     var backupFilePath = localStorage.getItem("__backup_filename");
     var workingFilePath = localStorage.getItem("__working_filename");
+    var skipLoadBackup = initParams.skipLoadBackup || false;
 
     // Open a proper file on startup
     // 1. Open the backup file when app was terminated unexpectedly
-    if (backupFilePath && fs.existsSync(backupFilePath)) {
+    if (!skipLoadBackup && backupFilePath && fs.existsSync(backupFilePath)) {
       try {
         this.toast.error(
           "App was unexpectedly terminated. Auto backup file has loaded.",

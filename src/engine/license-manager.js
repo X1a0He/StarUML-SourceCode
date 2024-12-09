@@ -136,8 +136,13 @@ class LicenseManager extends EventEmitter {
               reject("Invalid license key");
             } else {
               // Server check
-              $.post(app.config.validation_url, {
-                licenseKey: licenseInfo.licenseKey,
+              $.ajax({
+                type: "POST",
+                url: app.config.validation_url,
+                data: {
+                  licenseKey: licenseInfo.licenseKey,
+                },
+                timeout: 2000,
               })
                 .done((data1) => {
                   resolve(data1);

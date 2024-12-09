@@ -236,15 +236,15 @@ class Application extends EventEmitter {
       global.app.quit();
     });
     this.on("application:new", () => {
-      this.openWindow();
+      this.openWindow({ skipLoadBackup: true });
     });
     this.on("application:new-from-template", (arg) => {
       if (arg) {
-        this.openWindow({ template: arg });
+        this.openWindow({ template: arg, skipLoadBackup: true });
       }
     });
     this.on("application:open", (arg) => {
-      var options = {};
+      var options = { skipLoadBackup: true };
       options.fileToOpen = arg;
       this.openWindow(options);
     });

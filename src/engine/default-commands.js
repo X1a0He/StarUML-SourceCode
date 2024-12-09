@@ -56,6 +56,16 @@ function showFileError(err) {
   app.dialogs.showErrorDialog("File System Error (Error=" + err + ")");
 }
 
+function getSubDiagram(elem) {
+  let result = null;
+  elem.traverseField("ownedElements", (e) => {
+    if (result === null && e instanceof type.Diagram) {
+      result = e;
+    }
+  });
+  return result;
+}
+
 /*
  * Application Command Handlers
  */
@@ -539,7 +549,11 @@ async function handlePrintToPDF() {
         diagrams.push(current);
       }
     } else {
-      diagrams = app.repository.getInstancesOf("Diagram");
+      app.project.project.traverse((e) => {
+        if (e instanceof type.Diagram) {
+          diagrams.push(e);
+        }
+      });
     }
     if (diagrams.length > 0) {
       var fn = filenamify(app.project.getProject().name);
@@ -894,16 +908,25 @@ function handleSelectInDiagram() {
 
 function handleOpenSubDiagram() {
   const models = app.selections.getSelectedModels();
-  let result = null;
   if (models.length === 1) {
     const elem = models[0];
-    elem.traverseField("ownedElements", (e) => {
-      if (result === null && e instanceof type.Diagram) {
-        result = e;
-      }
-    });
+    let result = getSubDiagram(elem);
     if (result) {
       app.diagrams.setCurrentDiagram(result);
+    } else if (elem instanceof type.UMLAction && elem.subactivity) {
+      result = getSubDiagram(elem.subactivity);
+      if (result) {
+        app.diagrams.setCurrentDiagram(result);
+      } else {
+        app.toast.info("No sub-diagram in the selected element");
+      }
+    } else if (elem instanceof type.UMLState && elem.submachine) {
+      result = getSubDiagram(elem.submachine);
+      if (result) {
+        app.diagrams.setCurrentDiagram(result);
+      } else {
+        app.toast.info("No sub-diagram in the selected element");
+      }
     } else {
       app.toast.info("No sub-diagram in the selected element");
     }
